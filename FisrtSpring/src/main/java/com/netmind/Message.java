@@ -11,4 +11,10 @@ public class Message {
         return this.message;
     }
 
+    @Override
+    public String toString() {
+        return "Message{" +
+                "message='" + message + '\'' +
+                '}';
+    }
 }

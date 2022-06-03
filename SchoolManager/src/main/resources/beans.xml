@@ -4,14 +4,11 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="aMessage" class="com.netmind.Message">
-        <property name="message" value="Hello World Spring....yuju!"/>
+    <bean id="repoEstudiantes" class="com.ricardo.persistence.StudentsRepository">
     </bean>
 
-    <bean id="aUser" class="com.netmind.Usuario">
-        <property name="nombre" value="Ricardo"/>
-        <property name="email" value="r@r.com"/>
-        <property name="mensaje" ref="aMessage"/>
+    <bean id="servEsTudiantes" class="com.ricardo.services.StudentsService">
+        <property name="repository" ref="repoEstudiantes" />
     </bean>
 
 </beans>
