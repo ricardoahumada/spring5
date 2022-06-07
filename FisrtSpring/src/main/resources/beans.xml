@@ -4,11 +4,11 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="aMessage" class="com.netmind.Message">
+    <bean id="aMessage" class="com.netmind.modelos.Message">
         <property name="message" value="Hello World Spring....yuju!"/>
     </bean>
 
-    <bean id="aUser" class="com.netmind.Usuario">
+    <bean id="aUser" class="com.netmind.modelos.Usuario">
         <property name="nombre" value="Ricardo"/>
         <property name="email" value="r@r.com"/>
         <property name="mensaje" ref="aMessage"/>

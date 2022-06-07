@@ -1,5 +1,7 @@
 package com.netmind;
 
+import com.netmind.modelos.Message;
+import com.netmind.modelos.Usuario;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

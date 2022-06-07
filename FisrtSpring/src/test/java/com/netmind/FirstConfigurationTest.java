@@ -1,6 +1,7 @@
 package com.netmind;
 
 import com.netmind.config.FirstConfiguration;
+import com.netmind.modelos.Message;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 

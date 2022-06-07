@@ -1,9 +1,18 @@
-package com.netmind;
+package com.netmind.modelos;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import javax.inject.Inject;
+import javax.inject.Named;
+
+@Named
 public class Usuario {
     private String nombre;
     private String email;
-    private Message mensaje;
+//    @Inject
+    @Autowired
+    private MessageInf mensaje;
 
     public String getNombre() {
         return nombre;
@@ -21,11 +30,11 @@ public class Usuario {
         this.email = email;
     }
 
-    public Message getMensaje() {
+    public MessageInf getMensaje() {
         return mensaje;
     }
 
-    public void setMensaje(Message mensaje) {
+    public void setMensaje(MessageInf mensaje) {
         this.mensaje = mensaje;
     }
 
