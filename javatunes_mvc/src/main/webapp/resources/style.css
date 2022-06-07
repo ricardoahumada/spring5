@@ -1,0 +1,302 @@
+/* original code by http://freehtml5templates.com, modified by http://dedide.info on 19/03/2011 */
+/* reset */
+* {
+margin: 0;
+padding: 0;
+}
+
+/* render html5 elements as block */
+header, footer, section, aside, nav, article {
+display: block;
+}
+
+body {
+line-height: 1;
+background-color: #FFF;
+background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFF), to(#DDD));
+background: -moz-linear-gradient(top, #FFF 0%, #DDD 100%);
+font-family: Verdana, Arial, Helvetica, sans-serif;
+color: #333;
+font-size: 14px;
+line-height: 18px;
+}
+
+/* layout */
+
+#wrapper {
+width: 940px;
+margin: 0 auto;
+margin-top: 10px;
+margin-bottom: 10px;
+background: #fff;
+}
+
+nav {
+width: 940px;
+height: 50px;
+margin: 0 auto;
+background: #D4B65B;
+}
+
+header {
+width: 850px;
+margin-left: 40px;
+padding-bottom: 20px;
+background: #fff;
+border-bottom: 1px solid #ddd;
+overflow: auto;
+}
+
+#main {
+width: 940px;
+margin: 0 auto;
+background: #FFF;
+}
+
+footer {
+width: 940px;
+margin: 0 auto;
+clear: both;
+background: #D4B65B;
+}
+
+/* basics */
+
+h1 {
+  font-family: 'Copse', serif;
+  font-size: 150px;
+  font-style: normal;
+  font-weight: 700;
+  text-shadow: 2px 2px 2px #aaa;
+  text-decoration: none;
+  text-transform: none;
+  letter-spacing: 0.057em;
+  word-spacing: 0em;
+  line-height: 1.0;
+  text-align: center;
+  color: #CC9900;
+}
+
+h2,h3,h4,h5,h6 {
+display: block;
+font-variant: small-caps;
+line-height: 1.5em;
+padding: 10px 0;
+font-weight: bold;
+color: #000;
+}
+
+a:link, a:visited {
+color: #000; background-color: transparent;
+}
+
+a:hover, a:active {
+  text-decoration: none;
+  background-color: #ddd;
+}
+
+p {
+margin-bottom: 18px;
+}
+
+li {
+padding-left: 5px;
+}
+
+/* nav */
+
+nav .menu {
+  width: 720px;
+  margin: 0 auto;
+}
+
+
+nav .menu ul {
+margin: 0;
+padding: 14px 0 0 20px;
+list-style: none;
+line-height: normal;
+}
+
+nav .menu li {
+display: block;
+float: left;
+}
+
+nav .menu a {
+display: block;
+float: left;
+margin-right: 5px;
+padding: 0px 15px;
+text-decoration: none;
+font-size: 18px;
+font-weight: bolder;
+color: #000;
+text-transform: uppercase;
+}
+
+
+
+/** ARTICLES **/
+
+article {
+margin-bottom: 10px;
+}
+
+article img {
+border: none;
+}
+
+.alignleft, img.alignleft {
+display: inline;
+float: left;
+margin-right: 5px;
+}
+
+.alignright, img.alignright {
+display: inline;
+float: right;
+margin-left: 5px;
+}
+
+.aligncenter, img.aligncenter {
+clear: both;
+display: block;
+margin-left: auto;
+margin-right: auto;
+}
+
+#triplecols, #doublecols, #singlecol, #singlenewspaper {
+width: 850px;
+margin-left: 40px;
+margin-top: 20px;
+border-bottom: 1px solid #ddd;
+}
+
+/* triple blocks */
+
+.tripleblocks {
+	display: inline-block;
+	vertical-align: top;
+	width: 250px;
+	text-align: left;
+}
+
+.tripleleftblock {
+	margin-right: 40px;
+}
+
+.triplemiddleblock {
+	margin-right: 40px;
+}
+
+.triplerightblock {
+	margin-right: 1px;
+}
+
+.tripleblocks .thumbnail {
+	border: none;
+}
+
+.tripleblocks .caption {
+	display: block;
+	font-size: 20px;
+	font-variant: small-caps;
+	line-height: 1.5em;
+}
+
+.tripleblocks p {
+margin-top: 5px;
+text-align: justify;
+}
+
+/* double blocks of content */
+
+.doubleblocks {
+	display: inline-block;
+	vertical-align: top;
+	width: 400px;
+	text-align: left;
+}
+
+.doubleleftblock {
+	margin-right: 40px;
+}
+
+.doublerightblock {
+	margin-right: 2px;
+}
+
+.doubleblocks p {
+text-align: justify;
+}
+
+
+
+
+/* single block of content */
+
+.singleblock {
+	display: inline-block;
+	vertical-align: top;
+	width: 400px;
+	text-align: center;
+}
+
+.singleblock p {
+text-align: justify;
+}
+
+
+
+
+/* footer widget blocks */
+
+aside h3 {
+font-size: 18px;
+}
+
+aside ul {
+list-style: none;
+margin-bottom: 20px;
+margin-top: -15px;
+}
+
+aside li a {
+display: block;
+text-decoration: none;
+}
+
+aside li a:hover {
+text-decoration: underline;
+}
+
+#footer-area {
+color: #efefef;
+font-size: 90%;
+padding: 18px 0;
+overflow: hidden;
+}
+
+.footer-segment {
+float: left;
+width: 400px;
+}
+
+.first {
+margin-right: 50px;
+margin-left: 40px;
+}
+
+.last {
+margin-right: 20px;
+}
+
+footer aside h3 {
+color: #000;
+}
+
+footer p {
+margin-top: -15px;
+color: #333;
+}
