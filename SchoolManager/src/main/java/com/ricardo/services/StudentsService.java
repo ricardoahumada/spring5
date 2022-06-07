@@ -3,8 +3,15 @@ package com.ricardo.services;
 import com.ricardo.models.Student;
 import com.ricardo.persistence.StudentsRepository;
 import com.ricardo.persistence.StudentsRepositoryInf;
+import org.springframework.stereotype.Service;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
+//@Named
+@Service
 public class StudentsService implements StudentServiceInf{
+    @Inject
     private StudentsRepositoryInf repository;
 
     public void setRepository(StudentsRepository repository) {

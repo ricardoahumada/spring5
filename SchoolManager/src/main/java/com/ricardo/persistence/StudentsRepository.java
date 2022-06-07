@@ -1,10 +1,14 @@
 package com.ricardo.persistence;
 
 import com.ricardo.models.Student;
+import org.springframework.stereotype.Repository;
 
+import javax.inject.Named;
 import java.util.ArrayList;
 import java.util.List;
 
+//@Named
+@Repository
 public class StudentsRepository implements StudentsRepositoryInf {
     private List<Student> students = new ArrayList<>();
 
