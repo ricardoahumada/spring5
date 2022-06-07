@@ -1,5 +1,8 @@
 package com.netmind;
 
+import javax.inject.Named;
+
+//@Named("unMensaje")
 public class Message {
     private String message;
 
