@@ -21,6 +21,14 @@ public class StudentsRepository implements StudentsRepositoryInf {
     }
 
     public void add(Student student) {
+        Long newid = 0L;
+        if (students.size() > 0) {
+            Student ultimo = students.get(students.size() - 1);
+            newid = ultimo.getId() + 1;
+        } else {
+            newid = 1L;
+        }
+        student.setId(newid);
         this.students.add(student);
     }
 

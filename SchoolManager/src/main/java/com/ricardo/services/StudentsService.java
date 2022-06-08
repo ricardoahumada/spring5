@@ -10,7 +10,7 @@ import javax.inject.Named;
 
 //@Named
 @Service
-public class StudentsService implements StudentServiceInf{
+public class StudentsService implements StudentServiceInf {
     @Inject
     private StudentsRepositoryInf repository;
 

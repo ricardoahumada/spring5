@@ -16,13 +16,21 @@ public class App {
 
         ApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
 
-        StudentServiceInf servicioEstudiantes= context.getBean(StudentServiceInf.class);
+        StudentServiceInf servicioEstudiantes = context.getBean(StudentServiceInf.class);
 
         Student unEstudiante = servicioEstudiantes.getStudentByIndex(3);
         System.out.println(unEstudiante);
 
         Student otroEstudiante = servicioEstudiantes.getStudentById(3L);
         System.out.println(otroEstudiante);
+
+        //[recibir datos para] dar de alta un estudiante: nombre, apellido, curso
+        // crear estudiante
+        Student nuevoEstudiante = new Student("Rosa", "Rosales", 2);
+
+        // llamar servicio estudiantes -> storeStudent ... verificar que existe en la interface
+        servicioEstudiantes.storeStudent(nuevoEstudiante);
+
 
     }
 }

@@ -15,6 +15,11 @@ public class Student {
         this.apellido = apellido;
         this.curso = curso;
     }
+    public Student(String nombre, String apellido, int curso) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.curso = curso;
+    }
 
     public Long getId() {
         return id;
