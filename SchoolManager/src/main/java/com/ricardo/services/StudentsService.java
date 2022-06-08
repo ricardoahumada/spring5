@@ -14,7 +14,7 @@ public class StudentsService implements StudentServiceInf {
     @Inject
     private StudentsRepositoryInf repository;
 
-    public void setRepository(StudentsRepository repository) {
+    public void setRepository(StudentsRepositoryInf repository) {
         this.repository = repository;
     }
 

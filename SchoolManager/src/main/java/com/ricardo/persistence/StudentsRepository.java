@@ -20,6 +20,10 @@ public class StudentsRepository implements StudentsRepositoryInf {
         students.add(new Student(5L, "Petra", "Lopez", 3));
     }
 
+    public List<Student> getAll() {
+        return this.students;
+    }
+
     public void add(Student student) {
         Long newid = 0L;
         if (students.size() > 0) {
@@ -35,7 +39,7 @@ public class StudentsRepository implements StudentsRepositoryInf {
     public Student get(int idx) {
         return this.students.get(idx);
     }
-
+    
     public Student getById(Long id) {
         for (Student st : students) {
             if (st.getId() == id) return st;

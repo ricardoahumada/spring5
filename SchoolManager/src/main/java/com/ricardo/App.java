@@ -1,7 +1,9 @@
 package com.ricardo;
 
 import com.ricardo.config.SpringConfig;
+import com.ricardo.models.School;
 import com.ricardo.models.Student;
+import com.ricardo.services.SchoolServiceInf;
 import com.ricardo.services.StudentServiceInf;
 import com.ricardo.services.StudentsService;
 import org.springframework.context.ApplicationContext;
@@ -31,6 +33,9 @@ public class App {
         // llamar servicio estudiantes -> storeStudent ... verificar que existe en la interface
         servicioEstudiantes.storeStudent(nuevoEstudiante);
 
+        SchoolServiceInf schoolService = context.getBean(SchoolServiceInf.class);
+        School unaSchool = schoolService.getSchoolById(1L);
+        System.out.println(unaSchool);
 
     }
 }
