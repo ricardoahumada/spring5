@@ -2,6 +2,8 @@ package com.ricardo.config;
 
 import com.ricardo.persistence.SchoolsRepository;
 import com.ricardo.persistence.SchoolsRepositoryInf;
+import com.ricardo.persistence.StudentsRepository;
+import com.ricardo.persistence.StudentsRepositoryInf;
 import com.ricardo.services.SchoolService;
 import com.ricardo.services.SchoolServiceInf;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +24,14 @@ public class SchoolConfig {
     @Inject
     SchoolsRepositoryInf schoolsRepository;
 
+    @Inject
+    StudentsRepositoryInf studentRepository;
+
     @Bean
     public SchoolService createServiceBean(){
         SchoolService schoolService = new SchoolService();
         schoolService.setRepo(schoolsRepository);
+        schoolService.setRepoStudent(studentRepository);
         return schoolService;
     }
 

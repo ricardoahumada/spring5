@@ -3,6 +3,8 @@ package com.ricardo;
 import com.ricardo.config.SpringConfig;
 import com.ricardo.models.School;
 import com.ricardo.models.Student;
+import com.ricardo.persistence.StudentsRepository;
+import com.ricardo.persistence.StudentsRepositoryInf;
 import com.ricardo.services.SchoolServiceInf;
 import com.ricardo.services.StudentServiceInf;
 import com.ricardo.services.StudentsService;
@@ -30,12 +32,30 @@ public class App {
         // crear estudiante
         Student nuevoEstudiante = new Student("Rosa", "Rosales", 2);
 
-        // llamar servicio estudiantes -> storeStudent ... verificar que existe en la interface
+        // Llamar servicio estudiantes -> storeStudent ... verificar que existe en la interface
         servicioEstudiantes.storeStudent(nuevoEstudiante);
 
-        SchoolServiceInf schoolService = context.getBean(SchoolServiceInf.class);
-        School unaSchool = schoolService.getSchoolById(1L);
+        // schools
+        SchoolServiceInf servicioEscuelas = context.getBean(SchoolServiceInf.class);
+        School unaSchool = servicioEscuelas.getSchoolById(1L);
         System.out.println(unaSchool);
 
+        // Añadir un nuevo estudiante a una escuela
+
+        // Crear una escuela ("nombre") con su primer estudiante ("nombre, apellido, curso a la vez ")
+        // Nuevo estudiante
+        Student pablito = new Student("Pablo", "Paulo", 3);
+
+        // Crear Nueva Escuela -> añado el estudiante a la escuela
+        School salesianos = new School("Salesianos");
+//        salesianos.addStudent(pablito);
+
+        System.out.println(salesianos);
+//        servicioEscuelas.addSchool(salesianos);
+
+        servicioEscuelas.addSchoolAndFirstStudent(salesianos, pablito);
+        System.out.println(servicioEscuelas.getSchoolById(2L));
+
+        System.out.println(servicioEstudiantes.getStudentById(7L));
     }
 }

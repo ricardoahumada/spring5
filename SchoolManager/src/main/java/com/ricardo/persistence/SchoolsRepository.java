@@ -20,4 +20,10 @@ public class SchoolsRepository implements SchoolsRepositoryInf {
         return null;
     }
 
+    @Override
+    public void storeSchool(School school) {
+        school.setId((long) escuelas.size() + 1);
+        escuelas.add(school);
+    }
+
 }

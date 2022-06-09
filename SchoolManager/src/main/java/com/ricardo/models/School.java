@@ -16,6 +16,10 @@ public class School {
         this.name = name;
     }
 
+    public School(String name) {
+        this.name = name;
+    }
+
 
     public void addStudent(Student estudiante) {
         estudiantes.add(estudiante);
