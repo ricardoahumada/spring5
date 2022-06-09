@@ -16,6 +16,7 @@ public class SchoolService implements SchoolServiceInf {
     public void setRepoStudent(StudentsRepositoryInf repo) {
         this.repoStudent = repo;
     }
+
     public School getSchoolById(Long id) {
         if (id > 0) return repoSchool.getById(id);
         else return null;
