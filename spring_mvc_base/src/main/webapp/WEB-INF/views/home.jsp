@@ -6,6 +6,6 @@
 	<title>SpringMVCBase</title>
 </head>
 <body>
-<h1>SpringMVCBase</h1>
+<h1>SpringMVCBase Home</h1>
 </body>
 </html>
