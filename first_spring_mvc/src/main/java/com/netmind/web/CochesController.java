@@ -51,6 +51,16 @@ public class CochesController {
         return "coches/detalle";
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/detallemv")
+    public ModelAndView get_coche_query_mav(
+            @RequestParam(required = false) String marca,
+            @RequestParam(required = false) String tipo
+    ) {
+        Coche unCoche = AlmacenCoches.getCoche(marca, tipo);
+        ModelAndView mav = new ModelAndView("coches/detalle");
+        mav.addObject("elCoche", unCoche);
+        return mav;
+    }
 
 
 }
