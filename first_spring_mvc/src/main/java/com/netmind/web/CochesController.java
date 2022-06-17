@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -17,11 +18,15 @@ import java.util.List;
 public class CochesController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/lista")
-    public String get_lista(Model model) {
-        List<Coche> coches = AlmacenCoches.getCoches();
-        model.addAttribute("mess", "En Model!");
-        model.addAttribute("coches", coches);
-        return "coches/lista";
+    public String get_lista(Model model, HttpSession session) {
+        if (session.getAttribute("logged") != null) {
+            List<Coche> coches = AlmacenCoches.getCoches();
+            model.addAttribute("mess", "En Model!");
+            model.addAttribute("coches", coches);
+            return "coches/lista";
+        } else {
+            return "redirect:/web/users/login";
+        }
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/listamv")
@@ -72,17 +77,17 @@ public class CochesController {
         ModelAndView mv = null;
 //        if (cocheForm.validate()) {
 
-            Coche nuevo = null;
-            try {
-                nuevo = cocheForm.toCoche();
-                AlmacenCoches.addCoche(nuevo);
-                mv = new ModelAndView("redirect:./lista");
-            } catch (Exception e) {
-                e.printStackTrace();
-                mv = new ModelAndView("coches/crear");
-                mv.addObject("error", "Los campos son incorrectos except");
-                mv.addObject("elCoche", cocheForm);
-            }
+        Coche nuevo = null;
+        try {
+            nuevo = cocheForm.toCoche();
+            AlmacenCoches.addCoche(nuevo);
+            mv = new ModelAndView("redirect:./lista");
+        } catch (Exception e) {
+            e.printStackTrace();
+            mv = new ModelAndView("coches/crear");
+            mv.addObject("error", "Los campos son incorrectos except");
+            mv.addObject("elCoche", cocheForm);
+        }
 
        /* } else {
             mv = new ModelAndView("coches/crear");
