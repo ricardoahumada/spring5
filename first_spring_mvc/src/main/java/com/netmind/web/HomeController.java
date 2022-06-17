@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
+
 @Controller
 @RequestMapping("/home")      // Map controller to /home
 public class HomeController {
@@ -28,7 +30,7 @@ public class HomeController {
     public String get_hola(Model model) {
         String mensaje = "Este es el mensaje de hola...";
         model.addAttribute("mess", mensaje);
-        return "hola";
+        return "hola";// (/WEB-INF/views/)hola(.jsp)
     }
 
     @RequestMapping(value = "/crear_mensaje", method = RequestMethod.GET)

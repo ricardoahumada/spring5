@@ -5,7 +5,6 @@ public class Coche {
     private String tipo;
     protected int velocidad;
     protected float CV;
-
     protected boolean encendido = false;
 
     public Coche(String marca, String tipo, int velocidad, float CV) {

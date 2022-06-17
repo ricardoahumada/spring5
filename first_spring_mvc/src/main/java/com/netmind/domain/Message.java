@@ -1,6 +1,12 @@
 package com.netmind.domain;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 public class Message {
+
+
     private int id;
     private String mess;
 

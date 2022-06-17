@@ -62,5 +62,25 @@ public class CochesController {
         return mav;
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/crear")
+    public ModelAndView show_crear_coche() {
+        return new ModelAndView("coches/crear");
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/crear")
+    public ModelAndView post_crear_coche(Coche nCoche) {
+        ModelAndView mv = null;
+        if (nCoche.validate()) {
+            AlmacenCoches.addCoche(nCoche);
+            mv = new ModelAndView("redirect:./lista");
+        } else {
+            mv = new ModelAndView("coches/crear");
+            mv.addObject("error", "Los campos son incorrectos");
+            mv.addObject("elCoche",nCoche);
+        }
+
+        return mv;
+
+    }
 
 }
