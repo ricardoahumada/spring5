@@ -30,30 +30,48 @@ public class CochesController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/listamv")
-    public ModelAndView get_lista_MV() {
-        List<Coche> coches = AlmacenCoches.getCoches();
-        ModelAndView mav = new ModelAndView("coches/lista");
-        mav.addObject("coches", coches);
-        mav.addObject("mess", "En ModelAndView!");
-        return mav;
+    public ModelAndView get_lista_MV(HttpSession session) {
+
+        if (session.getAttribute("logged") != null) {
+
+            List<Coche> coches = AlmacenCoches.getCoches();
+            ModelAndView mav = new ModelAndView("coches/lista");
+            mav.addObject("coches", coches);
+            mav.addObject("mess", "En ModelAndView!");
+            return mav;
+
+        } else {
+            return new ModelAndView("redirect:/web/users/login");
+        }
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{marca}/{tipo}")
-    public String get_coche_path(Model m, @PathVariable String marca, @PathVariable String tipo) {
-        Coche unCoche = AlmacenCoches.getCoche(marca, tipo);
-        m.addAttribute("elCoche", unCoche);
-        return "coches/detalle";
+    public String get_coche_path(Model m, @PathVariable String marca, @PathVariable String tipo, HttpSession session) {
+        if (session.getAttribute("logged") != null) {
+            Coche unCoche = AlmacenCoches.getCoche(marca, tipo);
+            m.addAttribute("elCoche", unCoche);
+            return "coches/detalle";
+        } else {
+            return "redirect:/web/users/login";
+        }
+
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/detalle")
     public String get_coche_query(
             Model m,
             @RequestParam(required = false) String marca,
-            @RequestParam(required = false) String tipo
+            @RequestParam(required = false) String tipo,
+            HttpSession session
     ) {
-        Coche unCoche = AlmacenCoches.getCoche(marca, tipo);
-        m.addAttribute("elCoche", unCoche);
-        return "coches/detalle";
+        if (session.getAttribute("logged") != null) {
+            Coche unCoche = AlmacenCoches.getCoche(marca, tipo);
+            m.addAttribute("elCoche", unCoche);
+            return "coches/detalle";
+        } else {
+            return "redirect:/web/users/login";
+        }
+
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/detallemv")
