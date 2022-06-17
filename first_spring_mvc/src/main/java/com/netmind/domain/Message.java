@@ -6,8 +6,7 @@ import javax.validation.constraints.NotNull;
 
 public class Message {
 
-
-    private int id;
+    private Long id;
     private String mess;
 
     public String getMess() {
@@ -18,11 +17,11 @@ public class Message {
         this.mess = mess;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -35,7 +34,7 @@ public class Message {
     }
 
     public boolean isValid() {
-        if (this.id > 0 && this.mess != null && this.mess.length() > 3) return true;
+        if (this.id != null && this.id > 0 && this.mess != null && this.mess.length() > 3) return true;
         else return false;
     }
 }

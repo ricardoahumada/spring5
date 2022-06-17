@@ -68,16 +68,27 @@ public class CochesController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/crear")
-    public ModelAndView post_crear_coche(Coche nCoche) {
+    public ModelAndView post_crear_coche(CocheForm cocheForm) {
         ModelAndView mv = null;
-        if (nCoche.validate()) {
-            AlmacenCoches.addCoche(nCoche);
-            mv = new ModelAndView("redirect:./lista");
-        } else {
+//        if (cocheForm.validate()) {
+
+            Coche nuevo = null;
+            try {
+                nuevo = cocheForm.toCoche();
+                AlmacenCoches.addCoche(nuevo);
+                mv = new ModelAndView("redirect:./lista");
+            } catch (Exception e) {
+                e.printStackTrace();
+                mv = new ModelAndView("coches/crear");
+                mv.addObject("error", "Los campos son incorrectos except");
+                mv.addObject("elCoche", cocheForm);
+            }
+
+       /* } else {
             mv = new ModelAndView("coches/crear");
             mv.addObject("error", "Los campos son incorrectos");
-            mv.addObject("elCoche",nCoche);
-        }
+            mv.addObject("elCoche", cocheForm);
+        }*/
 
         return mv;
 
