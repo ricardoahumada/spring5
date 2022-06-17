@@ -1,28 +1,24 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-    <!DOCTYPE html>
-    <html lang="en">
+    <jsp:include page="../widgets/head.jsp" />
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Lista de coches</title>
-    </head>
+    <jsp:include page="../widgets/nav_var.jsp">
+        <jsp:param name="page" value="lista"/>
+    </jsp:include>
 
-    <body>
-        <h1>Lista de coches</h1>
-        <h2>${mess}</h2>
-        <ul>
-            <c:forEach items="${coches}" var="unCoche">
-                <li>
-                    <div>${unCoche.marca}</div>                    
-                    <div>${unCoche.tipo}</div>                    
-                </li>
-            </c:forEach>
+    <h1>Lista de coches</h1>
+    <h2>${mess}</h2>
+    <section>
+        <a class="btn btn-secondary" href="./crear">Dar de alta nevo</a>
+    </section>
+    <ul>
+        <c:forEach items="${coches}" var="unCoche">
+            <li>
+                <div>${unCoche.marca}</div>
+                <div>${unCoche.tipo}</div>
+                <div><a href="./detalle?marca=${unCoche.marca}&tipo=${unCoche.tipo}">Ver detalle</a></div>
+            </li>
+        </c:forEach>
 
-        </ul>
-
-    </body>
-
-    </html>
+    </ul>
+    <jsp:include page="../widgets/foot.jsp" />

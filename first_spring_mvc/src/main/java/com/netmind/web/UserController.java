@@ -24,15 +24,21 @@ public class UserController {
         String pass_esperado = "xxx";
 
         if (loginForm.isValid() && loginForm.getEmail().equals(email_esperado) && loginForm.getPassword().equals(pass_esperado)) {
-            session.setAttribute("email",email_esperado);
-            session.setAttribute("logged",true);
+            session.setAttribute("email", email_esperado);
+            session.setAttribute("logged", true);
             return new ModelAndView("redirect:/web/coches/lista");
         } else {
             ModelAndView mav = new ModelAndView("users/login");
-            mav.addObject("error","Datos incorrectos!");
+            mav.addObject("error", "Datos incorrectos!");
             return mav;
         }
 
+    }
+
+    @RequestMapping("/logout")
+    public ModelAndView logout(HttpSession session) {
+        session.invalidate();
+        return new ModelAndView("redirect:/web/users/login");
     }
 
 }
