@@ -6,7 +6,7 @@ import javax.inject.Named;
 import java.util.ArrayList;
 import java.util.List;
 
-@Named
+//@Named
 public class AlmacenCoches {
     private static List<Coche> coches = new ArrayList();
 

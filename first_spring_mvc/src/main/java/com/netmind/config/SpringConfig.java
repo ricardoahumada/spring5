@@ -8,10 +8,17 @@
  
 package com.netmind.config;
 
+import com.netmind.persistence.AlmacenCoches;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 
 @Configuration
-@ComponentScan({"com.netmind.persistence"})
-public class SpringConfig {}
+//@ComponentScan({"com.netmind.persistence"})
+public class SpringConfig {
+    @Bean
+    public AlmacenCoches createAlmancenCochesBean(){
+        return new AlmacenCoches();
+    }
+}
