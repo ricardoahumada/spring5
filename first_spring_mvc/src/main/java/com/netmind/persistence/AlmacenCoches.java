@@ -2,9 +2,11 @@ package com.netmind.persistence;
 
 import com.netmind.domain.Coche;
 
+import javax.inject.Named;
 import java.util.ArrayList;
 import java.util.List;
 
+@Named
 public class AlmacenCoches {
     private static List<Coche> coches = new ArrayList();
 

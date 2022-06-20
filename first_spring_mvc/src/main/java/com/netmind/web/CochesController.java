@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -17,10 +18,12 @@ import java.util.List;
 @RequestMapping("/coches")
 public class CochesController {
 
+    @Inject
+    AlmacenCoches cochesRepository;
     @RequestMapping(method = RequestMethod.GET, value = "/lista")
     public String get_lista(Model model, HttpSession session) {
         if (session.getAttribute("logged") != null) {
-            List<Coche> coches = AlmacenCoches.getCoches();
+            List<Coche> coches = cochesRepository.getCoches();
             model.addAttribute("mess", "En Model!");
             model.addAttribute("coches", coches);
             return "coches/lista";
@@ -34,7 +37,7 @@ public class CochesController {
 
         if (session.getAttribute("logged") != null) {
 
-            List<Coche> coches = AlmacenCoches.getCoches();
+            List<Coche> coches = cochesRepository.getCoches();
             ModelAndView mav = new ModelAndView("coches/lista");
             mav.addObject("coches", coches);
             mav.addObject("mess", "En ModelAndView!");
@@ -48,7 +51,7 @@ public class CochesController {
     @RequestMapping(method = RequestMethod.GET, value = "/{marca}/{tipo}")
     public String get_coche_path(Model m, @PathVariable String marca, @PathVariable String tipo, HttpSession session) {
         if (session.getAttribute("logged") != null) {
-            Coche unCoche = AlmacenCoches.getCoche(marca, tipo);
+            Coche unCoche = cochesRepository.getCoche(marca, tipo);
             m.addAttribute("elCoche", unCoche);
             return "coches/detalle";
         } else {
@@ -65,7 +68,7 @@ public class CochesController {
             HttpSession session
     ) {
         if (session.getAttribute("logged") != null) {
-            Coche unCoche = AlmacenCoches.getCoche(marca, tipo);
+            Coche unCoche = cochesRepository.getCoche(marca, tipo);
             m.addAttribute("elCoche", unCoche);
             return "coches/detalle";
         } else {
@@ -79,7 +82,7 @@ public class CochesController {
             @RequestParam(required = false) String marca,
             @RequestParam(required = false) String tipo
     ) {
-        Coche unCoche = AlmacenCoches.getCoche(marca, tipo);
+        Coche unCoche = cochesRepository.getCoche(marca, tipo);
         ModelAndView mav = new ModelAndView("coches/detalle");
         mav.addObject("elCoche", unCoche);
         return mav;
@@ -98,7 +101,7 @@ public class CochesController {
         Coche nuevo = null;
         try {
             nuevo = cocheForm.toCoche();
-            AlmacenCoches.addCoche(nuevo);
+            cochesRepository.addCoche(nuevo);
             mv = new ModelAndView("redirect:./lista");
         } catch (Exception e) {
             e.printStackTrace();
