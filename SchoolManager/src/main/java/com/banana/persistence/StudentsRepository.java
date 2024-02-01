@@ -1,11 +1,18 @@
-package com.ricardo.persistence;
+package com.banana.persistence;
 
-import com.ricardo.models.Student;
+import com.banana.models.Student;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Setter
+@Getter
 public class StudentsRepository implements StudentsRepositoryInf {
+
+    private String urlConn;
+
     private List<Student> students = new ArrayList<>();
 
     public StudentsRepository() {

@@ -1,8 +1,6 @@
 package com.myshoppingcart.persistence;
 
-import com.myshoppingcart.exception.UsuarioNotFoundException;
 import com.myshoppingcart.model.Producto;
-import com.myshoppingcart.model.Usuario;
 
 import java.util.List;
 

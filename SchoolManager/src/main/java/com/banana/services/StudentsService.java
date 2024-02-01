@@ -1,13 +1,16 @@
-package com.ricardo.services;
+package com.banana.services;
 
-import com.ricardo.models.Student;
-import com.ricardo.persistence.StudentsRepository;
-import com.ricardo.persistence.StudentsRepositoryInf;
+import com.banana.models.Student;
+import com.banana.persistence.StudentsRepositoryInf;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-public class StudentsService implements StudentServiceInf{
+@Service
+public class StudentsService implements IStudentService {
+    @Autowired
     private StudentsRepositoryInf repository;
 
-    public void setRepository(StudentsRepository repository) {
+    public void setRepository(StudentsRepositoryInf repository) {
         this.repository = repository;
     }
 
