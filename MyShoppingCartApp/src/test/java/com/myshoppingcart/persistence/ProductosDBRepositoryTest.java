@@ -53,7 +53,7 @@ public class ProductosDBRepositoryTest {
 
         repo.insertarProducto(prod);
 
-        assertThat(prod.getMid(), greaterThan(0));
+        assertThat(prod.getPid(), greaterThan(0));
     }
 
     @Test

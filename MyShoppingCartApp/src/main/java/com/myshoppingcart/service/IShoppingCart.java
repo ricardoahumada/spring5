@@ -16,4 +16,5 @@ public interface IShoppingCart {
     void empty();
 
     void comprar();
+    void comprar_tx();
 }

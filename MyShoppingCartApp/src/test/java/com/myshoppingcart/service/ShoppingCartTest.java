@@ -7,6 +7,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
@@ -20,6 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = {SpringConfig.class})
+@EnableAutoConfiguration
 public class ShoppingCartTest {
 
     @Autowired
@@ -113,11 +115,26 @@ public class ShoppingCartTest {
 
         Random rand = new Random();
 
-        for (int i = 0; i < 3; i++) {
-            cart.addItem(new Producto(i + 1, "fake " + i, rand.nextDouble() * 100));
+        for (int i = 1; i < 3; i++) {
+            cart.addItem(new Producto(i));
         }
 
         cart.comprar();
+
+        assertTrue(true);
+
+    }
+
+    @Test
+    void dadoCarritoNoVacio_cuandoComprarTx_entoncesOK() throws Exception {
+
+        Random rand = new Random();
+
+        for (int i = 1; i < 3; i++) {
+            cart.addItem(new Producto(i));
+        }
+
+        cart.comprar_tx();
 
         assertTrue(true);
 
