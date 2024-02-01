@@ -1,9 +1,8 @@
-package com.ricardo.persistence;
+package com.banana.persistence;
 
-import com.ricardo.models.School;
+import com.banana.models.School;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class SchoolsRepository {

@@ -3,13 +3,9 @@ package com.myshoppingcart.service;
 import com.myshoppingcart.exception.ProductNotFoundException;
 import com.myshoppingcart.model.Compra;
 import com.myshoppingcart.model.Producto;
-import com.myshoppingcart.persistence.CompraDBRepository;
 import com.myshoppingcart.persistence.ICompraRepository;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
-import java.io.IOException;
 import java.time.LocalDate;
 import java.util.*;
 

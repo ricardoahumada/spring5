@@ -3,7 +3,6 @@ package com.myshoppingcart.persistence;
 import com.myshoppingcart.exception.UsuarioNotFoundException;
 import com.myshoppingcart.model.Usuario;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public interface IUsuarioRepository {
