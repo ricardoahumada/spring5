@@ -1,13 +1,21 @@
 package com.banana.persistence;
 
+import com.banana.config.SpringConfig;
 import com.banana.models.Student;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+//@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@ExtendWith(SpringExtension.class)
+@ContextConfiguration(classes = {SpringConfig.class})
+//@ActiveProfiles("dev")
 class StudentsRepositoryTest {
 
     @Autowired
@@ -16,11 +24,19 @@ class StudentsRepositoryTest {
     @Autowired
     private StudentsRepositoryInf repoStudents;
 
+   /* @BeforeEach
+//    @BeforeAll
+    void setUp() {
+//        context = new ClassPathXmlApplicationContext("beans.xml");
+        context = new AnnotationConfigApplicationContext(StudentsRepository.class);
+        repoStudents = context.getBean(StudentsRepositoryInf.class);
+    }*/
+
     @Test
     void testBeans() {
         assertNotNull(context);
         assertNotNull(repoStudents);
-        System.out.println("UrlConn: " + repoStudents.getUrlConn());
+        System.out.println("UrlConn: "+repoStudents.getUrlConn());
     }
 
     @Test

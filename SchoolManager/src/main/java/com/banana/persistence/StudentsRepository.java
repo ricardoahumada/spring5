@@ -7,10 +7,14 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 
+//@Component
+//@Named
+//@Repository
 @Setter
 @Getter
 public class StudentsRepository implements StudentsRepositoryInf {
 
+//    @Value("${db.conn}")
     private String urlConn;
 
     private List<Student> students = new ArrayList<>();
