@@ -1,5 +1,7 @@
 package com.banana.config;
 
+import com.banana.persistence.StudentsRepository;
+import com.banana.services.StudentsService;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
