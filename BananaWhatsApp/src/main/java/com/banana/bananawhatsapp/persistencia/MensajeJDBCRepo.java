@@ -55,6 +55,11 @@ public class MensajeJDBCRepo implements IMensajeRepository {
     }
 
     @Override
+    public boolean borrarEntre(Usuario remitente, Usuario destinatario) throws Exception {
+        return false;
+    }
+
+    @Override
     public boolean borrarTodos(Usuario usuario) throws SQLException {
         return false;
     }
