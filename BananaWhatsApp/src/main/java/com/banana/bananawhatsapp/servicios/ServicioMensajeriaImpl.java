@@ -50,7 +50,6 @@ public class ServicioMensajeriaImpl implements IServicioMensajeria {
         try {
             return mensajeRepo.borrarEntre(remitente, destinatario);
         } catch (Exception e) {
-            System.out.println("Ha habido un error (ServicioMensajeria): " + e.getMessage());
             throw new RuntimeException(e);
         }
     }
