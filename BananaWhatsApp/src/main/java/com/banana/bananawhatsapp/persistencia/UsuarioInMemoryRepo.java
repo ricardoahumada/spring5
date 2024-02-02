@@ -13,6 +13,11 @@ public class UsuarioInMemoryRepo implements IUsuarioRepository {
     private Integer num = 0;
 
     @Override
+    public Usuario obtener(int id) throws SQLException {
+        return null;
+    }
+
+    @Override
     public Usuario crear(Usuario usuario) throws SQLException {
         usuario.valido();
         usuario.setId(num + 1);

@@ -30,7 +30,7 @@ public class Usuario {
     }
 
     public boolean valido() throws UsuarioException {
-        if (activo &&
+        if ((id != null && id > 0 || id == null) && activo &&
                 validarNombre() &&
                 validarEmail() &&
                 validarAlta()) return true;

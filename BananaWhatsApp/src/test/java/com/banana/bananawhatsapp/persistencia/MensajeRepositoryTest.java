@@ -6,6 +6,7 @@ import com.banana.bananawhatsapp.exceptions.UsuarioException;
 import com.banana.bananawhatsapp.modelos.Mensaje;
 import com.banana.bananawhatsapp.modelos.Usuario;
 import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -30,80 +31,92 @@ import static org.junit.jupiter.api.Assertions.*;
 class MensajeRepositoryTest {
 
     @Autowired
-    IMensajeRepository repo;
+    IUsuarioRepository repoUsuario;
+
+    @Autowired
+    IMensajeRepository repoMensaje;
 
     @Test
+    @Order(1)
     void dadoUnMensajeValido_cuandoCrear_entoncesMensajeValido() throws Exception {
-        Usuario remitente = new Usuario(1, null, null, null, true);
-        Usuario destinatario = new Usuario(2, null, null, null, true);
+        Usuario remitente = repoUsuario.obtener(1);
+        Usuario destinatario = repoUsuario.obtener(2);
 
         Mensaje message = new Mensaje(null, remitente, destinatario, "De acuerdo Juana. Un saludo.", LocalDate.now());
 
-        repo.crear(message);
+        repoMensaje.crear(message);
         assertThat(message, notNullValue());
         assertThat(message.getId(), greaterThan(0));
     }
 
     @Test
+    @Order(2)
     void dadoUnMensajeNOValido_cuandoCrear_entoncesExcepcion() throws Exception {
         Usuario remitente = new Usuario(1, null, null, null, true);
         Usuario destinatario = new Usuario(2, null, null, null, true);
         Mensaje message = new Mensaje(null, destinatario, remitente, "SMS < 10", LocalDate.now());
         assertThrows(MensajeException.class, () -> {
-            repo.crear(message);
+            repoMensaje.crear(message);
         });
     }
 
     @Test
+    @Order(3)
     void dadoUnUsuarioValido_cuandoObtener_entoncesListaMensajes() throws Exception {
-        Usuario user = new Usuario(1, null, null, null, true);
+        Usuario user = repoUsuario.obtener(1);
 
-        List<Mensaje> userMessages = repo.obtener(user);
+        List<Mensaje> userMessages = repoMensaje.obtener(user);
         assertNotNull(userMessages);
     }
 
     @Test
+    @Order(4)
     void dadoUnUsuarioNOValido_cuandoObtener_entoncesExcepcion() throws Exception {
-        Usuario user = new Usuario(-1, null, null, null, true);
+        Usuario user = new Usuario(1, null, null, null, false);
 
         assertThrows(UsuarioException.class, () -> {
-            List<Mensaje> userMessages = repo.obtener(user);
+            List<Mensaje> userMessages = repoMensaje.obtener(user);
         });
     }
 
     @Test
+    @Order(5)
     void dadoUnRemitenteValido_cuandoBorrarEntre_entoncesOK() throws Exception {
-        Usuario remitente = new Usuario(1, null, null, null, true);
-        Usuario destinatario = new Usuario(2, null, null, null, true);
+        Usuario remitente = repoUsuario.obtener(1);
+        Usuario destinatario = repoUsuario.obtener(2);
 
-        boolean borrarChat = repo.borrarEntre(remitente, destinatario);
+        boolean borrarChat = repoMensaje.borrarEntre(remitente, destinatario);
         assertTrue(borrarChat);
     }
 
     @Test
+    @Order(6)
     void dadoUnRemitenteNOValido_cuandoBorrarEntre_entoncesExcepcion() throws Exception {
-        Usuario remitente = new Usuario(-1, null, null, null, true);
-        Usuario destinatario = new Usuario(2, null, null, null, true);
+        Usuario remitente = repoUsuario.obtener(1);
+        remitente.setActivo(false);
+        Usuario destinatario = repoUsuario.obtener(2);
 
         assertThrows(UsuarioException.class, () -> {
-            repo.borrarEntre(remitente, destinatario);
+            repoMensaje.borrarEntre(remitente, destinatario);
         });
     }
 
     @Test
+    @Order(7)
     void dadoUnUsuarioValido_cuandoBorrarTodos_entoncesOK() throws Exception {
+        Usuario user = repoUsuario.obtener(1);
+
+        boolean borrarChat = repoMensaje.borrarTodos(user);
+        assertTrue(borrarChat);
+    }
+
+    @Test
+    @Order(8)
+    void dadoUnUsuarioNOValido_cuandoBorrarTodos_entoncesExcepcion() throws Exception {
         Usuario user = new Usuario(1, null, null, null, true);
 
-        boolean borrarChat = repo.borrarTodos(user);
-        assertTrue(borrarChat);
-    }
-
-    @Test
-    void dadoUnUsuarioNOValido_cuandoBorrarTodos_entoncesExcepcion() throws Exception {
-        Usuario user = new Usuario(-1, null, null, null, true);
-
         assertThrows(UsuarioException.class, () -> {
-            repo.borrarTodos(user);
+            repoMensaje.borrarTodos(user);
         });
     }
 

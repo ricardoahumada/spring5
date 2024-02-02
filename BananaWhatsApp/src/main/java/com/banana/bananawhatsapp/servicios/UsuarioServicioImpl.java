@@ -23,7 +23,7 @@ public class UsuarioServicioImpl implements IServicioUsuarios {
             usuarioRepo.crear(usuario);
         } catch (Exception e) {
             e.printStackTrace();
-            throw new UsuarioException("Error en la creación: " + e.getMessage());
+            throw new UsuarioException("Error en la creación");
         }
 
         return usuario;
@@ -35,7 +35,7 @@ public class UsuarioServicioImpl implements IServicioUsuarios {
             return usuarioRepo.borrar(usuario);
         } catch (Exception e) {
             e.printStackTrace();
-            throw new RuntimeException(e);
+            throw new UsuarioException("Error en el borrado");
         }
 
 
@@ -49,7 +49,7 @@ public class UsuarioServicioImpl implements IServicioUsuarios {
             return usuarioUpdate;
         } catch (Exception e) {
             e.printStackTrace();
-            throw new RuntimeException(e);
+            throw new UsuarioException("Error en la actualización");
         }
     }
 
@@ -60,7 +60,7 @@ public class UsuarioServicioImpl implements IServicioUsuarios {
             return usuarioRepo.obtenerPosiblesDestinatarios(usuario.getId(), max);
         } catch (Exception e) {
             e.printStackTrace();
-            throw new RuntimeException(e);
+            throw new UsuarioException("Error en obtener destinatarios");
         }
     }
 }

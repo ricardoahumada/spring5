@@ -30,10 +30,6 @@ class UsuarioRepositoryTest {
     @Autowired
     IMensajeRepository mensajeRepository;
 
-    @BeforeAll
-    void setUp() {
-    }
-
     @Test
     @Order(1)
     void dadoUnUsuarioValido_cuandoCrear_entoncesUsuarioValido() throws Exception {
@@ -63,6 +59,7 @@ class UsuarioRepositoryTest {
     }
 
     @Test
+    @Order(4)
     void dadoUnUsuarioNOValido_cuandoActualizar_entoncesExcepcion() throws Exception {
         Integer iDUser = -1;
         Usuario user = new Usuario(iDUser, "Juan", "j@j.com", LocalDate.now(), true);
@@ -72,13 +69,15 @@ class UsuarioRepositoryTest {
     }
 
     @Test
+    @Order(5)
     void dadoUnUsuarioValido_cuandoBorrar_entoncesOK() throws SQLException {
-        Usuario user = new Usuario(1, null, null, null, true);
+        Usuario user = new Usuario(2, null, null, null, true);
         boolean ok = repo.borrar(user);
         assertTrue(ok);
     }
 
     @Test
+    @Order(6)
     void dadoUnUsuarioNOValido_cuandoBorrar_entoncesExcepcion() throws Exception {
         Usuario user = new Usuario(-1, null, null, null, true);
         assertThrows(Exception.class, () -> {
@@ -87,8 +86,9 @@ class UsuarioRepositoryTest {
     }
 
     @Test
+    @Order(7)
     void dadoUnUsuarioValido_cuandoObtenerPosiblesDestinatarios_entoncesLista() throws Exception {
-        Integer iDUser = 1;
+        Integer iDUser = 3;
         int numPosibles = 100;
         Usuario user = new Usuario(iDUser, "Juan", "j@j.com", LocalDate.now(), true);
 
@@ -97,6 +97,7 @@ class UsuarioRepositoryTest {
     }
 
     @Test
+    @Order(8)
     void dadoUnUsuarioNOValido_cuandoObtenerPosiblesDestinatarios_entoncesExcepcion() throws Exception {
         Usuario user = new Usuario(-1, null, null, null, true);
         int numPosibles = 100;

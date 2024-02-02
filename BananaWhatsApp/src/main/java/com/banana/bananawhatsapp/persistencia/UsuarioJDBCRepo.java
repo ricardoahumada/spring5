@@ -15,6 +15,35 @@ public class UsuarioJDBCRepo implements IUsuarioRepository {
     private String db_url;
 
     @Override
+    public Usuario obtener(int id) throws SQLException {
+        Usuario user = null;
+        String sqlu = "SELECT u.* FROM usuario u WHERE u.id=? LIMIT 1";
+        try (
+                Connection conn = DriverManager.getConnection(db_url);
+                PreparedStatement stmt = conn.prepareStatement(sqlu)
+        ) {
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                user = new Usuario(
+                        rs.getInt("id"),
+                        rs.getString("nombre"),
+                        rs.getString("email"),
+                        rs.getDate("alta").toLocalDate(),
+                        rs.getBoolean("activo")
+                );
+            } else {
+                throw new UsuarioException("Usuario no encontrado");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+        return user;
+    }
+
+    @Override
     public Usuario crear(Usuario usuario) throws SQLException {
         String sql = "INSERT INTO usuario values (NULL,?,?,?,?)";
 
@@ -117,9 +146,24 @@ public class UsuarioJDBCRepo implements IUsuarioRepository {
 
     @Override
     public Set<Usuario> obtenerPosiblesDestinatarios(Integer id, Integer max) throws SQLException {
-        Set<Usuario> conjuntoDestinatarios = new HashSet<>();
-        String sql = "SELECT DISTINCT u.* FROM usuario u INNER JOIN mensaje m ON m.to_user=u.id WHERE m.from_user=? LIMIT ?";
+        String sqlu = "SELECT u.* FROM usuario u WHERE u.id=?";
+        try (
+                Connection conn = DriverManager.getConnection(db_url);
+                PreparedStatement stmt = conn.prepareStatement(sqlu)
+        ) {
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
 
+            if (!rs.next()) {
+                throw new UsuarioException("Usuario no válido");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+
+        Set<Usuario> conjuntoDestinatarios = new HashSet<>();
+        String sql = "SELECT DISTINCT u.* FROM usuario u WHERE u.id<>? AND u.activo=1 LIMIT ?";
         try (
                 Connection conn = DriverManager.getConnection(db_url);
                 PreparedStatement stmt = conn.prepareStatement(sql)

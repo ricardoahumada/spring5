@@ -66,7 +66,7 @@ class ServicioUsuariosTest {
 
     @Test
     void dadoUnUsuarioNOValido_cuandoActualizarUsuario_entoncesExcepcion() {
-        Usuario user = new Usuario(-1, "Juan", "j@j.com", LocalDate.now(), true);
+        Usuario user = new Usuario(1, "Juan", "j@j.com", LocalDate.now(), false);
         assertThrows(UsuarioException.class, () -> {
             servicio.actualizarUsuario(user);
         });
@@ -74,12 +74,11 @@ class ServicioUsuariosTest {
 
     @Test
     void dadoUnUsuarioValido_cuandoObtenerPosiblesDesinatarios_entoncesUsuariosValidos() {
-        Integer iDUser = 1;
         int numPosibles = 100;
-        Usuario user = new Usuario(iDUser, null, null, null, true);
+        Usuario user = new Usuario(3, "Juan", "j@j.com", LocalDate.now(), true);
 
         Set<Usuario> conjuntoDestinatarios = servicio.obtenerPosiblesDesinatarios(user, numPosibles);
-        assertThat(conjuntoDestinatarios.size(), greaterThanOrEqualTo(numPosibles));
+        assertThat(conjuntoDestinatarios.size(), lessThanOrEqualTo(numPosibles));
     }
 
     @Test

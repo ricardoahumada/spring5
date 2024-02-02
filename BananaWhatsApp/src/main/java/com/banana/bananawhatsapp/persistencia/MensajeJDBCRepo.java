@@ -50,18 +50,20 @@ public class MensajeJDBCRepo implements IMensajeRepository {
 
     @Override
     public List<Mensaje> obtener(Usuario usuario) throws SQLException {
-        List<Mensaje> messageList = null;
-        String sql = "SELECT * FROM mensaje m WHERE m.from_user=? OR m.to_user=?";
+        List<Mensaje> messageList = new ArrayList<>();
+        String sql = "SELECT m.* FROM mensaje m WHERE m.from_user=? OR m.to_user=?";
 
         try (
                 Connection conn = DriverManager.getConnection(db_url);
                 PreparedStatement stmt = conn.prepareStatement(sql)
         ) {
             usuario.valido();
+
             stmt.setInt(1, usuario.getId());
             stmt.setInt(2, usuario.getId());
 
             ResultSet rs = stmt.executeQuery();
+
             while (rs.next()) {
                 messageList.add(
                         new Mensaje(
@@ -92,15 +94,15 @@ public class MensajeJDBCRepo implements IMensajeRepository {
 
             remitente.valido();
             destinatario.valido();
-            List<Mensaje> messageList = new ArrayList<>();
-            String sql = "DELETE FROM mensaje m WHERE (m.from_user=? AND m.to_user=?) OR (m.from_user=? AND m.to_user=?)";
+
+            String sql = "DELETE FROM mensaje WHERE (from_user=? AND to_user=?) OR (from_user=? AND to_user=?)";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, remitente.getId());
             stmt.setInt(2, destinatario.getId());
             stmt.setInt(3, destinatario.getId());
             stmt.setInt(4, remitente.getId());
 
-            ResultSet rs = stmt.executeQuery();
+            stmt.executeUpdate();
 
             conn.commit();
 
@@ -124,6 +126,8 @@ public class MensajeJDBCRepo implements IMensajeRepository {
         try {
             conn = DriverManager.getConnection(db_url);
             conn.setAutoCommit(false);
+
+            usuario.valido();
 
             String sql = "DELETE FROM mensaje WHERE from_user=? OR to_user=?";
             PreparedStatement stmt = conn.prepareStatement(sql);
