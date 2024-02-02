@@ -23,6 +23,14 @@ class MensajeRepositoryTest {
     }
 
     @Test
+    void dadoUnRemitenteValido_cuandoBorrarEntre_entoncesOK(){    
+    }
+
+    @Test
+    void dadoUnRemitenteNOValido_cuandoBorrarEntre_entoncesExcepcion(){    
+    }
+
+    @Test
     void dadoUnUsuarioValido_cuandoBorrarTodos_entoncesOK() {
     }
 
