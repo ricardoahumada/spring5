@@ -2,7 +2,11 @@ package com.banana.bananawhatsapp.controladores;
 
 import com.banana.bananawhatsapp.modelos.Usuario;
 import com.banana.bananawhatsapp.servicios.IServicioUsuarios;
+import lombok.Getter;
+import lombok.Setter;
 
+@Setter
+@Getter
 public class ControladorUsuarios {
 
     private IServicioUsuarios servicioUsuarios;
