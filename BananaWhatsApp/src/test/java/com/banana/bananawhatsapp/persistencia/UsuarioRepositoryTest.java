@@ -1,6 +1,7 @@
 package com.banana.bananawhatsapp.persistencia;
 
 import com.banana.bananawhatsapp.config.SpringConfig;
+import com.banana.bananawhatsapp.exceptions.UsuarioException;
 import com.banana.bananawhatsapp.modelos.Usuario;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -11,6 +12,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Set;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -29,8 +31,7 @@ class UsuarioRepositoryTest {
     IMensajeRepository mensajeRepository;
 
     @BeforeAll
-    void setUp(){
-        // inserts
+    void setUp() {
     }
 
     @Test
@@ -54,23 +55,31 @@ class UsuarioRepositoryTest {
 
     @Test
     @Order(3)
-    void dadoUnUsuarioValido_cuandoActualizar_entoncesUsuarioValido() {
+    void dadoUnUsuarioValido_cuandoActualizar_entoncesUsuarioValido() throws Exception {
+        Integer iDUser = 3;
+        Usuario user = new Usuario(iDUser, "Juan", "j@j.com", LocalDate.now(), true);
+        Usuario userUpdate = repo.actualizar(user);
+        assertThat(userUpdate.getNombre(), is("Juan"));
     }
 
     @Test
-    void dadoUnUsuarioNOValido_cuandoActualizar_entoncesExcepcion() {
+    void dadoUnUsuarioNOValido_cuandoActualizar_entoncesExcepcion() throws Exception {
+        Integer iDUser = -1;
+        Usuario user = new Usuario(iDUser, "Juan", "j@j.com", LocalDate.now(), true);
+        assertThrows(UsuarioException.class, () -> {
+            repo.actualizar(user);
+        });
     }
 
     @Test
     void dadoUnUsuarioValido_cuandoBorrar_entoncesOK() throws SQLException {
         Usuario user = new Usuario(1, null, null, null, true);
         boolean ok = repo.borrar(user);
-
         assertTrue(ok);
     }
 
     @Test
-    void dadoUnUsuarioNOValido_cuandoBorrar_entoncesExcepcion() {
+    void dadoUnUsuarioNOValido_cuandoBorrar_entoncesExcepcion() throws Exception {
         Usuario user = new Usuario(-1, null, null, null, true);
         assertThrows(Exception.class, () -> {
             repo.borrar(user);
@@ -78,24 +87,24 @@ class UsuarioRepositoryTest {
     }
 
     @Test
-    void dadoUnUsuarioValido_cuandoObtenerPosiblesDestinatarios_entoncesLista() {
+    void dadoUnUsuarioValido_cuandoObtenerPosiblesDestinatarios_entoncesLista() throws Exception {
+        Integer iDUser = 1;
+        int numPosibles = 100;
+        Usuario user = new Usuario(iDUser, "Juan", "j@j.com", LocalDate.now(), true);
+
+        Set<Usuario> conjuntoDestinatarios = repo.obtenerPosiblesDestinatarios(user.getId(), numPosibles);
+        assertTrue(conjuntoDestinatarios.size() <= numPosibles);
     }
 
     @Test
-    void dadoUnUsuarioNOValido_cuandoObtenerPosiblesDestinatarios_entoncesExcepcion() {
-    }
-
-    @Test
-    void dadoUnUsuarioNOValido_cuandoCrearListarBorrar_entoncesOK(){
-        // insert
-        // verificar que id mayor 0
-        
-        // get
-        // verificar que existe para id
-
-        // delete
-        // verificar que excepcion cuando id
+    void dadoUnUsuarioNOValido_cuandoObtenerPosiblesDestinatarios_entoncesExcepcion() throws Exception {
+        Usuario user = new Usuario(-1, null, null, null, true);
+        int numPosibles = 100;
+        assertThrows(UsuarioException.class, () -> {
+            Set<Usuario> conjuntoDestinatarios = repo.obtenerPosiblesDestinatarios(user.getId(), numPosibles);
+        });
 
     }
+
 
 }
