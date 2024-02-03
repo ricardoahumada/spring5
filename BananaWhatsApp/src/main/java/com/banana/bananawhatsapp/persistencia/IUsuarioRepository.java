@@ -1,6 +1,5 @@
 package com.banana.bananawhatsapp.persistencia;
 
-import com.banana.bananawhatsapp.modelos.Mensaje;
 import com.banana.bananawhatsapp.modelos.Usuario;
 
 import java.sql.SQLException;

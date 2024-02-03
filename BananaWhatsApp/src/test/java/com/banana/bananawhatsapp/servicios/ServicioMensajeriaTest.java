@@ -1,8 +1,6 @@
 package com.banana.bananawhatsapp.servicios;
 
 import com.banana.bananawhatsapp.config.SpringConfig;
-import com.banana.bananawhatsapp.exceptions.MensajeException;
-import com.banana.bananawhatsapp.exceptions.UsuarioException;
 import com.banana.bananawhatsapp.modelos.Mensaje;
 import com.banana.bananawhatsapp.modelos.Usuario;
 import com.banana.bananawhatsapp.persistencia.IUsuarioRepository;

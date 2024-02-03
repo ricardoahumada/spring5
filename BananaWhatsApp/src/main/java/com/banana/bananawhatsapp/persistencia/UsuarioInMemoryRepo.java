@@ -1,7 +1,6 @@
 package com.banana.bananawhatsapp.persistencia;
 
 import com.banana.bananawhatsapp.modelos.Usuario;
-import lombok.Setter;
 
 import java.sql.SQLException;
 import java.util.HashSet;
