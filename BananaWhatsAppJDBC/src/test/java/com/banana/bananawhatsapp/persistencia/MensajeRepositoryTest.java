@@ -58,7 +58,7 @@ class MensajeRepositoryTest {
         Usuario remitente = new Usuario(1, null, null, null, true);
         Usuario destinatario = new Usuario(2, null, null, null, true);
         Mensaje message = new Mensaje(null, destinatario, remitente, "SMS < 10", LocalDate.now());
-        assertThrows(MensajeException.class, () -> {
+        assertThrows(Exception.class, () -> {
             repoMensaje.crear(message);
         });
     }

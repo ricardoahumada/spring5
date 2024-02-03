@@ -21,10 +21,8 @@ public class ControladorMensajes {
 
     public boolean enviarMensaje(Integer remitente, Integer destinatario, String texto) {
         try {
-            Usuario uRemitente = new Usuario();
-            uRemitente.setId(remitente);
-            Usuario uDestinatario = new Usuario();
-            uDestinatario.setId(destinatario);
+            Usuario uRemitente = servicioUsuarios.obtener(remitente);
+            Usuario uDestinatario = servicioUsuarios.obtener(destinatario);
 
             Mensaje mensaje = servicioMensajeria.enviarMensaje(uRemitente, uDestinatario, texto);
             System.out.println("Mensaje enviado: " + mensaje);

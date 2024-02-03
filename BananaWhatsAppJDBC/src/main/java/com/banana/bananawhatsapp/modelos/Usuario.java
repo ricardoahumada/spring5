@@ -30,10 +30,12 @@ public class Usuario {
     }
 
     public boolean valido() throws UsuarioException {
-        if ((id != null && id > 0 || id == null) && activo &&
-                validarNombre() &&
-                validarEmail() &&
-                validarAlta()) return true;
+        if ((id != null && id > 0 || id == null)
+                && activo
+                && validarNombre()
+                && validarEmail()
+                && validarAlta()
+        ) return true;
         else throw new UsuarioException("Usuario no valido");
     }
 }
