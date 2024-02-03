@@ -3,11 +3,16 @@ package com.banana.bananawhatsapp.persistencia;
 import com.banana.bananawhatsapp.config.SpringConfig;
 import com.banana.bananawhatsapp.exceptions.UsuarioException;
 import com.banana.bananawhatsapp.modelos.Usuario;
+import com.banana.bananawhatsapp.util.DBUtil;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Import;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.sql.SQLException;
@@ -29,6 +34,11 @@ class UsuarioRepositoryTest {
 
     @Autowired
     IMensajeRepository mensajeRepository;
+
+    @BeforeEach
+    void cleanAndReloadData() {
+        DBUtil.reloadDB();
+    }
 
     @Test
     @Order(1)
@@ -52,7 +62,7 @@ class UsuarioRepositoryTest {
     @Test
     @Order(3)
     void dadoUnUsuarioValido_cuandoActualizar_entoncesUsuarioValido() throws Exception {
-        Integer iDUser = 3;
+        Integer iDUser = 1;
         Usuario user = new Usuario(iDUser, "Juan", "j@j.com", LocalDate.now(), true);
         Usuario userUpdate = repo.actualizar(user);
         assertThat(userUpdate.getNombre(), is("Juan"));
@@ -71,7 +81,7 @@ class UsuarioRepositoryTest {
     @Test
     @Order(5)
     void dadoUnUsuarioValido_cuandoBorrar_entoncesOK() throws SQLException {
-        Usuario user = new Usuario(2, null, null, null, true);
+        Usuario user = new Usuario(1, null, null, null, true);
         boolean ok = repo.borrar(user);
         assertTrue(ok);
     }
@@ -88,7 +98,7 @@ class UsuarioRepositoryTest {
     @Test
     @Order(7)
     void dadoUnUsuarioValido_cuandoObtenerPosiblesDestinatarios_entoncesLista() throws Exception {
-        Integer iDUser = 3;
+        Integer iDUser = 1;
         int numPosibles = 100;
         Usuario user = new Usuario(iDUser, "Juan", "j@j.com", LocalDate.now(), true);
 

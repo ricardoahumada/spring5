@@ -5,14 +5,13 @@ import com.banana.bananawhatsapp.exceptions.MensajeException;
 import com.banana.bananawhatsapp.exceptions.UsuarioException;
 import com.banana.bananawhatsapp.modelos.Mensaje;
 import com.banana.bananawhatsapp.modelos.Usuario;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import com.banana.bananawhatsapp.util.DBUtil;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.time.LocalDate;
@@ -35,6 +34,11 @@ class MensajeRepositoryTest {
 
     @Autowired
     IMensajeRepository repoMensaje;
+
+    @BeforeEach
+    void cleanAndReloadData() {
+        DBUtil.reloadDB();
+    }
 
     @Test
     @Order(1)

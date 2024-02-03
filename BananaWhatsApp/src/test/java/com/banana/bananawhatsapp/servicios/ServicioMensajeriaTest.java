@@ -6,6 +6,8 @@ import com.banana.bananawhatsapp.exceptions.UsuarioException;
 import com.banana.bananawhatsapp.modelos.Mensaje;
 import com.banana.bananawhatsapp.modelos.Usuario;
 import com.banana.bananawhatsapp.persistencia.IUsuarioRepository;
+import com.banana.bananawhatsapp.util.DBUtil;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
@@ -26,11 +28,15 @@ import static org.junit.jupiter.api.Assertions.*;
 @ActiveProfiles("prod")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class ServicioMensajeriaTest {
-
     @Autowired
     IUsuarioRepository repoUsuario;
     @Autowired
     IServicioMensajeria servicio;
+
+    @BeforeEach
+    void cleanAndReloadData() {
+        DBUtil.reloadDB();
+    }
 
     @Test
     void dadoRemitenteYDestinatarioYTextoValido_cuandoEnviarMensaje_entoncesMensajeValido() throws Exception {

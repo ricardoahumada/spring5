@@ -3,6 +3,8 @@ package com.banana.bananawhatsapp.servicios;
 import com.banana.bananawhatsapp.config.SpringConfig;
 import com.banana.bananawhatsapp.exceptions.UsuarioException;
 import com.banana.bananawhatsapp.modelos.Usuario;
+import com.banana.bananawhatsapp.util.DBUtil;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,10 @@ class ServicioUsuariosTest {
     @Autowired
     IServicioUsuarios servicio;
 
+    @BeforeEach
+    void cleanAndReloadData() {
+        DBUtil.reloadDB();
+    }
 
     @Test
     void dadoUnUsuarioValido_cuandoCrearUsuario_entoncesUsuarioValido() throws Exception {
@@ -43,7 +49,7 @@ class ServicioUsuariosTest {
 
     @Test
     void dadoUnUsuarioValido_cuandoBorrarUsuario_entoncesUsuarioValido() {
-        Usuario user = new Usuario(5, "Gema", "g@g.com", LocalDate.now(), true);
+        Usuario user = new Usuario(2, "Gema", "g@g.com", LocalDate.now(), true);
         boolean userDelete = servicio.borrarUsuario(user);
         assertThat(userDelete, is(true));
     }
@@ -75,7 +81,7 @@ class ServicioUsuariosTest {
     @Test
     void dadoUnUsuarioValido_cuandoObtenerPosiblesDesinatarios_entoncesUsuariosValidos() {
         int numPosibles = 100;
-        Usuario user = new Usuario(3, "Juan", "j@j.com", LocalDate.now(), true);
+        Usuario user = new Usuario(1, "Juan", "j@j.com", LocalDate.now(), true);
 
         Set<Usuario> conjuntoDestinatarios = servicio.obtenerPosiblesDesinatarios(user, numPosibles);
         assertThat(conjuntoDestinatarios.size(), lessThanOrEqualTo(numPosibles));

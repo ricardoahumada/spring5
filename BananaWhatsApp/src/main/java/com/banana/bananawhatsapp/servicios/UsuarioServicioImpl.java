@@ -16,6 +16,16 @@ public class UsuarioServicioImpl implements IServicioUsuarios {
     IUsuarioRepository usuarioRepo;
 
     @Override
+    public Usuario obtener(int id) throws UsuarioException {
+        try {
+            return usuarioRepo.obtener(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new UsuarioException("Error en la obtención");
+        }
+    }
+
+    @Override
     public Usuario crearUsuario(Usuario usuario) throws UsuarioException {
 
         try {
