@@ -25,8 +25,14 @@ public class Mensaje {
     }
 
     public boolean valido() throws MensajeException {
-        if (remitente != null && destinatario != null && remitente.getId() > 0 && destinatario.getId() > 0 && cuerpo != null && cuerpo.length() > 10 && validarFecha())
-            return true;
+        if (remitente != null
+                && destinatario != null
+                && remitente.valido()
+                && destinatario.valido()
+                && cuerpo != null
+                && cuerpo.length() > 10
+                && validarFecha()
+        ) return true;
         else throw new MensajeException("Mensaje no valido");
     }
 
