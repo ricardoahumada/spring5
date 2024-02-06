@@ -5,7 +5,6 @@ import com.banana.persistence.StudentsRepositoryInf;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
 public class StudentsService implements IStudentService {
     private StudentsRepositoryInf repository;
 
