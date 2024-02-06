@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 public class SpringConfig {
 
     @Bean
-    @Qualifier("inmemsr")
+    // @Qualifier("inmemsr")
     public StudentsRepositoryInf getRepoStudents() {
         return new StudentsRepository();
     }

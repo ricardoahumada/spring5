@@ -11,7 +11,7 @@ import javax.inject.Inject;
 @Component
 public class StudentsService implements IStudentService {
     @Autowired
-    @Qualifier("jdbcsr")
+    //@Qualifier("jdbcsr")
     private StudentsRepositoryInf repository;
 
     public void setRepository(StudentsRepositoryInf repository) {

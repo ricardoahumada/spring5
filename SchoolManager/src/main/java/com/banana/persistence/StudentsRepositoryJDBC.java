@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component;
 
 @Setter
 @Getter
-@Component
-@Qualifier("jdbcsr")
+//@Component
+//  @Qualifier("jdbcsr")
 public class StudentsRepositoryJDBC implements StudentsRepositoryInf{
 
     private String urlConn;
