@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Import;
 
 @Configuration
 @ComponentScan({"com.banana.persistence", "com.banana.services"})
-@Import(RepoConfig.class)
+@Import({RepoConfig.class, ServiceConfg.class})
 public class SpringConfig {
 
 

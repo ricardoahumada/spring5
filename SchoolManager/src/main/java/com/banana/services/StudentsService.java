@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 import javax.inject.Inject;
 
-@Component
+// @Component
 public class StudentsService implements IStudentService {
     @Autowired
     //@Qualifier("jdbcsr")
