@@ -3,7 +3,9 @@ package com.banana.persistence;
 import com.banana.models.Student;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 
+import javax.inject.Named;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +14,8 @@ import java.util.List;
 //@Repository
 @Setter
 @Getter
+// @Component
+@Named
 public class StudentsRepository implements StudentsRepositoryInf {
 
 //    @Value("${db.conn}")

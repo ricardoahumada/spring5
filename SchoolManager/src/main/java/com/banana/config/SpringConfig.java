@@ -6,12 +6,14 @@ import com.banana.services.IStudentService;
 import com.banana.services.StudentsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
+@ComponentScan({"com.banana.persistence","com.banana.services"})
 public class SpringConfig {
 
-    @Bean
+    /*@Bean
     public StudentsRepositoryInf getRepoStudents() {
         return new StudentsRepository();
     }
@@ -25,6 +27,6 @@ public class SpringConfig {
         StudentsService stdSrv = new StudentsService();
         stdSrv.setRepository(repoStd);
         return stdSrv;
-    }
+    }*/
 
 }
