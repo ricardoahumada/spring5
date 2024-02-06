@@ -15,7 +15,7 @@ public class App {
         // ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
 
-        StudentsRepositoryInf repo = context.getBean(StudentsRepositoryInf.class);
+        StudentsRepositoryInf repo = context.getBean("inmemsr", StudentsRepositoryInf.class);
         System.out.println(repo.getById(1L));
 
         IStudentService servicio = context.getBean(IStudentService.class);
