@@ -6,4 +6,10 @@
 
     <bean id="studentRepo" class="com.banana.persistence.StudentsRepository"></bean>
 
+    <bean id="studentRepoJDBC" class="com.banana.persistence.StudentsRepositoryJDBC"></bean>
+
+    <bean id="studentSrv" class="com.banana.services.StudentsService">
+        <property name="repository" ref="studentRepoJDBC"/>
+    </bean>
+
 </beans>
