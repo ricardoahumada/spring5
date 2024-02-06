@@ -8,7 +8,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-//@Component
 @Setter
 public class UsuarioDBRepository implements IUsuarioRepository {
     private String db_url = null;

@@ -9,13 +9,9 @@ import org.springframework.stereotype.Repository;
 import java.sql.*;
 
 @Setter
-//@Component
-@Repository
 public class CompraDBRepository implements ICompraRepository {
-    @Value("${db_url}")
     private String connUrl;
 
-    @Override
     public Compra insertCompra(Compra nuevaCompra) throws Exception {
         Connection conn = null;
         try {

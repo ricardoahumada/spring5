@@ -15,11 +15,8 @@ import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-@ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = {SpringConfig.class})
 public class CompraDBRepositoryTest {
 
-    @Autowired
     private ICompraRepository repo;
 
     @Test

@@ -18,11 +18,8 @@ import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
-@ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = {SpringConfig.class})
 public class ShoppingCartTest {
 
-    @Autowired
     IShoppingCart cart;
 
     @Test
