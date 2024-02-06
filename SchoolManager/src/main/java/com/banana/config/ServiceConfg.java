@@ -10,14 +10,14 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ServiceConfg {
 
-//    @Autowired
+    @Autowired
     StudentsRepositoryInf repo;
 
-    /*@Bean
+    @Bean
     public IStudentService getStudentService(){
         StudentsService stdSrvc = new StudentsService();
         stdSrvc.setRepository(repo);
         return stdSrvc;
-    }*/
+    }
 
 }

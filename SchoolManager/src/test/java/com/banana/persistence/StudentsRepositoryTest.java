@@ -23,7 +23,7 @@ class StudentsRepositoryTest {
     private ApplicationContext context;
 
     @Autowired
-    @Qualifier("inmemsr")
+//    @Qualifier("inmemsr")
     private StudentsRepositoryInf repoStudents;
 
    /* @BeforeEach

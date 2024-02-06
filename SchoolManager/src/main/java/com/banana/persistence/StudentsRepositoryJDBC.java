@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Setter
 @Getter
-@Component("jdbcsr")
+//@Component("jdbcsr")
 public class StudentsRepositoryJDBC implements StudentsRepositoryInf {
 
     private String urlConn;
