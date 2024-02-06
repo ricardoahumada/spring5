@@ -15,7 +15,7 @@ import java.util.List;
 @Setter
 @Getter
 // @Component
-@Named
+//@Named
 public class StudentsRepository implements StudentsRepositoryInf {
 
 //    @Value("${db.conn}")

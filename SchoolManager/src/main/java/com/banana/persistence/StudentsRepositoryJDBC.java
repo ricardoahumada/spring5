@@ -3,9 +3,13 @@ package com.banana.persistence;
 import com.banana.models.Student;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
 @Setter
 @Getter
+@Component
+@Qualifier("jdbcsr")
 public class StudentsRepositoryJDBC implements StudentsRepositoryInf{
 
     private String urlConn;
