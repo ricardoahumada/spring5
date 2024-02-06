@@ -8,7 +8,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-//@Component
 @Setter
 public class ProductoDBRepository implements IProductoRepository {
     private String connUrl;
