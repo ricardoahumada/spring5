@@ -9,17 +9,14 @@ import lombok.Setter;
 import java.time.LocalDate;
 import java.util.*;
 
-//@Component
 @Setter
 public class ShoppingCart implements IShoppingCart {
 
     private ArrayList<Producto> items;
-//    @Autowired
     private ICompraRepository repoCompras;
 
     public ShoppingCart() /*throws Exception*/ {
         items = new ArrayList<>();
-//        repoCompras = new CompraDBRepository();
     }
 
     @Override
