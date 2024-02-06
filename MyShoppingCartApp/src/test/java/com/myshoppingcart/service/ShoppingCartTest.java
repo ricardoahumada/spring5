@@ -1,14 +1,9 @@
 package com.myshoppingcart.service;
 
-import com.myshoppingcart.config.SpringConfig;
 import com.myshoppingcart.model.Producto;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.Random;
 
