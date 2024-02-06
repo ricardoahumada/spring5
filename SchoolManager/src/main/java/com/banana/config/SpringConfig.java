@@ -6,16 +6,13 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 @Configuration
 @ComponentScan({"com.banana.persistence", "com.banana.services"})
+@Import(RepoConfig.class)
 public class SpringConfig {
 
-    @Bean
-    // @Qualifier("inmemsr")
-    public StudentsRepositoryInf getRepoStudents() {
-        return new StudentsRepository();
-    }
 
 
 }
