@@ -23,7 +23,17 @@ public class StudentJPARepository implements StudentsRepositoryInf {
 
     @Override
     public Student update(Student estudiante) {
-        return null;
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+
+        Student currStdn = em.find(Student.class,estudiante.getId());
+        currStdn.setNombre(estudiante.getNombre());
+        currStdn.setApellido(estudiante.getApellido());
+        currStdn.setCurso(estudiante.getCurso());
+
+        em.getTransaction().commit();
+
+        return currStdn;
     }
 
     @Override
