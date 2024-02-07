@@ -7,7 +7,6 @@ import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @ComponentScan({"com.myshoppingcart.persistence"})
-@Import({RepoConfig.class})
-@PropertySource("classpath:config.properties")
+@Import({RepoConfig.class, PropertyConfig.class, PropertyConfigDev.class})
 public class SpringConfig {
 }
