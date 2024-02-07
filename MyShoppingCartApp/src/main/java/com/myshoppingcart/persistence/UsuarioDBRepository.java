@@ -4,6 +4,7 @@ import com.myshoppingcart.exception.UsuarioNotFoundException;
 import com.myshoppingcart.model.Usuario;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.sql.*;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @Setter
 @Component("userdbr")
+@Profile("prod")
 public class UsuarioDBRepository implements IUsuarioRepository {
     @Value("${db_url}")
     private String db_url = null;
