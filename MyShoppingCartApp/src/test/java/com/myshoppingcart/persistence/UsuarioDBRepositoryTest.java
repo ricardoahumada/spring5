@@ -1,8 +1,14 @@
 package com.myshoppingcart.persistence;
 
+import com.myshoppingcart.config.SpringConfig;
 import com.myshoppingcart.exception.UsuarioNotFoundException;
 import com.myshoppingcart.model.Usuario;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -11,8 +17,12 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+@ExtendWith(SpringExtension.class)
+@ContextConfiguration(classes = {SpringConfig.class})
 public class UsuarioDBRepositoryTest {
 
+    @Autowired
+    @Qualifier("userdbr")
     private IUsuarioRepository repo;
 
     @Test
