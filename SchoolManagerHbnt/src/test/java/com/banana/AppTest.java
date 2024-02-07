@@ -19,18 +19,18 @@ public class AppTest {
 
     private EntityManager entityManager;
 
-// TODO: uncomment
-// @BeforeEach
+    // TODO: uncomment
+    @BeforeEach
     public void setUp() throws Exception {
-//        entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
+        entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
 //        entityManager.getTransaction().begin();
     }
 
-//  TODO: uncomment
-// @AfterEach
+    //  TODO: uncomment
+    @AfterEach
     public void tearDown() {
-        entityManager.getTransaction().rollback();
-//        entityManager.close();
+//        entityManager.getTransaction().rollback();
+        entityManager.close();
     }
 
     @Test
