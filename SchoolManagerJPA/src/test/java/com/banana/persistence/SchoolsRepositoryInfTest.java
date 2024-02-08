@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @ContextConfiguration(classes = {SpringConfig.class})
 //@ActiveProfiles("dev")
 // TODO: uncomment
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+//@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class SchoolsRepositoryInfTest {
 
     @Autowired
@@ -38,6 +38,7 @@ class SchoolsRepositoryInfTest {
     private List<School> schools = new ArrayList<>();
 
     @BeforeAll
+//    @BeforeEach
     void setUp() {
         em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -52,10 +53,6 @@ class SchoolsRepositoryInfTest {
         tx.commit();
     }
 
-    @BeforeEach
-    void before() {
-        em = emf.createEntityManager();
-    }
 
     @Test
     void add() {
@@ -89,6 +86,7 @@ class SchoolsRepositoryInfTest {
 
 
     @AfterAll
+//    @AfterEach
     void tearDown() {
         em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
