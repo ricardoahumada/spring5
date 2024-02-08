@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
 
 @Configuration
-@Import({ServicesConfig.class})
+@Import({ServicesConfig.class/*, PersistenceConfig.class*/})
 @ComponentScan(basePackages = {"com.banana.persistence", "com.banana.services"})
 @PropertySource("classpath:application.properties")
 @EntityScan("com.banana.models")
