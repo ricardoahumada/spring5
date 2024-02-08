@@ -25,6 +25,17 @@ public class Student {
 
     private int curso;
 
+    @ManyToOne
+    @JoinColumn(name = "escuela_id")
+    private School escuela;
+
+    public Student(Long id, String nombre, String apellido, int curso) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.curso = curso;
+    }
+
     public boolean isValid() {
         return this.nombre != null && this.apellido != null && this.curso > 0;
     }

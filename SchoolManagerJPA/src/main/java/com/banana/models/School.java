@@ -19,7 +19,9 @@ public class School {
 
     private String name;
 
-    @Transient
+    @OneToMany(mappedBy = "escuela")
+//    @JoinColumn(name = "escuela_id")
+//    @Transient
     private List<Student> estudiantes = new ArrayList<>();
 
     @OneToOne
