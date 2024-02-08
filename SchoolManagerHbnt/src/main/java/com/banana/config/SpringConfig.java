@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Import;
 @Configuration
 @Import({PropertiesConfig.class, PropertiesConfigDev.class, ReposConfig.class, ServicesConfig.class})
 @ComponentScan(basePackages = {"com.banana.persistence", "com.banana.services"})
-//@Import({StudentsRepository.class, StudentsService.class})
 public class SpringConfig {
 
 }
