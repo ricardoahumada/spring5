@@ -26,7 +26,7 @@ public class Student {
 
     private int curso;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinColumn(name = "escuela_id")
     private School escuela;
 

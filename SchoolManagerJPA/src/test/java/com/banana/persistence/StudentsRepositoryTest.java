@@ -1,6 +1,7 @@
 package com.banana.persistence;
 
 import com.banana.config.SpringConfig;
+import com.banana.models.School;
 import com.banana.models.Student;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -9,6 +10,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -33,8 +35,9 @@ class StudentsRepositoryTest {
     }
 
     @Test
+    @Transactional
     void getById() {
-        Student aStudent = repoStudents.getById(1L);
+        Student aStudent = repoStudents.getById(2L);
         System.out.println(aStudent);
         assertEquals(aStudent.getId(), 1L);
         assertNotNull(aStudent);
@@ -43,6 +46,14 @@ class StudentsRepositoryTest {
     @Test
     void add() {
         Student newStd = new Student(null, "El nuevo", "Apellido", 2);
+        repoStudents.add(newStd);
+        System.out.println(newStd);
+        Student aStudent = repoStudents.getById(newStd.getId());
+        assertEquals(aStudent.getId(), newStd.getId());
+    }
+    @Test
+    void addWithShool() {
+        Student newStd = new Student(null, "El nuevo 3", "Apellido", 2,new School(null,"esccuela para el nuevo 3"),null);
         repoStudents.add(newStd);
         System.out.println(newStd);
         Student aStudent = repoStudents.getById(newStd.getId());
