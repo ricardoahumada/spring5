@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,14 +24,15 @@ class SchoolsRepositoryInfTest {
     @Autowired
     private SchoolsRepositoryInf repo;
 
-//    @Autowired
+    @PersistenceUnit
     EntityManagerFactory emf;
 
     @Test
-    void testBeans(){
+    void testBeans() {
         assertNotNull(repo);
     }
 
+    @PersistenceContext
     private EntityManager em;
 
     private List<School> schools = new ArrayList<>();
@@ -74,7 +73,8 @@ class SchoolsRepositoryInfTest {
 
     @Test
     void update() {
-        School sch = new School(1L, "Mi escuela cambio", null);
+        Long id = schools.get(0).getId();
+        School sch = new School(id, "Mi escuela cambio", null);
         School schC = repo.update(sch);
         assertNotNull(sch);
         assertEquals(sch.getName(), schC.getName());
@@ -82,7 +82,8 @@ class SchoolsRepositoryInfTest {
 
     @Test
     void getById() {
-        School sch = repo.getById(1L);
+        Long id = schools.get(0).getId();
+        School sch = repo.getById(id);
         assertNotNull(sch);
     }
 
