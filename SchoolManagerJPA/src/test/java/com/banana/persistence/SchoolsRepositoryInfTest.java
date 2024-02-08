@@ -37,8 +37,8 @@ class SchoolsRepositoryInfTest {
 
     private List<School> schools = new ArrayList<>();
 
-    @BeforeAll
-//    @BeforeEach
+//    @BeforeAll // TestInstance.Lifecycle.PER_CLASSTestInstance.Lifecycle.PER_CLASS
+    @BeforeEach
     void setUp() {
         em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -85,8 +85,8 @@ class SchoolsRepositoryInfTest {
     }
 
 
-    @AfterAll
-//    @AfterEach
+//    @AfterAll // TestInstance.Lifecycle.PER_CLASS
+    @AfterEach
     void tearDown() {
         em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
