@@ -60,9 +60,9 @@ class StudentsRepositoryTest {
 
     @Test
     void get() {
-        Student aStudent = repoStudents.get(2);
+        Student aStudent = repoStudents.get(1);
         System.out.println(aStudent);
-        assertEquals(aStudent.getId(), 3L);
+        assertEquals(aStudent.getId(), 2L);
         assertNotNull(aStudent);
     }
 }
