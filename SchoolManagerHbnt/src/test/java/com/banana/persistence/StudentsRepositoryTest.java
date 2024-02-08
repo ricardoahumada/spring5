@@ -43,8 +43,8 @@ class StudentsRepositoryTest {
     @Test
     void add() {
         Student newStd = new Student(null, "El nuevo", "Apellido", 2);
-        System.out.println(newStd);
         repoStudents.add(newStd);
+        System.out.println(newStd);
         Student aStudent = repoStudents.getById(newStd.getId());
         assertEquals(aStudent.getId(), newStd.getId());
     }

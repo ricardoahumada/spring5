@@ -5,7 +5,7 @@
              version="2.0">
     <persistence-unit name="com.banana.schoolmanager">
         <!-- TODO: uncomment -->
-        <!--<description>Hibernate EntityManager</description>
+        <description>Hibernate EntityManager</description>
         <class>com.banana.models.Student</class>
         <class>com.banana.models.School</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
@@ -17,6 +17,6 @@
             <property name="javax.persistence.jdbc.user" value="schooluser"/>
             <property name="javax.persistence.jdbc.password" value="school123"/>
             <property name = "hibernate.show_sql" value = "true" />
-        </properties>-->
+        </properties>
     </persistence-unit>
 </persistence>

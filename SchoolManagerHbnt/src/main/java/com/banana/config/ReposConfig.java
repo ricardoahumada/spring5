@@ -23,7 +23,7 @@ public class ReposConfig {
     Integer maxConn;
 
 
-    @Bean
+    /*@Bean
     public StudentsRepositoryInf getStudentsRepository() {
         System.out.println("maxConn:" + maxConn);
 
@@ -33,7 +33,7 @@ public class ReposConfig {
         StudentsRepository repo = new StudentsRepository();
         repo.setUrlConn(dbUrl);
         return repo;
-    }
+    }*/
 
 
 }
