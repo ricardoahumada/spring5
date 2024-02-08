@@ -11,6 +11,7 @@ import javax.persistence.*;
 @ToString
 @Entity
 @Table(name = "estudiante")
+@NamedQuery(name = "Student.get", query = "SELECT e FROM Student e WHERE e.nombre = ?1")
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
