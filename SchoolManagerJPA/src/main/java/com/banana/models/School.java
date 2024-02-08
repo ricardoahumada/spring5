@@ -22,9 +22,19 @@ public class School {
     @Transient
     private List<Student> estudiantes = new ArrayList<>();
 
+    @OneToOne
+    @JoinColumn(name = "address_id")
+    private Address direccion;
+
     public School(Long id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public School(Long id, String name, List<Student> estudiantes) {
+        this.id = id;
+        this.name = name;
+        this.estudiantes = estudiantes;
     }
 
     public void addStudent(Student estudiante) {
