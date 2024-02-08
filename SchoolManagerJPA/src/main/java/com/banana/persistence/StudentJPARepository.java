@@ -1,38 +1,33 @@
 package com.banana.persistence;
 
 import com.banana.models.Student;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceContext;
 
 @Repository
 public class StudentJPARepository implements StudentsRepositoryInf {
 
-//    @Autowired
-    EntityManagerFactory emf;
+    @PersistenceContext
+    EntityManager em;
 
     @Override
+    @Transactional
     public void add(Student estudiante) {
-        EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
         em.persist(estudiante);
-        em.getTransaction().commit();
     }
 
     @Override
+    @Transactional
     public Student update(Student estudiante) {
-        EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
 
-        Student currStdn = em.find(Student.class,estudiante.getId());
+        Student currStdn = em.find(Student.class, estudiante.getId());
 
         currStdn.setNombre(estudiante.getNombre());
         currStdn.setApellido(estudiante.getApellido());
         currStdn.setCurso(estudiante.getCurso());
-
-        em.getTransaction().commit();
 
         return currStdn;
     }
@@ -44,7 +39,6 @@ public class StudentJPARepository implements StudentsRepositoryInf {
 
     @Override
     public Student getById(Long id) {
-        EntityManager em = emf.createEntityManager();
         return em.find(Student.class, id);
     }
 
