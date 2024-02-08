@@ -21,10 +21,8 @@ import static org.junit.jupiter.api.Assertions.*;
 //@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class SchoolsRepositoryInfTest {
 
-    @Autowired
     private SchoolsRepositoryInf repo;
 
-    @PersistenceUnit
     EntityManagerFactory emf;
 
     @Test

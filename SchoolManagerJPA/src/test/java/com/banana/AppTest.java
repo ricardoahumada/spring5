@@ -21,12 +21,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @ContextConfiguration(classes = {SpringConfig.class})
 public class AppTest {
 
-    @PersistenceUnit
     EntityManagerFactory emf;
 
-    @PersistenceContext// emf -> emf.createEM()
     private EntityManager entityManager;
-
     @Test
     public void load() {
         assertTrue(true);

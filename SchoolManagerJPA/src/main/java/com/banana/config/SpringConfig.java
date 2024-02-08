@@ -11,8 +11,8 @@ import org.springframework.context.annotation.PropertySource;
 @Import({ServicesConfig.class})
 @ComponentScan(basePackages = {"com.banana.persistence", "com.banana.services"})
 @PropertySource("classpath:application.properties")
-@EntityScan("com.banana.models")
-@EnableAutoConfiguration
+//@EntityScan("com.banana.models")
+//@EnableAutoConfiguration
 public class SpringConfig {
 
 }

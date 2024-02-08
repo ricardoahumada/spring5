@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Lazy;
 @Configuration
 public class ServicesConfig {
 
-    @Autowired
+    //    @Autowired
     StudentsRepositoryInf repo;
 
     @Bean

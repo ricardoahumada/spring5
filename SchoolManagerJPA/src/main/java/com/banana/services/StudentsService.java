@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 //@Component
 @Service
 public class StudentsService implements IStudentService {
-    @Autowired
+//    @Autowired
     private StudentsRepositoryInf repository;
 
     public void setRepository(StudentsRepositoryInf repository) {
