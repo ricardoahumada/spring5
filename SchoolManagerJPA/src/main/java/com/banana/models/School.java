@@ -20,7 +20,7 @@ public class School {
     private String name;
 
     @ToString.Exclude
-    @OneToMany(mappedBy = "escuela", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "escuela", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 //    @JoinColumn(name = "escuela_id")
 //    @Transient
     private List<Student> estudiantes = new ArrayList<>();

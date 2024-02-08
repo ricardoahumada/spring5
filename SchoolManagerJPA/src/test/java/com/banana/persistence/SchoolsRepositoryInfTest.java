@@ -2,6 +2,7 @@ package com.banana.persistence;
 
 import com.banana.config.SpringConfig;
 import com.banana.models.School;
+import com.banana.models.Student;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,7 @@ class SchoolsRepositoryInfTest {
 
     private List<School> schools = new ArrayList<>();
 
-//    @BeforeAll // TestInstance.Lifecycle.PER_CLASSTestInstance.Lifecycle.PER_CLASS
+    //    @BeforeAll // TestInstance.Lifecycle.PER_CLASSTestInstance.Lifecycle.PER_CLASS
     @BeforeEach
     void setUp() {
         em = emf.createEntityManager();
@@ -69,6 +70,23 @@ class SchoolsRepositoryInfTest {
     }
 
     @Test
+    void addwithStudents() {
+        Student newStd = new Student(null, "Estudiante de Mi escuela 3", "apell", 2);
+        School sch = new School(null, "Mi escuela 3", List.of(newStd));
+        newStd.setEscuela(sch);
+
+        repo.add(sch);
+        assertNotNull(sch);
+        assertTrue(sch.getId() > 0);
+
+        School ssch = em.find(School.class, sch.getId());
+        assertNotNull(ssch);
+        assertEquals(ssch.getId(), sch.getId());
+
+//        schools.add(sch);
+    }
+
+    @Test
     void update() {
         Long id = schools.get(0).getId();
         School sch = new School(id, "Mi escuela cambio", null);
@@ -85,7 +103,7 @@ class SchoolsRepositoryInfTest {
     }
 
 
-//    @AfterAll // TestInstance.Lifecycle.PER_CLASS
+    //    @AfterAll // TestInstance.Lifecycle.PER_CLASS
     @AfterEach
     void tearDown() {
         em = emf.createEntityManager();
