@@ -10,7 +10,7 @@ import javax.persistence.EntityManagerFactory;
 @Repository
 public class StudentJPARepository implements StudentsRepositoryInf {
 
-    @Autowired
+//    @Autowired
     EntityManagerFactory emf;
 
     @Override
