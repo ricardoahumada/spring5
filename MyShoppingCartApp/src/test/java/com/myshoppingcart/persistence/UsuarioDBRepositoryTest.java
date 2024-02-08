@@ -1,14 +1,8 @@
 package com.myshoppingcart.persistence;
 
-import com.myshoppingcart.config.SpringConfig;
 import com.myshoppingcart.exception.UsuarioNotFoundException;
 import com.myshoppingcart.model.Usuario;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.time.LocalDate;
 import java.util.List;

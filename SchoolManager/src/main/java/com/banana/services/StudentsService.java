@@ -2,7 +2,6 @@ package com.banana.services;
 
 import com.banana.models.Student;
 import com.banana.persistence.StudentsRepositoryInf;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service

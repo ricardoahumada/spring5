@@ -3,8 +3,6 @@ package com.myshoppingcart.persistence;
 import com.myshoppingcart.exception.ProductNotFoundException;
 import com.myshoppingcart.model.Compra;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 

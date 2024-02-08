@@ -7,7 +7,8 @@ import com.myshoppingcart.persistence.ICompraRepository;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 @Setter
 public class ShoppingCart implements IShoppingCart {
