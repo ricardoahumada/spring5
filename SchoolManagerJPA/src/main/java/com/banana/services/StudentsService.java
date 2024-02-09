@@ -43,7 +43,7 @@ public class StudentsService implements IStudentService {
         else return null;
     }
 
-    @Transactional(propagation = Propagation.REQUIRED)
+    @Transactional(propagation = Propagation.REQUIRED, timeout = 2, noRollbackFor = NullPointerException.class)
     public void actualizarEscuelaYEstudiante(Long id, String nombre, int curso){
 
         School escuela = repoEscuela.getById(id);
@@ -51,7 +51,8 @@ public class StudentsService implements IStudentService {
         repoEscuela.update(escuela);
 
         List<Student> stds = escuela.getEstudiantes();
-        stds.add(new Student(0L,"","",curso));
+//        stds.add(new Student(0L,"","",curso));
+        stds.add(null);
 
         for (Student std : stds) {
             std.setCurso(curso);

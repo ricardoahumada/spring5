@@ -21,7 +21,7 @@ public class SchoolsJPARepository implements SchoolsRepositoryInf {
     }
 
     @Override
-    @Transactional(propagation = Propagation.MANDATORY)
+    @Transactional(propagation = Propagation.MANDATORY, readOnly = true)
     public School update(School escuela) {
         School currSch = em.find(School.class, escuela.getId());
         currSch.setName(escuela.getName());

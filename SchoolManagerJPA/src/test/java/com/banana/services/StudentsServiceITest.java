@@ -48,7 +48,7 @@ class StudentsServiceITest {
     @Test
     void actualizarEscuelaYEstudiante() {
 
-        service.actualizarEscuelaYEstudiante(8L, "Escuela especial", 4);
+        service.actualizarEscuelaYEstudiante(8L, "Escuela especial 3", 6);
 
     }
 }
