@@ -44,4 +44,11 @@ class StudentsServiceITest {
         System.out.println(std);
         assertNotNull(std);
     }
+
+    @Test
+    void actualizarEscuelaYEstudiante() {
+
+        service.actualizarEscuelaYEstudiante(4L, "Escuela especial", 4);
+
+    }
 }
