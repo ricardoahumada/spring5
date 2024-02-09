@@ -72,8 +72,10 @@ class SchoolsRepositoryInfTest {
     @Test
     void addwithStudents() {
         Student newStd = new Student(null, "Estudiante de Mi escuela 3", "apell", 2);
-        School sch = new School(null, "Mi escuela 3", List.of(newStd));
+        Student newStd2 = new Student(null, "Estudiante 2 de Mi escuela 3", "apell", 2);
+        School sch = new School(null, "Mi escuela 3", List.of(newStd, newStd2));
         newStd.setEscuela(sch);
+        newStd2.setEscuela(sch);
 
         repo.add(sch);
         assertNotNull(sch);

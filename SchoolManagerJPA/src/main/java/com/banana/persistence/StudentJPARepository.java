@@ -2,6 +2,7 @@ package com.banana.persistence;
 
 import com.banana.models.Student;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
@@ -22,7 +23,7 @@ public class StudentJPARepository implements StudentsRepositoryInf {
     }
 
     @Override
-    @Transactional
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Student update(Student estudiante) {
 
         Student currStdn = em.find(Student.class, estudiante.getId());

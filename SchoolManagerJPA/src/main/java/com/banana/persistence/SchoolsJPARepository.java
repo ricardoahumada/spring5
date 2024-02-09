@@ -2,6 +2,7 @@ package com.banana.persistence;
 
 import com.banana.models.School;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
@@ -20,6 +21,7 @@ public class SchoolsJPARepository implements SchoolsRepositoryInf {
     }
 
     @Override
+    @Transactional(propagation = Propagation.MANDATORY)
     public School update(School escuela) {
         School currSch = em.find(School.class, escuela.getId());
         currSch.setName(escuela.getName());

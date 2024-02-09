@@ -8,6 +8,8 @@ import com.banana.persistence.StudentsRepositoryInf;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -41,11 +43,13 @@ public class StudentsService implements IStudentService {
         else return null;
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
     public void actualizarEscuelaYEstudiante(Long id, String nombre, int curso){
 
         School escuela = repoEscuela.getById(id);
         escuela.setName(nombre);
         repoEscuela.update(escuela);
+
         List<Student> stds = escuela.getEstudiantes();
 
         for (Student std : stds) {
