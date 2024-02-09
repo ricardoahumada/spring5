@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
-@AllArgsConstructor
+//@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
@@ -26,19 +26,8 @@ public class Usuario {
     private LocalDate nacimiento;
     private boolean activo;
 
-//    @OneToOne
-//    @JoinColumn(name = "direccion_id")
-    @OneToOne(mappedBy = "usuario")
+    @Transient
     private Direccion direccion;
-
-    /*
-    // unidirecciona usuario - compra
-    @OneToMany()
-    @JoinColumn(name = "user_id")*/
-    //bidireccional usuario-usuario
-    @ToString.Exclude
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private Set<Compra> compras;
 
     public Usuario(Integer uid) {
         this.uid = uid;

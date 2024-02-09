@@ -17,21 +17,10 @@ public class Compra {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer cid;
 
-    /*
-    // unidirecciona compra-usuario
-    @ManyToOne()
-    @JoinColumn(name = "user_id")*/
-    //bidireccional compra - usuario
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
+    @Transient
     private Usuario usuario;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "compra_productos",
-            joinColumns = {@JoinColumn(name = "compra_id")},
-            inverseJoinColumns = {@JoinColumn(name = "producto_id")}
-    )
+    @Transient
     private List<Producto> productos;
 
     private LocalDate fecha;

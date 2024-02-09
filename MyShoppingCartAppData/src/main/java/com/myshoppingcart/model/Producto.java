@@ -5,7 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.Set;
 
-@AllArgsConstructor
+//@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
@@ -25,10 +25,6 @@ public class Producto {
     public Producto(Integer mid) {
         this.pid = mid;
     }
-
-    @ToString.Exclude
-    @ManyToMany(mappedBy = "productos", cascade = CascadeType.ALL)
-    private Set<Compra> compras;
 
     public Producto(Integer id, String cod, double prec) {
         this.pid = id;
