@@ -22,6 +22,9 @@ public class Producto {
     private double precio;
     private int existencias;
 
+    @ToString.Exclude
+    @ManyToMany(mappedBy = "productos", cascade = CascadeType.ALL)
+    private Set<Compra> compras;
     public Producto(Integer mid) {
         this.pid = mid;
     }

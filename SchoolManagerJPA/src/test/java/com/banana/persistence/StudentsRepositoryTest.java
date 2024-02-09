@@ -12,6 +12,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Set;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -27,6 +29,9 @@ class StudentsRepositoryTest {
     @Autowired
     private StudentsRepositoryInf repoStudents;
 
+    @Autowired
+    private StudentsRepositoryData repoStudentsData;
+
     @Test
     void testBeans() {
         assertNotNull(context);
@@ -37,7 +42,9 @@ class StudentsRepositoryTest {
     @Test
     @Transactional
     void getById() {
-        Student aStudent = repoStudents.getById(2L);
+//        Student aStudent = repoStudents.getById(2L);
+        Student aStudent = repoStudentsData.findById(1L).orElseThrow(() -> new RuntimeException());
+
         System.out.println(aStudent);
         assertEquals(aStudent.getId(), 1L);
         assertNotNull(aStudent);
@@ -45,15 +52,17 @@ class StudentsRepositoryTest {
 
     @Test
     void add() {
-        Student newStd = new Student(null, "El nuevo", "Apellido", 2);
-        repoStudents.add(newStd);
+        Student newStd = new Student(null, "Juan", "Perez", 2);
+//        repoStudents.add(newStd);
+        repoStudentsData.save(newStd);
         System.out.println(newStd);
         Student aStudent = repoStudents.getById(newStd.getId());
         assertEquals(aStudent.getId(), newStd.getId());
     }
+
     @Test
     void addWithShool() {
-        Student newStd = new Student(null, "El nuevo 3", "Apellido", 2,new School(null,"esccuela para el nuevo 3"),null);
+        Student newStd = new Student(null, "El nuevo 3", "Apellido", 2, new School(null, "esccuela para el nuevo 3"), null);
         repoStudents.add(newStd);
         System.out.println(newStd);
         Student aStudent = repoStudents.getById(newStd.getId());
@@ -75,5 +84,19 @@ class StudentsRepositoryTest {
         System.out.println(aStudent);
         assertEquals(aStudent.getId(), 2L);
         assertNotNull(aStudent);
+    }
+
+    @Test
+    @Transactional
+    void findByExamples() {
+        Set<Student> students = repoStudentsData.findByNombreContains("nuevo");
+        System.out.println(students);
+    }
+
+    @Test
+    @Transactional
+    void queryExamples() {
+        Set<Student> students = repoStudentsData.findByNombreEndingWith("an");
+        System.out.println(students);
     }
 }

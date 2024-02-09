@@ -26,8 +26,13 @@ public class Usuario {
     private LocalDate nacimiento;
     private boolean activo;
 
-    @Transient
+    @OneToOne
+    @JoinColumn(name = "direccion_id")
     private Direccion direccion;
+
+    @ToString.Exclude
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private Set<Compra> compras;
 
     public Usuario(Integer uid) {
         this.uid = uid;

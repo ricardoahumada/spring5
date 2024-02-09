@@ -6,6 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
 @Import({ServicesConfig.class/*, PersistenceConfig.class*/})
@@ -13,6 +14,7 @@ import org.springframework.context.annotation.PropertySource;
 @PropertySource("classpath:application.properties")
 @EntityScan("com.banana.models")
 @EnableAutoConfiguration
+@EnableJpaRepositories("com.banana.persistence")
 public class SpringConfig {
 
 }

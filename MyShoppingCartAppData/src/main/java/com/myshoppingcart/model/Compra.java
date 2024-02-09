@@ -17,10 +17,16 @@ public class Compra {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer cid;
 
-    @Transient
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
     private Usuario usuario;
 
-    @Transient
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "compra_productos",
+            joinColumns = {@JoinColumn(name = "compra_id")},
+            inverseJoinColumns = {@JoinColumn(name = "producto_id")}
+    )
     private List<Producto> productos;
 
     private LocalDate fecha;
