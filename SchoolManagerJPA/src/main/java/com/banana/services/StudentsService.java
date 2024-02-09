@@ -51,6 +51,7 @@ public class StudentsService implements IStudentService {
         repoEscuela.update(escuela);
 
         List<Student> stds = escuela.getEstudiantes();
+        stds.add(new Student(0L,"","",curso));
 
         for (Student std : stds) {
             std.setCurso(curso);
