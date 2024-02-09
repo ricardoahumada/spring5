@@ -1,4 +1,4 @@
-package com.banana.persistence;
+package com.banana.persistence.extended;
 
 import com.banana.models.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.Set;
 
-public interface StudentsRepositoryData extends JpaRepository<Student, Long> {
+public interface StudentsRepositoryData extends JpaRepository<Student, Long>, CustumStudentsRepository {
     public Set<Student> findByNombre(String nombre);
 
     public Set<Student> findByNombreContains(String nombre);
