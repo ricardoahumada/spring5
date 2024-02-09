@@ -45,6 +45,7 @@ public class StudentsService implements IStudentService {
 
         School escuela = repoEscuela.getById(id);
         escuela.setName(nombre);
+        repoEscuela.update(escuela)
         List<Student> stds = escuela.getEstudiantes();
 
         for (Student std : stds) {
