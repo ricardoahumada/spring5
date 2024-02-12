@@ -23,10 +23,10 @@ public class Usuario {
     private LocalDate alta;
     private boolean activo;
 
-    @OneToMany(mappedBy = "remitente")
+    @OneToMany(mappedBy = "remitente", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Mensaje> mensajesRemitente;
 
-    @OneToMany(mappedBy = "destinatario")
+    @OneToMany(mappedBy = "destinatario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Mensaje> mensajesDestinatario;
 
     public Usuario(Integer id, String nombre, String email, LocalDate alta, boolean activo) {
