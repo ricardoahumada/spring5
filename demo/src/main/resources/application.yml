@@ -1,0 +1,46 @@
+spring:
+  application.name: demo
+  profiles.active: dev
+
+
+---
+spring:
+  application.name: demodev
+  profiles: dev
+  sql.init.mode: always
+  datasource:
+    url: "jdbc:h2:mem:demodb"
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+      generate-ddl: true
+    defer-datasource-initialization: true
+  h2:
+    console.enabled: true
+    console.path: /h2-ui
+
+server:
+  servlet.contextPath: /api
+  port: 9090
+
+user.myname: Luisa
+
+#debug: true
+logging:
+  level.root: WARN
+  file.name: /tmp/logs/mylog.log
+
+
+---
+spring:
+  application.name: demodev
+  profiles: prod
+
+server.port: 8443
+
+user.myname: Pedro
