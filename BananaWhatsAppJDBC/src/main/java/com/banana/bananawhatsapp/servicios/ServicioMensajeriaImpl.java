@@ -4,7 +4,7 @@ import com.banana.bananawhatsapp.exceptions.MensajeException;
 import com.banana.bananawhatsapp.exceptions.UsuarioException;
 import com.banana.bananawhatsapp.modelos.Mensaje;
 import com.banana.bananawhatsapp.modelos.Usuario;
-import com.banana.bananawhatsapp.persistencia.IMensajeRepository;
+import com.banana.bananawhatsapp.persistencia.MensajeRepositoryData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 @Service
 public class ServicioMensajeriaImpl implements IServicioMensajeria {
     @Autowired
-    private IMensajeRepository mensajeRepo;
+    private MensajeRepositoryData mensajeRepo;
 
     @Override
     public Mensaje enviarMensaje(Usuario remitente, Usuario destinatario, String texto) throws UsuarioException, MensajeException {

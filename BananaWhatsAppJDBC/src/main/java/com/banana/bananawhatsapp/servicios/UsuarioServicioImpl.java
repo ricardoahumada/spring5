@@ -2,7 +2,7 @@ package com.banana.bananawhatsapp.servicios;
 
 import com.banana.bananawhatsapp.exceptions.UsuarioException;
 import com.banana.bananawhatsapp.modelos.Usuario;
-import com.banana.bananawhatsapp.persistencia.IUsuarioRepository;
+import com.banana.bananawhatsapp.persistencia.UsuarioRepositoryData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,16 +12,11 @@ import java.util.Set;
 public class UsuarioServicioImpl implements IServicioUsuarios {
 
     @Autowired
-    IUsuarioRepository usuarioRepo;
+    UsuarioRepositoryData usuarioRepo;
 
     @Override
     public Usuario obtener(int id) throws UsuarioException {
-        try {
-            return usuarioRepo.obtener(id);
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new UsuarioException("Error en la obtención");
-        }
+            return usuarioRepo.findById(id).orElseThrow(()->new UsuarioException("Error en la obtenciónError en la obtención"));
     }
 
     @Override
