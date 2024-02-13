@@ -13,6 +13,6 @@ public class ProductServiceInterceptorAppConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(productServiceInterceptor);
+        registry.addInterceptor(productServiceInterceptor).addPathPatterns("/hola/quetal");
     }
 }
