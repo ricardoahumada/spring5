@@ -32,7 +32,7 @@ user.myname: Luisa
 
 #debug: true
 logging:
-  level.root: WARN
+  level.root: INFO
   file.name: /tmp/logs/mylog.log
 
 
