@@ -3,22 +3,15 @@ package com.myshoppingcart.persistence;
 import com.myshoppingcart.exception.UsuarioNotFoundException;
 import com.myshoppingcart.model.Usuario;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Setter
-//@Component("userdbr")
-@Repository("userdbr")
-@Profile("prod")
 public class UsuarioDBRepository implements IUsuarioRepository {
-    @Value("${db_url}")
     private String db_url = null;
+
 
     @Override
     public boolean existeUsuario(String email, String pass) throws Exception {

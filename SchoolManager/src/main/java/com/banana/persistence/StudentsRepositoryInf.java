@@ -3,9 +3,8 @@ package com.banana.persistence;
 import com.banana.models.Student;
 
 public interface StudentsRepositoryInf {
-    public void add(Student estudiante);
-    public Student get(int idx);
-    public Student getById(Long id);
-
-    public String getUrlConn();
+    void add(Student estudiante);
+    Student get(int idx);
+    Student getById(Long id);
+    Student update(Student estudiante);
 }

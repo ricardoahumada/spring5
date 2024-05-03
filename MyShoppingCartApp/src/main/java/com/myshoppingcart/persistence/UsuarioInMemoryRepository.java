@@ -2,7 +2,6 @@ package com.myshoppingcart.persistence;
 
 import com.myshoppingcart.exception.UsuarioNotFoundException;
 import com.myshoppingcart.model.Usuario;
-import org.springframework.stereotype.Component;
 
 import java.security.SecureRandom;
 import java.time.LocalDate;

@@ -3,22 +3,14 @@ package com.banana.persistence;
 import com.banana.models.Student;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.stereotype.Component;
 
-import javax.inject.Named;
 import java.util.ArrayList;
 import java.util.List;
 
-//@Component
-//@Named
-//@Repository
 @Setter
 @Getter
-// @Component
-//@Named
 public class StudentsRepository implements StudentsRepositoryInf {
 
-//    @Value("${db.conn}")
     private String urlConn;
 
     private List<Student> students = new ArrayList<>();
@@ -33,6 +25,17 @@ public class StudentsRepository implements StudentsRepositoryInf {
 
     public void add(Student student) {
         this.students.add(student);
+    }
+
+    @Override
+    public Student update(Student estudiante) {
+        for (Student st : students) {
+            if (st.getId() == estudiante.getId()) {
+                st = estudiante;
+                return st;
+            }
+        }
+        return null;
     }
 
     public Student get(int idx) {

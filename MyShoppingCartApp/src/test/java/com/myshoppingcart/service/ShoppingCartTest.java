@@ -1,14 +1,9 @@
 package com.myshoppingcart.service;
 
-import com.myshoppingcart.config.SpringConfig;
 import com.myshoppingcart.model.Producto;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.Random;
 
@@ -18,11 +13,8 @@ import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
-@ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = {SpringConfig.class})
 public class ShoppingCartTest {
 
-    @Autowired
     IShoppingCart cart;
 
     @Test
@@ -49,6 +41,7 @@ public class ShoppingCartTest {
     @ValueSource(ints = {0, 1, 2, 5, 10, 1000})
     void cuando_está_vacío_el_carrito_tiene_0_artículos(int numProducts) throws Exception {
         // given
+
         Random rand = new Random();
 
         for (int i = 0; i < numProducts; i++) {
