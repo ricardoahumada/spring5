@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 
 @Configuration
-@PropertySource("classpath:application.properties")
 @ComponentScan({"com.banana.persistence"})
+@Import({ServiceConfigDev.class, ServiceConfigProd.class})
 public class SpringConfig {
 
     /*@Bean
@@ -21,27 +21,8 @@ public class SpringConfig {
     /*@Autowired
     StudentsRepositoryInf repo;¡*/
 
-    @Value("${db.conn}")
-    private String dburl;
 
-    @Bean
-    @Profile({"dev","default"})
-    IStudentService getStudentSvc(){
 
-        System.out.println("dburl conf dev:"+dburl);
-        StudentsService serv = new StudentsService();
-        //serv.setRepository(repo);
-        return serv;
-    }
 
-    @Bean
-    @Profile("prod")
-    IStudentService getStudentSvcProd(){
-
-        System.out.println("dburl conf prod:"+dburl);
-        StudentsService serv = new StudentsService();
-        //serv.setRepository(repo);
-        return serv;
-    }
 
 }

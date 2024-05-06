@@ -17,7 +17,7 @@ public class App {
         System.out.println("School Manager.....");
 
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-        context.getEnvironment().setActiveProfiles("prod");
+        context.getEnvironment().setActiveProfiles("dev");
         context.register(SpringConfig.class);
         context.refresh();
 
