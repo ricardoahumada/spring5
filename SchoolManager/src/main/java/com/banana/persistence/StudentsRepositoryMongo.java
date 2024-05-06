@@ -10,14 +10,14 @@ import java.util.List;
 
 @Setter
 @Getter
-@Component("reporel")
-public class StudentsRepository implements StudentsRepositoryInf {
+@Component("repomongo")
+public class StudentsRepositoryMongo implements StudentsRepositoryInf {
 
     private String urlConn;
 
     private List<Student> students = new ArrayList<>();
 
-    public StudentsRepository() {
+    public StudentsRepositoryMongo() {
         students.add(new Student(1L, "Ricardo", "Ahumada", 1));
         students.add(new Student(2L, "Toni", "Fdez", 2));
         students.add(new Student(3L, "David", "Carcelen", 2));
