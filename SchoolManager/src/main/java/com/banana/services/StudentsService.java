@@ -13,7 +13,7 @@ import javax.inject.Named;
 
 //@Named
 public class StudentsService implements IStudentService {
-    //@Autowired
+    @Autowired
     //@Qualifier("repomongo")
     private StudentsRepositoryInf repository;
 

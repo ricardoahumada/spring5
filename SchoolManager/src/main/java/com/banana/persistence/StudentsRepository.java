@@ -10,7 +10,7 @@ import java.util.List;
 
 @Setter
 @Getter
-//@Component("reporel")
+@Component("reporel")
 public class StudentsRepository implements StudentsRepositoryInf {
 
     private String urlConn;

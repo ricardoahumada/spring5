@@ -6,23 +6,25 @@ import com.banana.services.IStudentService;
 import com.banana.services.StudentsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
+@ComponentScan({"com.banana.persistence"})
 public class SpringConfig {
 
-    @Bean
+    /*@Bean
     StudentsRepositoryInf getStudentRepo(){
         return new StudentsRepository();
-    }
+    }*/
 
-    @Autowired
-    StudentsRepositoryInf repo;
+    /*@Autowired
+    StudentsRepositoryInf repo;¡*/
 
     @Bean
     IStudentService getStudentSvc(){
         StudentsService serv = new StudentsService();
-        serv.setRepository(repo);
+        //serv.setRepository(repo);
         return serv;
     }
 
