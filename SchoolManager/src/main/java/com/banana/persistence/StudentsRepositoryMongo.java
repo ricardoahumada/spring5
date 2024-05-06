@@ -10,7 +10,7 @@ import java.util.List;
 
 @Setter
 @Getter
-@Component("repomongo")
+//@Component("repomongo")
 public class StudentsRepositoryMongo implements StudentsRepositoryInf {
 
     private String urlConn;

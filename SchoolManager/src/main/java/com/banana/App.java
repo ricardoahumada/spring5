@@ -1,5 +1,6 @@
 package com.banana;
 
+import com.banana.configuration.SpringConfig;
 import com.banana.persistence.StudentsRepository;
 import com.banana.persistence.StudentsRepositoryInf;
 import com.banana.persistence.StudentsRepositoryMongo;
@@ -16,13 +17,11 @@ public class App {
         System.out.println("School Manager.....");
 
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-        context.register(StudentsRepository.class);
-        context.register(StudentsRepositoryMongo.class);
-        context.register(StudentsService.class);
+        context.register(SpringConfig.class);
         context.refresh();
 
-        // Object repo = context.getBean("repomongo");
-        // System.out.println(repo);
+        StudentsRepositoryInf repo = context.getBean(StudentsRepositoryInf.class);
+        System.out.println(repo.getById(1L));
 
         IStudentService srv = context.getBean(IStudentService.class);
         System.out.println(srv.getStudentById(3L));

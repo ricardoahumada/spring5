@@ -11,10 +11,10 @@ import org.springframework.stereotype.Service;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-@Named
+//@Named
 public class StudentsService implements IStudentService {
-    @Autowired
-    @Qualifier("repomongo")
+    //@Autowired
+    //@Qualifier("repomongo")
     private StudentsRepositoryInf repository;
 
     public void setRepository(StudentsRepositoryInf repository) {
