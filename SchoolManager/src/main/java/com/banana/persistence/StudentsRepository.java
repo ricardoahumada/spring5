@@ -3,6 +3,8 @@ package com.banana.persistence;
 import com.banana.models.Student;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -16,6 +18,9 @@ public class StudentsRepository implements StudentsRepositoryInf {
     private String urlConn;
 
     private List<Student> students = new ArrayList<>();
+
+    @Value("${db.conn}")
+    private String dburl;
 
     public StudentsRepository() {
         students.add(new Student(1L, "Ricardo", "Ahumada", 1));
@@ -45,6 +50,8 @@ public class StudentsRepository implements StudentsRepositoryInf {
     }
 
     public Student getById(Long id) {
+        System.out.println("dburl:"+ dburl);
+
         for (Student st : students) {
             if (st.getId() == id) return st;
         }
