@@ -6,10 +6,7 @@ import com.banana.services.IStudentService;
 import com.banana.services.StudentsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 
 @Configuration
 @PropertySource("classpath:application.properties")
@@ -28,9 +25,20 @@ public class SpringConfig {
     private String dburl;
 
     @Bean
+    @Profile({"dev","default"})
     IStudentService getStudentSvc(){
 
-        System.out.println("dburl conf:"+dburl);
+        System.out.println("dburl conf dev:"+dburl);
+        StudentsService serv = new StudentsService();
+        //serv.setRepository(repo);
+        return serv;
+    }
+
+    @Bean
+    @Profile("prod")
+    IStudentService getStudentSvcProd(){
+
+        System.out.println("dburl conf prod:"+dburl);
         StudentsService serv = new StudentsService();
         //serv.setRepository(repo);
         return serv;
