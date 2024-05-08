@@ -12,6 +12,8 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 //@Named
+//@Component
+@Service
 public class StudentsService implements IStudentService {
     @Autowired
     //@Qualifier("repomongo")

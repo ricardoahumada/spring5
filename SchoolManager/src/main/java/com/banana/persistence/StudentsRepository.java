@@ -6,13 +6,15 @@ import lombok.Setter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Setter
 @Getter
-@Component("reporel")
+//@Component("reporel")
+@Repository
 public class StudentsRepository implements StudentsRepositoryInf {
 
     private String urlConn;
