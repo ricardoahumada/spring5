@@ -16,6 +16,43 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+
+--
+-- Dumping data for table `producto`
+--
+
+# LOCK TABLES `producto` WRITE;
+/*!40000 ALTER TABLE `producto` DISABLE KEYS */;
+INSERT INTO `producto` VALUES (1,6639,'Oriflame','India skin care','piel',5.45,30),
+(2,4765,'Elizabeth Arden','Visible difference','cara',14.65,23),
+(3,5836,'Elizabeth Arden','Green tea','cara',19.99,16),
+(4,12834,'Estee Lauder','Double wear','perfume',29,56),
+(5,9087,'MAC Cosmetics','Extra dimension','ojos',31.95,2),
+(6,4207,'L\'Oreal','Men Expert','cara',9.95,19),
+(7,8000,'MAC Cosmetics','Lipstick Matte','labios',19.95,25),
+(8,5267,'Oriflame','Day Cream','piel',3.45,1),
+(10,11784,'L\'Oreal','Absolut repair','pelo',16.95,90);
+/*!40000 ALTER TABLE `producto` ENABLE KEYS */;
+# UNLOCK TABLES;
+
+--
+-- Dumping data for table `usuario`
+--
+
+# LOCK TABLES `usuario` WRITE;
+/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` VALUES (1,'Juana','Juanason','juana@e.com',2,20,'juanason_1','2001-03-05 00:00:00',1),
+(2,'Luisa','Luisason','luisa@e.com',4,74,'luisason_2','1996-04-06 00:00:00',1),
+(3,'Diana','Dianason','diana@e.com',8,13,'dianason_3','2010-03-06 00:00:00',1),
+(4,'Pedro','Pedroson','pedro@e.com',5,25,'pedroson_4','2000-12-31 00:00:00',1),
+(5,'Marco','Marcoson','marco@e.com',6,4,'marcoson_5','1980-02-13 00:00:00',1),
+(6,'Ricardo','Ricardoson','ricardo@e.com',7,8,'ricardoson_6','1999-07-25 00:00:00',1),
+(7,'Nora','Norason','nora@e.com',1,16,'norason_7','1995-03-06 00:00:00',1),
+(8,'Edwin','Edwinson','edwin@e.com',9,20,'edwinson_8','1992-11-04 00:00:00',1),
+(9,'Marta','Martason','marta@e.com',6,36,'martason_9','1960-04-05 00:00:00',1),
+(10,'Eduardo','Eduardoson','eduardo@e.com',4,23,'eduardoson_10','1999-10-08 00:00:00',1);
+
+
 --
 -- Dumping data for table `almacen`
 --
@@ -75,40 +112,7 @@ INSERT INTO `compra` VALUES (1,5,3,4,'2017-06-11 22:00:00'),
 /*!40000 ALTER TABLE `compra` ENABLE KEYS */;
 # UNLOCK TABLES;
 
---
--- Dumping data for table `producto`
---
 
-# LOCK TABLES `producto` WRITE;
-/*!40000 ALTER TABLE `producto` DISABLE KEYS */;
-INSERT INTO `producto` VALUES (1,6639,'Oriflame','India skin care','piel',5.45,30),
-(2,4765,'Elizabeth Arden','Visible difference','cara',14.65,23),
-(3,5836,'Elizabeth Arden','Green tea','cara',19.99,16),
-(4,12834,'Estee Lauder','Double wear','perfume',29,56),
-(5,9087,'MAC Cosmetics','Extra dimension','ojos',31.95,2),
-(6,4207,'L\'Oreal','Men Expert','cara',9.95,19),
-(7,8000,'MAC Cosmetics','Lipstick Matte','labios',19.95,25),
-(8,5267,'Oriflame','Day Cream','piel',3.45,1),
-(10,11784,'L\'Oreal','Absolut repair','pelo',16.95,90);
-/*!40000 ALTER TABLE `producto` ENABLE KEYS */;
-# UNLOCK TABLES;
-
---
--- Dumping data for table `usuario`
---
-
-# LOCK TABLES `usuario` WRITE;
-/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'Juana','Juanason','juana@e.com',2,20,'juanason_1','2001-03-05 00:00:00',1),
-(2,'Luisa','Luisason','luisa@e.com',4,74,'luisason_2','1996-04-06 00:00:00',1),
-(3,'Diana','Dianason','diana@e.com',8,13,'dianason_3','2010-03-06 00:00:00',1),
-(4,'Pedro','Pedroson','pedro@e.com',5,25,'pedroson_4','2000-12-31 00:00:00',1),
-(5,'Marco','Marcoson','marco@e.com',6,4,'marcoson_5','1980-02-13 00:00:00',1),
-(6,'Ricardo','Ricardoson','ricardo@e.com',7,8,'ricardoson_6','1999-07-25 00:00:00',1),
-(7,'Nora','Norason','nora@e.com',1,16,'norason_7','1995-03-06 00:00:00',1),
-(8,'Edwin','Edwinson','edwin@e.com',9,20,'edwinson_8','1992-11-04 00:00:00',1),
-(9,'Marta','Martason','marta@e.com',6,36,'martason_9','1960-04-05 00:00:00',1),
-(10,'Eduardo','Eduardoson','eduardo@e.com',4,23,'eduardoson_10','1999-10-08 00:00:00',1);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 # UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
