@@ -19,6 +19,7 @@ public class StudentsRepositoryJPA implements StudentsRepositoryInf {
     @Transactional
     public void add(Student estudiante) throws SQLException {
         em.persist(estudiante);
+        estudiante.setNombre("Luis");
     }
 
     @Override
@@ -28,7 +29,7 @@ public class StudentsRepositoryJPA implements StudentsRepositoryInf {
         std.setNombre(estudiante.getNombre());
         std.setApellido(estudiante.getApellido());
         std.setCurso(estudiante.getCurso());
-        em.persist(std);
+//        em.persist(std);
         return std;
     }
 

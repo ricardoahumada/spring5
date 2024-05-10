@@ -53,7 +53,7 @@ class StudentsRepositoryInfTest {
 
     @Test
     void update() throws SQLException {
-        Student aStd = new Student(1L, "Nombre Update", "Apellido Update", 2);
+        Student aStd = new Student(1L, "Juan", "Juanez", 2);
         System.out.println(aStd);
         Student updatedStd = repoStudents.update(aStd);
         assertEquals(updatedStd.getNombre(), aStd.getNombre());
