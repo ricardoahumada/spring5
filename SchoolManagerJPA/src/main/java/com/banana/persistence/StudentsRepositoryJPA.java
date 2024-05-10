@@ -7,7 +7,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import java.sql.SQLException;
+import java.util.List;
 
 @Repository
 public class StudentsRepositoryJPA implements StudentsRepositoryInf {
@@ -35,7 +37,12 @@ public class StudentsRepositoryJPA implements StudentsRepositoryInf {
 
     @Override
     public Student get(int idx) throws SQLException {
-        return null;
+        TypedQuery query = em.createQuery("SELECT s FROM Student s", Student.class);
+        query.setFirstResult(idx).setMaxResults(1);
+        List<Student> stds = query.getResultList();
+        System.out.println(stds);
+        return stds.get(0);
+//        return (Student) query.getSingleResult();
     }
 
     @Override
