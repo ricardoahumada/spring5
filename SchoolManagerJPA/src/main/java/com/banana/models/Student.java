@@ -3,6 +3,7 @@ package com.banana.models;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -39,6 +40,10 @@ public class Student {
     @ManyToOne
     @JoinColumn(name = "escuela")
     private School escuela;
+
+
+    @ManyToMany(mappedBy = "estudiantes")
+    private Set<Project> proyectos;
 
     public boolean isValid() {
         return this.nombre != null && this.apellido != null && this.curso > 0;
