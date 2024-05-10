@@ -18,7 +18,7 @@ public class School {
 
     private String name;
 
-    @OneToMany(mappedBy = "escuela")
+    @OneToMany(mappedBy = "escuela", cascade = {CascadeType.ALL})
 //    @JoinColumn(name = "escuela")
     private List<Student> estudiantes;
 

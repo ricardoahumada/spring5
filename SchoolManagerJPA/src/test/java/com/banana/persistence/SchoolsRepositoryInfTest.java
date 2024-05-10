@@ -82,9 +82,9 @@ class SchoolsRepositoryInfTest {
 
         School sch = new School(null, "Mi escuela con estudiantes", estudiantes);
 
-        /*for (Student estudiante : estudiantes) {
-            estudiante.setMySchool(sch);
-        }*/
+        for (Student estudiante : estudiantes) {
+            estudiante.setEscuela(sch);
+        }
 
         repo.add(sch);
 //        System.out.println(sch);
