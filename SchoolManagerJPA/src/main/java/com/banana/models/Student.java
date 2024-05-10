@@ -36,6 +36,10 @@ public class Student {
     @JoinColumn
     private Address address;
 
+    @ManyToOne
+    @JoinColumn(name = "escuela")
+    private School escuela;
+
     public boolean isValid() {
         return this.nombre != null && this.apellido != null && this.curso > 0;
     }

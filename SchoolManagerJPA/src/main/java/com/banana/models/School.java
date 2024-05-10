@@ -18,7 +18,8 @@ public class School {
 
     private String name;
 
-    @Transient
+    @OneToMany(mappedBy = "escuela")
+//    @JoinColumn(name = "escuela")
     private List<Student> estudiantes;
 
     public School(Long id, String name) {
