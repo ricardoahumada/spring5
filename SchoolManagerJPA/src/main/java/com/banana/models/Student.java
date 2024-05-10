@@ -11,6 +11,7 @@ import javax.persistence.*;
 @ToString
 @Entity
 @Table(name = "estudiante")
+@NamedQuery(name = "Student.findByIdx", query = "SELECT s FROM Student s WHERE s.nombre = :nombre ORDER BY s.id ASC")
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
