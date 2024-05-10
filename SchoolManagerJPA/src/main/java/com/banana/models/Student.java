@@ -33,11 +33,19 @@ public class Student {
         this.curso = curso;
     }
 
+    public Student(Long id, String nombre, String apellido, int curso, School escuela) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.curso = curso;
+        this.escuela = escuela;
+    }
+
     @OneToOne
     @JoinColumn
     private Address address;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST})
     @JoinColumn(name = "escuela")
     private School escuela;
 
