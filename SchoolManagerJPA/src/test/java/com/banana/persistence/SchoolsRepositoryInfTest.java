@@ -24,15 +24,15 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
-//@ContextConfiguration(classes = {SpringConfig.class})
-//@TestInstance(TestInstance.Lifecycle.PER_CLASS)
-//@EnableAutoConfiguration
+@ContextConfiguration(classes = {SpringConfig.class})
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@EnableAutoConfiguration
 class SchoolsRepositoryInfTest {
 
-//    @Autowired
+    @Autowired
     private SchoolsRepositoryInf repo;
 
-//    @Autowired
+    @Autowired
     EntityManagerFactory emf;
 
     private EntityManager em;
