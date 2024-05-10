@@ -18,18 +18,18 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 //@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @ExtendWith(SpringExtension.class)
-//@ContextConfiguration(classes = {SpringConfig.class})
-//@EnableAutoConfiguration
+@ContextConfiguration(classes = {SpringConfig.class})
+@EnableAutoConfiguration
 class StudentsRepositoryInfTest {
-//    @Autowired
+    @Autowired
     private StudentsRepositoryInf repoStudents;
 
     @Test
     void getById() throws SQLException {
         Student aStudent = repoStudents.getById(1L);
         System.out.println(aStudent);
-        assertEquals(aStudent.getId(), 1L);
         assertNotNull(aStudent);
+        assertEquals(aStudent.getId(), 1L);
     }
 
     @Test
