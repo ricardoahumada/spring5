@@ -10,7 +10,7 @@ import javax.persistence.PersistenceContext;
 import java.sql.SQLException;
 
 @Repository
-public class StudentsRepositoryJPA implements StudentsRepositoryInf{
+public class StudentsRepositoryJPA implements StudentsRepositoryInf {
 
     @PersistenceContext
     private EntityManager em;
@@ -22,8 +22,14 @@ public class StudentsRepositoryJPA implements StudentsRepositoryInf{
     }
 
     @Override
+    @Transactional
     public Student update(Student estudiante) throws SQLException {
-        return null;
+        Student std = em.find(Student.class, estudiante.getId());
+        std.setNombre(estudiante.getNombre());
+        std.setApellido(estudiante.getApellido());
+        std.setCurso(estudiante.getCurso());
+        em.persist(std);
+        return std;
     }
 
     @Override
