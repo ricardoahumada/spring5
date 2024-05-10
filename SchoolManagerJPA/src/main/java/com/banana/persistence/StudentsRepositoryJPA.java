@@ -37,7 +37,8 @@ public class StudentsRepositoryJPA implements StudentsRepositoryInf {
 
     @Override
     public Student get(int idx) throws SQLException {
-        TypedQuery query = em.createQuery("SELECT s FROM Student s", Student.class);
+        TypedQuery query = em.createQuery("SELECT s FROM Student s WHERE s.nombre = :nombre ORDER BY s.id ASC", Student.class);
+        query.setParameter("nombre","Juan");
         query.setFirstResult(idx).setMaxResults(1);
         List<Student> stds = query.getResultList();
         System.out.println(stds);
