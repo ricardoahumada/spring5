@@ -2,6 +2,8 @@ package com.banana.models;
 
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -11,6 +13,8 @@ public class School {
     private Long id;
 
     private String name;
+
+    private List<Student> estudiantes;
 
     public School(Long id, String name) {
         this.id = id;
