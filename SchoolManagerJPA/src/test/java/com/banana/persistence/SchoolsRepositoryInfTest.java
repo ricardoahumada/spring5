@@ -112,7 +112,7 @@ class SchoolsRepositoryInfTest {
     }
 
     @Test
-    @Transactional
+//    @Transactional
     void getAll() throws SQLException {
         List<School> escuelas = repo.getAll();
         System.out.println(escuelas);

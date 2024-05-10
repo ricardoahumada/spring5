@@ -25,6 +25,17 @@ public class Student {
 
     private int curso;
 
+    public Student(Long id, String nombre, String apellido, int curso) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.curso = curso;
+    }
+
+    @OneToOne
+    @JoinColumn
+    private Address address;
+
     public boolean isValid() {
         return this.nombre != null && this.apellido != null && this.curso > 0;
     }
