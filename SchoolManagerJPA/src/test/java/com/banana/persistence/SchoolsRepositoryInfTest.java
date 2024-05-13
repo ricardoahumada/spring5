@@ -33,6 +33,9 @@ class SchoolsRepositoryInfTest {
     private SchoolsRepositoryInf repo;
 
     @Autowired
+    SchoolsRepositoryData repoData;
+
+    @Autowired
     EntityManagerFactory emf;
 
     private EntityManager em;
@@ -94,6 +97,40 @@ class SchoolsRepositoryInfTest {
     }
 
     @Test
+    void addData() throws SQLException {
+        School sch = new School(null, "Mi escuela jpa", null);
+        repoData.save(sch);
+        assertNotNull(sch);
+        assertTrue(sch.getId() > 0);
+
+        School ssch = em.find(School.class, sch.getId());
+        assertNotNull(ssch);
+        assertEquals(ssch.getId(), sch.getId());
+
+    }
+
+    @Test
+    void addWithStudentsData() throws SQLException {
+        List<Student> estudiantes = List.of(
+                new Student(null, "Juan", "Perez jpa", 2),
+                new Student(null, "Luisa", "Rosalez jpa", 3)
+        );
+
+        School sch = new School(null, "Mi escuela con estudiantes jpa", estudiantes);
+
+        for (Student estudiante : estudiantes) {
+            estudiante.setEscuela(sch);
+        }
+
+        repoData.save(sch);
+
+//        System.out.println(sch);
+        assertNotNull(sch);
+        assertTrue(sch.getId() > 0);
+
+    }
+
+    @Test
     void update() throws SQLException {
         School schToChange = schools.get(0);
         School sch = new School(schToChange.getId(), "Mi escuela cambio", null);
@@ -107,6 +144,15 @@ class SchoolsRepositoryInfTest {
     void getById() throws SQLException {
 //        School schToFind = schools.get(0);
         School sch = repo.getById(4L);
+        System.out.println(sch);
+        assertNotNull(sch);
+    }
+
+    @Test
+    @Transactional
+    void getByIdData() throws SQLException {
+//        School schToFind = schools.get(0);
+        School sch = repoData.findById(4L).get();
         System.out.println(sch);
         assertNotNull(sch);
     }
