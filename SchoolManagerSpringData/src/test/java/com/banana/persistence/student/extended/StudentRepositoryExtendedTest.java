@@ -29,7 +29,7 @@ class StudentRepositoryExtendedTest {
 //         Student aStudent = repo.findById(100L).get();
 
 //        Student aStudent = repo.findById(100L).orElse(new Student());
-        Student aStudent = repo.findById(100L).orElseThrow(() -> new RuntimeException());
+        Student aStudent = repo.findById(1L).orElseThrow(() -> new RuntimeException());
 
         System.out.println("aStudent:" + aStudent);
         assertEquals(aStudent.getId(), 1L);
@@ -38,7 +38,7 @@ class StudentRepositoryExtendedTest {
 
     @Test
     void get() throws SQLException {
-        Student aStudent = repo.get(2);
+        Student aStudent = repo.get(1);
         System.out.println(aStudent);
         assertEquals(aStudent.getId(), 3L);
         assertNotNull(aStudent);
