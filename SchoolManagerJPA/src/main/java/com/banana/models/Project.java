@@ -12,6 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @ToString
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -2,6 +2,7 @@ package com.banana.persistence;
 
 import com.banana.config.SpringConfig;
 import com.banana.models.Project;
+import com.banana.models.ScienceProject;
 import com.banana.models.Student;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -21,18 +22,27 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
 @ExtendWith(SpringExtension.class)
-//@ContextConfiguration(classes = {SpringConfig.class})
-//@TestMethodOrder( MethodOrderer.OrderAnnotation.class)
-//@EnableAutoConfiguration
+@ContextConfiguration(classes = {SpringConfig.class})
+@TestMethodOrder( MethodOrderer.OrderAnnotation.class)
+@EnableAutoConfiguration
 class ProjectsRepositoryInfTest {
 
-//    @Autowired
+    @Autowired
     ProjectsRepositoryInf repo;
 
     @Test
     @Order(1)
     void add() throws SQLException {
         Project newProject = new Project(null, "Project 1", null);
+        repo.add(newProject);
+        assertThat(newProject, notNullValue());
+        assertThat(newProject.getId(), greaterThan(0L));
+    }
+
+    @Test
+    @Order(2)
+    void addHijo() throws SQLException {
+        ScienceProject newProject = new ScienceProject(null, "Project 1", null, "Mates");
         repo.add(newProject);
         assertThat(newProject, notNullValue());
         assertThat(newProject.getId(), greaterThan(0L));
