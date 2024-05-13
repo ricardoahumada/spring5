@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.SQLException;
 
@@ -25,17 +26,18 @@ class StudentsRepositoryInfTest {
     private StudentsRepositoryInf repoStudents;
 
     @Test
+    @Transactional
     void getById() throws SQLException {
-        Student aStudent = repoStudents.getById(1L);
-        System.out.println(aStudent);
+        Student aStudent = repoStudents.getById(2L);
+        System.out.println("*********"+aStudent);
         assertNotNull(aStudent);
-        assertEquals(aStudent.getId(), 1L);
+        assertEquals(aStudent.getId(), 2L);
     }
 
     @Test
     void add() throws SQLException {
         Student newStd = new Student(null, "Matias", "Mattel", 2);
-        System.out.println(newStd);
+        System.out.println("*********"+newStd);
         repoStudents.add(newStd);
         Student aStudent = repoStudents.getById(newStd.getId());
         assertEquals(aStudent.getId(), newStd.getId());

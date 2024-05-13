@@ -20,6 +20,7 @@ public class School {
 
     @OneToMany(mappedBy = "escuela", cascade = {CascadeType.ALL})
 //    @JoinColumn(name = "escuela")
+    @ToString.Exclude
     private List<Student> estudiantes;
 
     public School(Long id, String name) {

@@ -24,6 +24,7 @@ public class Student {
     @Column(name = "surname")
     private String apellido;
 
+
     private int curso;
 
     public Student(Long id, String nombre, String apellido, int curso) {
