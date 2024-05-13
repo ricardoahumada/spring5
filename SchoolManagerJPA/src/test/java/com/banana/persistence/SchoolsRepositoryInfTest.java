@@ -167,6 +167,16 @@ class SchoolsRepositoryInfTest {
         assertTrue(escuelas.size() >= schools.size());
     }
 
+    @Test
+//    @Transactional
+    void getAllData() throws SQLException {
+        List<School> escuelas = repoData.findAll();
+        System.out.println(escuelas);
+
+        assertNotNull(escuelas);
+        assertTrue(escuelas.size() >= schools.size());
+    }
+
     @AfterAll
     void tearDown() {
         em = emf.createEntityManager();
