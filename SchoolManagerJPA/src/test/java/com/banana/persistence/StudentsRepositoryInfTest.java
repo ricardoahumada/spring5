@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
@@ -49,7 +48,7 @@ class StudentsRepositoryInfTest {
     @Test
     @Transactional
     void getByNombreData() throws SQLException {
-        List<Student> stds = repositoryData.findByNombreIgnoreCaseOrderByCurso("Rita");
+        List<Student> stds = repositoryData.findByNombreIgnoreCaseOrderByCursoAsc("Rita");
         assertNotNull(stds);
         assertTrue(stds.size() > 0);
         System.out.println("*********" + stds);
