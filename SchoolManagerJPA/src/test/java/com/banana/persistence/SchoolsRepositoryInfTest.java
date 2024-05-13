@@ -7,6 +7,7 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -170,7 +171,7 @@ class SchoolsRepositoryInfTest {
     @Test
 //    @Transactional
     void getAllData() throws SQLException {
-        List<School> escuelas = repoData.findAll();
+        List<School> escuelas = repoData.findAll(Sort.by("name").descending());
         System.out.println(escuelas);
 
         assertNotNull(escuelas);
