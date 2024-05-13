@@ -13,9 +13,9 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.SQLException;
+import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 //@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @ExtendWith(SpringExtension.class)
@@ -32,7 +32,7 @@ class StudentsRepositoryInfTest {
     @Transactional
     void getById() throws SQLException {
         Student aStudent = repoStudents.getById(2L);
-        System.out.println("*********"+aStudent);
+        System.out.println("*********" + aStudent);
         assertNotNull(aStudent);
         assertEquals(aStudent.getId(), 2L);
     }
@@ -41,15 +41,24 @@ class StudentsRepositoryInfTest {
     @Transactional
     void getByIdData() throws SQLException {
         Student aStudent = repositoryData.findById(2L).get();
-        System.out.println("*********"+aStudent);
+        System.out.println("*********" + aStudent);
         assertNotNull(aStudent);
         assertEquals(aStudent.getId(), 2L);
     }
 
     @Test
+    @Transactional
+    void getByNombreData() throws SQLException {
+        List<Student> stds = repositoryData.findByNombreIgnoreCaseOrderByCurso("Rita");
+        assertNotNull(stds);
+        assertTrue(stds.size() > 0);
+        System.out.println("*********" + stds);
+    }
+
+    @Test
     void add() throws SQLException {
         Student newStd = new Student(null, "Matias", "Mattel", 2);
-        System.out.println("*********"+newStd);
+        System.out.println("*********" + newStd);
         repoStudents.add(newStd);
         Student aStudent = repoStudents.getById(newStd.getId());
         assertEquals(aStudent.getId(), newStd.getId());
@@ -58,7 +67,7 @@ class StudentsRepositoryInfTest {
     @Test
     void addData() throws SQLException {
         Student newStd = new Student(null, "Matias", "Mattel", 2);
-        System.out.println("*********"+newStd);
+        System.out.println("*********" + newStd);
         repositoryData.save(newStd);
         Student aStudent = repositoryData.findById(newStd.getId()).get();
         assertEquals(aStudent.getId(), newStd.getId());
