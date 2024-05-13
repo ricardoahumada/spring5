@@ -25,10 +25,22 @@ class StudentsRepositoryInfTest {
     @Autowired
     private StudentsRepositoryInf repoStudents;
 
+    @Autowired
+    private StudentsRepositoryData repositoryData;
+
     @Test
     @Transactional
     void getById() throws SQLException {
         Student aStudent = repoStudents.getById(2L);
+        System.out.println("*********"+aStudent);
+        assertNotNull(aStudent);
+        assertEquals(aStudent.getId(), 2L);
+    }
+
+    @Test
+    @Transactional
+    void getByIdData() throws SQLException {
+        Student aStudent = repositoryData.findById(2L).get();
         System.out.println("*********"+aStudent);
         assertNotNull(aStudent);
         assertEquals(aStudent.getId(), 2L);
@@ -44,11 +56,29 @@ class StudentsRepositoryInfTest {
     }
 
     @Test
+    void addData() throws SQLException {
+        Student newStd = new Student(null, "Matias", "Mattel", 2);
+        System.out.println("*********"+newStd);
+        repositoryData.save(newStd);
+        Student aStudent = repositoryData.findById(newStd.getId()).get();
+        assertEquals(aStudent.getId(), newStd.getId());
+    }
+
+    @Test
     void addwithschool() throws SQLException {
         Student newStd = new Student(null, "Rita", "Narvaez", 2, new School(null, "Otra escuela", null));
         System.out.println(newStd);
         repoStudents.add(newStd);
         Student aStudent = repoStudents.getById(newStd.getId());
+        assertEquals(aStudent.getId(), newStd.getId());
+    }
+
+    @Test
+    void addwithschoolData() throws SQLException {
+        Student newStd = new Student(null, "Rita", "Narvaez", 2, new School(null, "Otra escuela", null));
+        System.out.println(newStd);
+        repositoryData.save(newStd);
+        Student aStudent = repositoryData.findById(newStd.getId()).get();
         assertEquals(aStudent.getId(), newStd.getId());
     }
 
