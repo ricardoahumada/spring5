@@ -42,7 +42,7 @@ class ProjectsRepositoryInfTest {
     @Test
     @Order(2)
     void addHijo() throws SQLException {
-        ScienceProject newProject = new ScienceProject(null, "Project 1", null, "Mates");
+        ScienceProject newProject = new ScienceProject(null, "Project 2", null, "Mates");
         repo.add(newProject);
         assertThat(newProject, notNullValue());
         assertThat(newProject.getId(), greaterThan(0L));
