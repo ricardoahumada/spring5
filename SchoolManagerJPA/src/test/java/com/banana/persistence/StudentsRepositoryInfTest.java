@@ -48,7 +48,8 @@ class StudentsRepositoryInfTest {
     @Test
     @Transactional
     void getByNombreData() throws SQLException {
-        List<Student> stds = repositoryData.findByNombreIgnoreCaseOrderByCursoAsc("Rita");
+//        List<Student> stds = repositoryData.findByNombreIgnoreCaseOrderByCursoAsc("Rita");
+        List<Student> stds = repositoryData.findByNombreIgnoreCaseOrderByCursoAsc2("Rita");
         assertNotNull(stds);
         assertTrue(stds.size() > 0);
         System.out.println("*********" + stds);
