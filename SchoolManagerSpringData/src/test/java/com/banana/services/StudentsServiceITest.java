@@ -10,6 +10,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -22,7 +24,25 @@ class StudentsServiceITest {
     private IStudentService service;
 
     @Test
-    void storeStudent() {
+    void storeStudent() throws Exception {
+        Student newStd = new Student(null, "Lucas", "Lucanno", 4);
+        service.storeStudent(newStd);
+        System.out.println(newStd);
+        assertNotNull(newStd);
+        assertTrue(newStd.getId() > 0);
+
+    }
+
+    @Test
+    void storeStudentList() throws Exception {
+        List<Student> students = List.of(
+                new Student(null, "Pedro", "Pierola", 5),
+                new Student(null, "Luisa", "Lopez", 5),
+                new Student(null, "Marta", "Martinez", 5)
+        );
+
+        boolean saved = service.storeStudentList(students);
+        assertTrue(saved);
     }
 
     @Test
