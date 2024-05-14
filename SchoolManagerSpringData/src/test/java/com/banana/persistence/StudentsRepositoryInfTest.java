@@ -35,8 +35,8 @@ class StudentsRepositoryInfTest {
     @Test
     void add() throws SQLException {
         Student newStd = new Student(null, "Matias", "Mattel", 2);
-        System.out.println(newStd);
         repoStudents.add(newStd);
+        System.out.println(newStd);
         Student aStudent = repoStudents.getById(newStd.getId());
         assertEquals(aStudent.getId(), newStd.getId());
     }
@@ -49,7 +49,6 @@ class StudentsRepositoryInfTest {
         Student aStudent = repoStudents.getById(newStd.getId());
         assertEquals(aStudent.getId(), newStd.getId());
     }
-
 
     @Test
     void update() throws SQLException {

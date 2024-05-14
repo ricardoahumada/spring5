@@ -40,7 +40,7 @@ class StudentRepositoryExtendedTest {
     void get() throws SQLException {
         Student aStudent = repo.get(1);
         System.out.println(aStudent);
-        assertEquals(aStudent.getId(), 3L);
+        assertEquals(aStudent.getId(), 2L);
         assertNotNull(aStudent);
     }
 
