@@ -20,7 +20,7 @@ import java.util.Properties;
 @EnableTransactionManagement
 @EnableJpaRepositories(
         entityManagerFactoryRef = "entityManagerFactoryMysql",
-        basePackages = {"com.banana.persistence.student"},
+        basePackages = {"com.banana.persistence.project.mysql1"},
         transactionManagerRef = "transactionManagerMysql"
 )
 public class PersistenceConfigMysql {

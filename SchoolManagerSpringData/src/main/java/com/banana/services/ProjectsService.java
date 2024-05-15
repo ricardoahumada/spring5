@@ -6,6 +6,7 @@ import com.banana.persistence.project.mysql1.ProjectRepositoryData1;
 import com.banana.persistence.project.mysql2.ProjectRepositoryData2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ProjectsService {
@@ -15,7 +16,18 @@ public class ProjectsService {
     @Autowired
     ProjectRepositoryData2 repo2;
     public void addProject(Project project){
-        Project newProject = new Project(null, "Project 1", null);
+        addProjectDB1(project);
+        addProjectDB2(project);
+    }
+
+    @Transactional("transactionManagerMysql")
+    private void addProjectDB1(Project project) {
+        repo1.save(project);
+    }
+
+    @Transactional("transactionManagerMysql2")
+    private void addProjectDB2(Project project) {
+        repo2.save(project);
     }
 
 }
