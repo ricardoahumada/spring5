@@ -15,6 +15,7 @@ public class ProjectsService {
     ProjectRepositoryData1 repo1;
     @Autowired
     ProjectRepositoryData2 repo2;
+    @Transactional("transactionManagerMysql")
     public void addProject(Project project){
         addProjectDB1(project);
         addProjectDB2(project);
