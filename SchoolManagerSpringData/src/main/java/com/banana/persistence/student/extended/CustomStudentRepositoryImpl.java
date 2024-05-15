@@ -11,7 +11,7 @@ import java.sql.SQLException;
 @Repository
 public class CustomStudentRepositoryImpl implements CustomStudentRepository {
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "school-mysql")
     EntityManager em;
 
     @Override

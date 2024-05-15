@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
 @PropertySource("classpath:application.properties")
-@Import({PersistenceConfigMysql.class})
+@Import({PersistenceConfigMysql.class, PersistenceConfigH2.class})
 @ComponentScan(basePackages = {"com.banana.persistence", "com.banana.services"})
 //@EntityScan("com.banana.models")
 //@EnableJpaRepositories("com.banana.persistence")

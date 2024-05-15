@@ -32,7 +32,7 @@ class SchoolsRepositoryInfTest {
     @Autowired
     private SchoolsRepositoryInf repo;
 
-    @PersistenceUnit
+    @PersistenceUnit(unitName = "school-mysql")
     EntityManagerFactory emf;
 
     private EntityManager em;

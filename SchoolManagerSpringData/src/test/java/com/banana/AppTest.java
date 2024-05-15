@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @EnableAutoConfiguration
 public class AppTest {
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "school-mysql")
     EntityManager em;
 
     @Test

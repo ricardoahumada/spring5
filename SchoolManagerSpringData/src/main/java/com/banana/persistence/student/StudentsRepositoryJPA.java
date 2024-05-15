@@ -19,7 +19,7 @@ import java.util.List;
 @Repository
 public class StudentsRepositoryJPA implements StudentsRepositoryInf {
 
-    @PersistenceContext  // Accede al emf; emf.createEntityManager();
+    @PersistenceContext(unitName = "school-mysql")  // Accede al emf; emf.createEntityManager();
     private EntityManager em;
 
     @Override
