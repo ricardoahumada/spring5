@@ -14,7 +14,7 @@ public class ProjectsService {
     ProjectRepositoryData1 repo1;
     @Autowired
     ProjectRepositoryData2 repo2;
-    public addProject(Project project){
+    public void addProject(Project project){
         Project newProject = new Project(null, "Project 1", null);
     }
 
