@@ -19,14 +19,14 @@ public class SchoolsRepositoryJPA implements SchoolsRepositoryInf {
     EntityManager em;
 
     @Override
-    @Transactional
+    @Transactional("transactionManagerH2")
     public School add(School escuela) {
         em.persist(escuela);
         return escuela;
     }
 
     @Override
-    @Transactional
+    @Transactional("transactionManagerH2")
     public School update(School escuela) {
         School psch = em.find(School.class, escuela.getId());
 

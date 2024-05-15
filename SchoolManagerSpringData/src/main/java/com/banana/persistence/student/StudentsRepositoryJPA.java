@@ -23,13 +23,13 @@ public class StudentsRepositoryJPA implements StudentsRepositoryInf {
     private EntityManager em;
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED, timeout = 10, readOnly = false, isolation = Isolation.DEFAULT)
+    @Transactional("transactionManagerMysql")
     public void add(Student estudiante) {
         em.persist(estudiante);
     }
 
     @Override
-    @Transactional
+    @Transactional("transactionManagerMysql")
     public Student update(Student estudiante) {
         if (estudiante.isValid()) {
             Student aStd = em.find(Student.class, estudiante.getId());
