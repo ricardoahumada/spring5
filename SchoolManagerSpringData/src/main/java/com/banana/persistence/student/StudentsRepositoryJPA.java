@@ -8,7 +8,10 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import javax.transaction.Transactional;
+
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Setter
@@ -20,7 +23,7 @@ public class StudentsRepositoryJPA implements StudentsRepositoryInf {
     private EntityManager em;
 
     @Override
-    @Transactional
+    @Transactional(propagation = Propagation.MANDATORY, timeout = 1, readOnly = false, isolation = Isolation.DEFAULT)
     public void add(Student estudiante) {
         em.persist(estudiante);
     }

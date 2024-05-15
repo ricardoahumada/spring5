@@ -39,6 +39,7 @@ public class StudentsService implements IStudentService {
     }
 
     @Override
+    @Transactional(timeout = 2)
     public boolean storeStudentList(List<Student> students) throws Exception {
         students.forEach(aStd -> {
             try {

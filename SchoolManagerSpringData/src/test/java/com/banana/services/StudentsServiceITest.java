@@ -38,7 +38,7 @@ class StudentsServiceITest {
         List<Student> students = List.of(
                 new Student(null, "Pedro", "Pierola", 5),
                 new Student(null, "Luisa", "Lopez", 5),
-                new Student(null, "Marta", "Martinez", 5)
+                new Student(null, "Marta", "Martinez", 0)
         );
 
         boolean saved = service.storeStudentList(students);
