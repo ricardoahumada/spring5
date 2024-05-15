@@ -21,9 +21,13 @@ public class AppTest {
     @PersistenceContext(unitName = "school-mysql")
     EntityManager em;
 
+    @PersistenceContext(unitName = "school-h2")
+    EntityManager em2;
+
     @Test
     public void load() {
         assertNotNull(em);
+        assertNotNull(em2);
         assertTrue(true);
     }
 
