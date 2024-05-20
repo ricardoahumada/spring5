@@ -15,18 +15,18 @@ import java.util.List;
 @Setter
 @Repository
 public class ProjectRepositoryJPA implements ProjectsRepositoryInf {
-    @PersistenceContext(unitName = "school-mysql2")
+    @PersistenceContext(unitName = "school-mysql") // Accede al emf; emf.createEntityManager();
     EntityManager em;
 
     @Override
-    @Transactional("transactionManagerMysql2")
+    @Transactional
     public Project add(Project proyecto) {
         em.persist(proyecto);
         return proyecto;
     }
 
     @Override
-    @Transactional("transactionManagerMysql2")
+    @Transactional
     public Project update(Project proyecto) {
         Project psch = em.find(Project.class, proyecto.getId());
 
