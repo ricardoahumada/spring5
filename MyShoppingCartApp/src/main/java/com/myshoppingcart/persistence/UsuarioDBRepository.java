@@ -3,17 +3,13 @@ package com.myshoppingcart.persistence;
 import com.myshoppingcart.exception.UsuarioNotFoundException;
 import com.myshoppingcart.model.Usuario;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Setter
-@Repository
 public class UsuarioDBRepository implements IUsuarioRepository {
-    @Value("${db_url}")
     private String db_url = null;
 
 

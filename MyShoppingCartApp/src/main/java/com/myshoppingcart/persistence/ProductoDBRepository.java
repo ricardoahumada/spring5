@@ -3,7 +3,6 @@ package com.myshoppingcart.persistence;
 import com.myshoppingcart.exception.ProductNotFoundException;
 import com.myshoppingcart.model.Producto;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Value;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -11,8 +10,6 @@ import java.util.List;
 
 @Setter
 public class ProductoDBRepository implements IProductoRepository {
-    @Value("${db_url}")
-
     private String connUrl;
 
     @Override

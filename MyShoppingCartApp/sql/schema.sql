@@ -16,47 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `producto`
---
-
-DROP TABLE IF EXISTS `producto`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `producto` (
-  `pid` int(11) NOT NULL AUTO_INCREMENT,
-  `codigo` int(11) NOT NULL,
-  `marca` varchar(255) NOT NULL,
-  `Nombre` varchar(40) NOT NULL,
-  `tipo` varchar(20) DEFAULT NULL,
-  `precio` double NOT NULL,
-  `existencias` int(11) DEFAULT NULL,
-  PRIMARY KEY (`pid`),
-  UNIQUE KEY `pid_UNIQUE` (`pid`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `usuario`
---
-
-DROP TABLE IF EXISTS `usuario`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `usuario` (
-  `uid` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(30) NOT NULL,
-  `apellido` varchar(30) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `interes` int(11) NOT NULL,
-  `saldo` int(11) DEFAULT NULL,
-  `password` text NOT NULL,
-  `nacimiento` datetime DEFAULT NULL,
-  `activo` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`uid`),
-  UNIQUE KEY `uid_UNIQUE` (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
-
---
 -- Table structure for table `almacen`
 --
 
@@ -96,7 +55,46 @@ CREATE TABLE `compra` (
 ) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `producto`
+--
 
+DROP TABLE IF EXISTS `producto`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `producto` (
+  `pid` int(11) NOT NULL AUTO_INCREMENT,
+  `codigo` int(11) NOT NULL,
+  `marca` varchar(255) NOT NULL,
+  `Nombre` varchar(40) NOT NULL,
+  `tipo` varchar(20) DEFAULT NULL,
+  `precio` double NOT NULL,
+  `existencias` int(11) DEFAULT NULL,
+  PRIMARY KEY (`pid`),
+  UNIQUE KEY `pid_UNIQUE` (`pid`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `usuario`
+--
+
+DROP TABLE IF EXISTS `usuario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `usuario` (
+  `uid` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(30) NOT NULL,
+  `apellido` varchar(30) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `interes` int(11) NOT NULL,
+  `saldo` int(11) DEFAULT NULL,
+  `password` text NOT NULL,
+  `nacimiento` datetime DEFAULT NULL,
+  `activo` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
+  UNIQUE KEY `uid_UNIQUE` (`uid`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

@@ -2,21 +2,9 @@ package com.banana.services;
 
 import com.banana.models.Student;
 import com.banana.persistence.StudentsRepositoryInf;
-import lombok.Getter;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import javax.inject.Inject;
-import javax.inject.Named;
-
-//@Named
-//@Component
-@Service
 public class StudentsService implements IStudentService {
-    @Autowired
-    //@Qualifier("repomongo")
     private StudentsRepositoryInf repository;
 
     public void setRepository(StudentsRepositoryInf repository) {
