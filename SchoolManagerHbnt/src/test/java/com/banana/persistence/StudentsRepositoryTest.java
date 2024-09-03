@@ -25,19 +25,10 @@ class StudentsRepositoryTest {
     @Autowired
     private StudentsRepositoryInf repoStudents;
 
-   /* @BeforeEach
-//    @BeforeAll
-    void setUp() {
-//        context = new ClassPathXmlApplicationContext("beans.xml");
-        context = new AnnotationConfigApplicationContext(StudentsRepository.class);
-        repoStudents = context.getBean(StudentsRepositoryInf.class);
-    }*/
-
     @Test
     void testBeans() {
         assertNotNull(context);
         assertNotNull(repoStudents);
-        System.out.println("UrlConn: " + repoStudents.getUrlConn());
     }
 
     @Test

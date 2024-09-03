@@ -18,8 +18,6 @@ import java.util.List;
 @Getter
 public class StudentsRepository implements StudentsRepositoryInf {
 
-//    @Value("${db.conn}")
-    private String urlConn;
 
     private List<Student> students = new ArrayList<>();
 
