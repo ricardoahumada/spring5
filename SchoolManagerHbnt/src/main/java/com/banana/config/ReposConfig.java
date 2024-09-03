@@ -19,9 +19,6 @@ public class ReposConfig {
     @Autowired
     Environment env;
 
-    @Value("${db.conn}")
-    String dbUrl;
-
     @Value("${max.conn}")
     Integer maxConn;
 
@@ -34,11 +31,7 @@ public class ReposConfig {
     public StudentsRepositoryInf getStudentsRepository() {
         System.out.println("maxConn:" + maxConn);
 
-        String dbUrlEnv = env.getProperty("db.conn", String.class);
-        System.out.println("dbUrlEnv:" + dbUrlEnv);
-
         StudentsRepository repo = new StudentsRepository();
-        repo.setUrlConn(dbUrl);
         return repo;
     }
 
@@ -47,12 +40,8 @@ public class ReposConfig {
     public StudentsRepositoryInf getStudentsRepositoryJPA() {
         System.out.println("maxConn JDBC:" + maxConn);
 
-        String dbUrlEnv = env.getProperty("db.conn", String.class);
-        System.out.println("dbUrlEnv:" + dbUrlEnv);
-
         StudentsRepositoryJPA repo = new StudentsRepositoryJPA();
         repo.setEm(emf.createEntityManager());
-        repo.setUrlConn(dbUrl);
         return repo;
     }
 

@@ -30,10 +30,6 @@ class SchoolsRepositoryInfTest {
     @Autowired
     EntityManagerFactory emf;
 
-    /*@Test
-    void testBeans(){
-        assertNotNull(repo);
-    }*/
 
     private EntityManager em;
 

@@ -10,8 +10,6 @@ import javax.persistence.EntityManager;
 @Getter
 public class StudentsRepositoryJPA implements StudentsRepositoryInf {
 
-    private String urlConn;
-
     private EntityManager em;
 
     @Override
@@ -53,8 +51,5 @@ public class StudentsRepositoryJPA implements StudentsRepositoryInf {
         return em.find(Student.class, id);
     }
 
-    @Override
-    public String getUrlConn() {
-        return null;
-    }
+
 }

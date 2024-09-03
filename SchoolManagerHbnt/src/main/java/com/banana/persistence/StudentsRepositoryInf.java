@@ -8,5 +8,4 @@ public interface StudentsRepositoryInf {
     public Student get(int idx);
     public Student getById(Long id);
 
-    public String getUrlConn();
 }
