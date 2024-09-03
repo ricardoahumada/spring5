@@ -2,9 +2,16 @@ package com.banana.services;
 
 import com.banana.models.Student;
 import com.banana.persistence.StudentsRepositoryInf;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
+@Service
 public class StudentsService implements IStudentService {
+    @Inject
     private StudentsRepositoryInf repository;
 
     public void setRepository(StudentsRepositoryInf repository) {
