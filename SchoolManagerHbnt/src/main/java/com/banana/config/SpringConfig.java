@@ -11,8 +11,5 @@ import org.springframework.context.annotation.Import;
 @ComponentScan(basePackages = {"com.banana.persistence", "com.banana.services"})
 //@Import({StudentsRepository.class, StudentsService.class})
 public class SpringConfig {
-    /*@Bean
-    public static PropertySourcesPlaceholderConfigurer propertyConfigurer() {
-        return new PropertySourcesPlaceholderConfigurer();
-    }*/
+    
 }
