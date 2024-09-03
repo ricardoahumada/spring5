@@ -2,6 +2,7 @@ package com.banana.models;
 
 import lombok.*;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,11 +11,15 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@Entity(name = "escuela")
 public class School {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
 
+    @Transient
     private List<Student> estudiantes = new ArrayList<>();
 
     public School(Long id, String name) {
