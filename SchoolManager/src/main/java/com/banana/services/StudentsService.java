@@ -9,9 +9,9 @@ import org.springframework.stereotype.Service;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-@Service
+//@Service
 public class StudentsService implements IStudentService {
-    @Inject
+    //@Inject
     private StudentsRepositoryInf repository;
 
     public void setRepository(StudentsRepositoryInf repository) {
