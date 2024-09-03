@@ -14,31 +14,12 @@ public class StudentsRepositoryJPA implements StudentsRepositoryInf {
 
     @Override
     public void add(Student estudiante) {
-        em.getTransaction().begin();
-        if (estudiante.isValid()) {
-            em.persist(estudiante);
-            estudiante.setNombre("Cambio de nombre");
-            em.getTransaction().commit();
-        } else {
-            em.getTransaction().rollback();
-        }
+
     }
 
     @Override
     public Student update(Student estudiante) {
-        em.getTransaction().begin();
-        if (estudiante.isValid()) {
-            Student aStd = em.find(Student.class, estudiante.getId());
-            aStd.setNombre(estudiante.getNombre());
-//            em.flush();
-            aStd.setApellido(estudiante.getApellido());
-//            em.persist(aStd);
-            em.getTransaction().commit();
-            return aStd;
-        } else {
-            em.getTransaction().rollback();
-            return null;
-        }
+        return null;
     }
 
     @Override
@@ -48,7 +29,7 @@ public class StudentsRepositoryJPA implements StudentsRepositoryInf {
 
     @Override
     public Student getById(Long id) {
-        return em.find(Student.class, id);
+        return null;
     }
 
 
