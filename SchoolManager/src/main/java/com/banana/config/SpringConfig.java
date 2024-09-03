@@ -8,8 +8,8 @@ import org.springframework.context.annotation.*;
 
 @Configuration
 //@ComponentScan({"com.banana.persistence"})
-@PropertySource("classpath:application.properties")
-@Import({RepoConfig.class, ServicesConfig.class})
+//@PropertySource("classpath:application.properties")
+@Import({RepoConfig.class, ServicesConfig.class, PropertiesConfig.class, PropertiesConfigDev.class})
 public class SpringConfig {
 
 

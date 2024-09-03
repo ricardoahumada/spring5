@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = {SpringConfig.class})
-@ActiveProfiles("dev")
+@ActiveProfiles("prod")
 public class AppTest {
 
     @Autowired
