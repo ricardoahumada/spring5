@@ -4,9 +4,7 @@ import com.banana.models.Student;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -30,7 +28,8 @@ public class StudentRepository implements StudentsRepositoryInf {
 
     @Override
     public Student get(int idx) throws SQLException {
-        TypedQuery query = em.createQuery("SELECT s FROM Student s", Student.class);
+//        TypedQuery query = em.createQuery("SELECT s FROM Student s", Student.class);
+        Query query = em.createNamedQuery("Student.selectall");
         /*List<Student> lista = query.getResultList();
         return lista.get(idx);*/
         return (Student) query.setFirstResult(idx).setMaxResults(1).getSingleResult();
