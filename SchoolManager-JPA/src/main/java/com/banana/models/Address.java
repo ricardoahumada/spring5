@@ -19,4 +19,7 @@ public class Address {
 
     private String fullAddress;
 
+    @OneToOne(mappedBy = "address")
+    private Student student;
+
 }
