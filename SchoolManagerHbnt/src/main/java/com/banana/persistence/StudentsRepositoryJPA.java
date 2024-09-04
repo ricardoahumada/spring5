@@ -33,7 +33,11 @@ public class StudentsRepositoryJPA implements StudentsRepositoryInf {
         std.setApellido(estudiante.getApellido());
         std.setCurso(estudiante.getCurso());
 
-        em.persist(std);
+//        em.persist(std);
+        em.flush();
+
+        std.setNombre("Nombre cambiado");
+
         em.getTransaction().commit();
 
         return std;
