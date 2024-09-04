@@ -9,6 +9,7 @@ import org.springframework.context.annotation.PropertySource;
 @Configuration
 @PropertySource("classpath:application.properties")
 @ComponentScan(basePackages = {"com.banana.persistence", "com.banana.services"})
+@EntityScan("com.banana.models")
 public class SpringConfig {
 
 }

@@ -18,10 +18,10 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 //@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @ExtendWith(SpringExtension.class)
-//@ContextConfiguration(classes = {SpringConfig.class})
-//@EnableAutoConfiguration
+@ContextConfiguration(classes = {SpringConfig.class})
+@EnableAutoConfiguration
 class StudentsRepositoryInfTest {
-//    @Autowired
+    @Autowired
     private StudentsRepositoryInf repoStudents;
 
     @Test
