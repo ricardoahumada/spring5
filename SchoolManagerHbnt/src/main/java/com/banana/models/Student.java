@@ -15,13 +15,13 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="name")
+    @Column(name = "name")
     private String nombre;
 
-    @Column(name="surname")
+    @Column(name = "surname")
     private String apellido;
 
-    @Column(name="course")
+    @Column(name = "course")
     private int curso;
 
     public boolean isValid() {

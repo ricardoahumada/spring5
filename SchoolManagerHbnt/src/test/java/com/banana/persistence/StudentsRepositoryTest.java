@@ -41,7 +41,7 @@ class StudentsRepositoryTest {
 
     @Test
     void add() {
-        Student newStd = new Student(null, "El nuevo", "Apellido", 2);
+        Student newStd = new Student(null, null, "Apellido", 2);
         System.out.println(newStd);
         repoStudents.add(newStd);
         Student aStudent = repoStudents.getById(newStd.getId());

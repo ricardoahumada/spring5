@@ -15,30 +15,28 @@ public class StudentsRepositoryJPA implements StudentsRepositoryInf {
     @Override
     public void add(Student estudiante) {
         em.getTransaction().begin();
-        if (estudiante.isValid()) {
+        if(estudiante.isValid()) {
             em.persist(estudiante);
-            estudiante.setNombre("Cambio de nombre");
             em.getTransaction().commit();
-        } else {
+        }else{
             em.getTransaction().rollback();
         }
+
     }
 
     @Override
     public Student update(Student estudiante) {
         em.getTransaction().begin();
-        if (estudiante.isValid()) {
-            Student aStd = em.find(Student.class, estudiante.getId());
-            aStd.setNombre(estudiante.getNombre());
-//            em.flush();
-            aStd.setApellido(estudiante.getApellido());
-//            em.persist(aStd);
-            em.getTransaction().commit();
-            return aStd;
-        } else {
-            em.getTransaction().rollback();
-            return null;
-        }
+
+        Student std = getById(estudiante.getId());
+        std.setNombre(estudiante.getNombre());
+        std.setApellido(estudiante.getApellido());
+        std.setCurso(estudiante.getCurso());
+
+        em.persist(std);
+        em.getTransaction().commit();
+
+        return std;
     }
 
     @Override
