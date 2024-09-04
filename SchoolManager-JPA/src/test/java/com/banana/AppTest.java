@@ -8,7 +8,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceUnit;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -18,12 +20,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @EnableAutoConfiguration
 public class AppTest {
 
-//    @PersistenceContext
+    @PersistenceContext
     EntityManager em;
+
+    @PersistenceUnit
+    EntityManagerFactory emf;
 
     @Test
     public void load() {
         assertNotNull(em);
+        assertNotNull(emf);
         assertTrue(true);
     }
 
