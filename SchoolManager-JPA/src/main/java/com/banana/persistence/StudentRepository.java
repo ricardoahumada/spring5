@@ -34,6 +34,10 @@ public class StudentRepository implements StudentsRepositoryInf {
         /*List<Student> lista = query.getResultList();
         return lista.get(idx);*/
         return (Student) query.setFirstResult(idx).setMaxResults(1).getSingleResult();
+
+        /*TypedQuery query = em.createQuery("SELECT s FROM Student s WHERE s.id = :id", Student.class);
+        query.setParameter("id", 3L);
+        return (Student) query.getSingleResult();*/
     }
 
     @Override
