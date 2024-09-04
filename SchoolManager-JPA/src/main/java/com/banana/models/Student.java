@@ -3,6 +3,7 @@ package com.banana.models;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -38,6 +39,14 @@ public class Student {
     @ManyToOne
     @JoinColumn(name = "escuela")
     private School school;
+
+    @ManyToMany
+    @JoinTable(
+          name = "estudiantes_proyectos",
+          joinColumns = {@JoinColumn(name = "estudiante")},
+          inverseJoinColumns = {@JoinColumn(name = "proyecto")}
+    )
+    private List<Project> projects;
 
     public boolean isValid() {
         return this.nombre != null && this.apellido != null && this.curso > 0;
