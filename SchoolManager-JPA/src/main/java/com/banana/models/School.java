@@ -2,6 +2,8 @@ package com.banana.models;
 
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -12,17 +14,17 @@ public class School {
 
     private String name;
 
-    public School(Long id, String name) {
+    public School(Long id, String name, List<Student> estudantes) {
         this.id = id;
         this.name = name;
     }
 
-    public void addStudent(Student estudiante) {
+    /*public void addStudent(Student estudiante) {
         estudiantes.add(estudiante);
-    }
+    }*/
 
-    public void removeStudent(Student estudiante) {
+    /*public void removeStudent(Student estudiante) {
         estudiantes.remove(estudiante);
-    }
+    }*/
 
 }
