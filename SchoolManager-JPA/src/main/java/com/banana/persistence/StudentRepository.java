@@ -6,10 +6,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import java.sql.SQLException;
+import java.util.List;
 
 @Repository
-public class StudentRepository implements  StudentsRepositoryInf{
+public class StudentRepository implements StudentsRepositoryInf {
 
     @PersistenceContext
     private EntityManager em;
@@ -21,13 +23,17 @@ public class StudentRepository implements  StudentsRepositoryInf{
     }
 
     @Override
+    @Transactional
     public Student update(Student estudiante) throws SQLException {
         return null;
     }
 
     @Override
     public Student get(int idx) throws SQLException {
-        return null;
+        TypedQuery query = em.createQuery("SELECT s FROM Student s", Student.class);
+        /*List<Student> lista = query.getResultList();
+        return lista.get(idx);*/
+        return (Student) query.setFirstResult(idx).setMaxResults(1).getSingleResult();
     }
 
     @Override
