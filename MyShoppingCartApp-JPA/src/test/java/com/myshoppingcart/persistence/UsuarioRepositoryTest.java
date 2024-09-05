@@ -77,7 +77,7 @@ public class UsuarioRepositoryTest {
 
     @Test
     void dadosUsuario_cuandoinsertarUsuarioEnDB_entoncesIdValido() throws Exception {
-        Usuario user = new Usuario(null, "nuevo", "usuario", "n@n.com", 10, 0, "xxxx", LocalDate.of(2005, 02, 01), true);
+        Usuario user = new Usuario(null, "nuevo", "usuario", "n@n.com", 10, 2000, "xxxx", LocalDate.of(2005, 02, 01), true);
 
         repo.insertUsuario(user);
 

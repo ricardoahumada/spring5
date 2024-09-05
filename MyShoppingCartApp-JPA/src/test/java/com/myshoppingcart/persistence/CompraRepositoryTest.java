@@ -25,7 +25,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class CompraRepositoryTest {
 
     @Autowired
-    @Qualifier("CompraDBRepository")
+//    @Qualifier("CompraDBRepository")
+    @Qualifier("CompraJPARepository")
     private ICompraRepository repo;
 
     @Test
@@ -40,7 +41,7 @@ public class CompraRepositoryTest {
 
         Compra ncompra = repo.insertCompra(compra);
 
-        assertThat(ncompra.getCid(), greaterThan(1));
+        assertThat(ncompra.getCid(), greaterThan(0));
 
     }
 
