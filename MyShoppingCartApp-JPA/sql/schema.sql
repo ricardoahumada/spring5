@@ -66,7 +66,7 @@ CREATE TABLE `producto` (
   `pid` int(11) NOT NULL AUTO_INCREMENT,
   `codigo` int(11) NOT NULL,
   `marca` varchar(255) NOT NULL,
-  `Nombre` varchar(40) NOT NULL,
+  `nombre` varchar(40) NOT NULL,
   `tipo` varchar(20) DEFAULT NULL,
   `precio` double NOT NULL,
   `existencias` int(11) DEFAULT NULL,
