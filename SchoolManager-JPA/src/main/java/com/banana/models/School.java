@@ -25,6 +25,7 @@ public class School {
     }*/
 
     @OneToMany(mappedBy = "school")
+    @ToString.Exclude
     private List<Student> estudiantes;
 
 
