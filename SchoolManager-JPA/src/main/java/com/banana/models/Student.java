@@ -45,7 +45,7 @@ public class Student {
     @JoinColumn(name = "address")
     private Address address;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "escuela")
     private School school;
 
