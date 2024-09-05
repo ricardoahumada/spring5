@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -12,6 +13,13 @@ import java.util.List;
 @ToString
 @Entity
 public class Project {
+
+    public Project(Long id, String name, List<Student> estudiantes) {
+        this.id = id;
+        this.name = name;
+        this.estudiantes = estudiantes;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,4 +28,8 @@ public class Project {
 
     @ManyToMany(mappedBy = "projects")
     private List<Student> estudiantes = new ArrayList<>();
+
+//    @ElementCollection
+    @Column(name = "notas")
+    private String[] notas;
 }

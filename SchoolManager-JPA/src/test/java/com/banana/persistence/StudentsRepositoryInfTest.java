@@ -26,35 +26,36 @@ class StudentsRepositoryInfTest {
 
     @Test
     void getById() throws SQLException {
-        Student aStudent = repoStudents.getById(1L);
-        System.out.println(aStudent);
-        assertEquals(aStudent.getId(), 1L);
+        Long id = 1L;
+        Student aStudent = repoStudents.getById(id);
+        System.out.println("****"+aStudent);
+        assertEquals(aStudent.getId(), id);
         assertNotNull(aStudent);
     }
 
     @Test
     void add() throws SQLException {
         Student newStd = new Student(null, "Matias", "Mattel", 2);
-        System.out.println(newStd);
+        System.out.println("****"+newStd);
         repoStudents.add(newStd);
         Student aStudent = repoStudents.getById(newStd.getId());
         assertEquals(aStudent.getId(), newStd.getId());
     }
 
-    /*@Test
+    @Test
     void addwithschool() throws SQLException {
         Student newStd = new Student(null, "Rita", "Narvaez", 2, new School(null, "Otra escuela", null), null);
-        System.out.println(newStd);
+        System.out.println("****"+newStd);
         repoStudents.add(newStd);
         Student aStudent = repoStudents.getById(newStd.getId());
         assertEquals(aStudent.getId(), newStd.getId());
-    }*/
+    }
 
 
     @Test
     void update() throws SQLException {
         Student aStd = new Student(1L, "Nombre Update", "Apellido Update", 2);
-        System.out.println(aStd);
+        System.out.println("****"+aStd);
         Student updatedStd = repoStudents.update(aStd);
         assertEquals(updatedStd.getNombre(), aStd.getNombre());
     }
@@ -62,7 +63,7 @@ class StudentsRepositoryInfTest {
     @Test
     void get() throws SQLException {
         Student aStudent = repoStudents.get(2);
-        System.out.println(aStudent);
+        System.out.println("****"+aStudent);
         assertEquals(aStudent.getId(), 3L);
         assertNotNull(aStudent);
     }
