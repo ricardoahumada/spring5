@@ -16,7 +16,7 @@ public class StudentRepository implements StudentsRepositoryInf {
     private EntityManager em;
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED)
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void add(Student estudiante) throws SQLException {
         em.persist(estudiante);
     }
@@ -41,6 +41,7 @@ public class StudentRepository implements StudentsRepositoryInf {
     }
 
     @Override
+    @Transactional(propagation = Propagation.NOT_SUPPORTED)
     public Student getById(Long id) throws SQLException {
         return em.find(Student.class, id);
     }

@@ -22,6 +22,7 @@ public class StudentsService implements IStudentService {
     public boolean storeStudent(Student student) throws Exception {
         if (student.isValid()) {
             repository.add(student);
+            repository.getById(student.getId());
             return true;
         } else return false;
     }
