@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Entity
 public class ScienceProject extends Project{
     String subject;
 }
