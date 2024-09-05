@@ -10,7 +10,7 @@ import java.sql.*;
 
 @Setter
 //@Component
-@Repository("CompraDBRepository")
+@Repository
 public class CompraDBRepository implements ICompraRepository {
     @Value("${db_url}")
     private String connUrl;
@@ -25,7 +25,7 @@ public class CompraDBRepository implements ICompraRepository {
             // OBTENEMOS EL PRODUCTO
             String sql = "SELECT * FROM producto WHERE pid = ?";
             PreparedStatement pstm = conn.prepareStatement(sql);
-            pstm.setInt(1, nuevaCompra.getProducto().getPid());
+            pstm.setInt(1, nuevaCompra.getProducto());
 
             ResultSet rs = pstm.executeQuery();
             double precio = 0;
@@ -41,8 +41,8 @@ public class CompraDBRepository implements ICompraRepository {
             // INSERTAR EN COMPRA
             sql = "INSERT INTO compra VALUES(NULL,?,?,?,?)";
             pstm = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            pstm.setInt(1, nuevaCompra.getUsuario().getUid());
-            pstm.setInt(2, nuevaCompra.getProducto().getPid());
+            pstm.setInt(1, nuevaCompra.getUsuario());
+            pstm.setInt(2, nuevaCompra.getProducto());
             pstm.setInt(3, nuevaCompra.getCantidad());
             pstm.setString(4, nuevaCompra.getFecha().toString());
 
@@ -62,7 +62,7 @@ public class CompraDBRepository implements ICompraRepository {
             sql = "UPDATE usuario u SET u.saldo = u.saldo - ? WHERE u.uid=?";
             pstm = conn.prepareStatement(sql);
             pstm.setDouble(1, nuevaCompra.getCantidad() * precio);
-            pstm.setInt(2, nuevaCompra.getUsuario().getUid());
+            pstm.setInt(2, nuevaCompra.getUsuario());
 
             rows = pstm.executeUpdate();
             pstm.close();
@@ -74,7 +74,7 @@ public class CompraDBRepository implements ICompraRepository {
             sql = "UPDATE producto p SET p.existencias=p.existencias - ? WHERE p.pid=?";
             pstm = conn.prepareStatement(sql);
             pstm.setInt(1, nuevaCompra.getCantidad());
-            pstm.setInt(2, nuevaCompra.getProducto().getPid());
+            pstm.setInt(2, nuevaCompra.getProducto());
 
             rows = pstm.executeUpdate();
             pstm.close();

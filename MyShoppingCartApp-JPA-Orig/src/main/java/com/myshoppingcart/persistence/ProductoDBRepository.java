@@ -3,8 +3,6 @@ package com.myshoppingcart.persistence;
 import com.myshoppingcart.exception.ProductNotFoundException;
 import com.myshoppingcart.model.Producto;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -12,9 +10,7 @@ import java.util.List;
 
 //@Component
 @Setter
-@Repository("ProductoDBRepository")
 public class ProductoDBRepository implements IProductoRepository {
-    @Value("${db_url}")
     private String connUrl;
 
     @Override
@@ -105,7 +101,7 @@ public class ProductoDBRepository implements IProductoRepository {
 
             ResultSet genKeys = stmt.getGeneratedKeys();
             if (genKeys.next()) {
-                prod.setPid(genKeys.getInt(1));
+                prod.setMid(genKeys.getInt(1));
             } else {
                 throw new SQLException("Usuario creado erroneamente!!!");
             }
@@ -131,7 +127,7 @@ public class ProductoDBRepository implements IProductoRepository {
             stmt.setString(3, prod.getTipo());
             stmt.setDouble(4, prod.getPrecio());
             stmt.setInt(5, prod.getExistencias());
-            stmt.setInt(6, prod.getPid());
+            stmt.setInt(6, prod.getMid());
 
             int rows = stmt.executeUpdate();
 
@@ -151,7 +147,7 @@ public class ProductoDBRepository implements IProductoRepository {
                 Connection conn = DriverManager.getConnection(connUrl);
                 PreparedStatement stmt = conn.prepareStatement(sql);
         ) {
-            stmt.setInt(1, prod.getPid());
+            stmt.setInt(1, prod.getMid());
 
             int rows = stmt.executeUpdate();
             System.out.println(rows);
