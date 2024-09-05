@@ -2,6 +2,7 @@ package com.banana.persistence;
 
 import com.banana.models.Student;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
@@ -15,7 +16,7 @@ public class StudentRepository implements StudentsRepositoryInf {
     private EntityManager em;
 
     @Override
-    @Transactional
+    @Transactional(propagation = Propagation.REQUIRED)
     public void add(Student estudiante) throws SQLException {
         em.persist(estudiante);
     }

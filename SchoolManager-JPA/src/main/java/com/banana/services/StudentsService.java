@@ -4,6 +4,7 @@ import com.banana.models.Student;
 import com.banana.persistence.StudentsRepositoryInf;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ public class StudentsService implements IStudentService {
     }
 
     @Override
+    @Transactional
     public boolean storeStudent(Student student) throws Exception {
         if (student.isValid()) {
             repository.add(student);
