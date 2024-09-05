@@ -24,7 +24,7 @@ public class School {
         this.name = name;
     }*/
 
-    @OneToMany(mappedBy = "school")
+    @OneToMany(mappedBy = "school", cascade = CascadeType.ALL)
     @ToString.Exclude
     private List<Student> estudiantes;
 

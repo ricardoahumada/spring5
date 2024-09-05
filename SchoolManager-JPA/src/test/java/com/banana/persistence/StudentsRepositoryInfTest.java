@@ -24,8 +24,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 class StudentsRepositoryInfTest {
     @Autowired
     private StudentsRepositoryInf repoStudents;
-    @Autowired
-    private SchoolsRepositoryInf repoSChool;
 
     @Test
     void getById() throws SQLException {
@@ -48,11 +46,8 @@ class StudentsRepositoryInfTest {
     }
 
     @Test
-    @Transactional
     void addwithschool() throws SQLException {
-        School aSchool = repoSChool.getById(1L);
-        aSchool.setName("Cambio de nombre de escuela");
-        Student newStd = new Student(null, "Rita", "Narvaez", 2, aSchool, null);
+        Student newStd = new Student(null, "Rita", "Narvaez", 2, new School(null, "Otra escuela", null), null);
         System.out.println("****" + newStd);
         repoStudents.add(newStd);
         Student aStudent = repoStudents.getById(newStd.getId());

@@ -24,15 +24,15 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
-//@ContextConfiguration(classes = {SpringConfig.class})
-//@TestInstance(TestInstance.Lifecycle.PER_CLASS)
-//@EnableAutoConfiguration
+@ContextConfiguration(classes = {SpringConfig.class})
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@EnableAutoConfiguration
 class SchoolsRepositoryInfTest {
 
-//    @Autowired
+    @Autowired
     private SchoolsRepositoryInf repo;
 
-//    @Autowired
+    @Autowired
     EntityManagerFactory emf;
 
     private EntityManager em;
@@ -41,7 +41,7 @@ class SchoolsRepositoryInfTest {
 
     @BeforeAll
     void setUp() {
-        em = emf.createEntityManager();
+        /*em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         tx.begin();
 
@@ -51,7 +51,8 @@ class SchoolsRepositoryInfTest {
             schools.add(ns);
         }
 
-        tx.commit();
+
+        tx.commit();*/
     }
 
     @BeforeEach
@@ -82,9 +83,9 @@ class SchoolsRepositoryInfTest {
 
         School sch = new School(null, "Mi escuela con estudiantes", estudiantes);
 
-        /*for (Student estudiante : estudiantes) {
-            estudiante.setMySchool(sch);
-        }*/
+        for (Student estudiante : estudiantes) {
+            estudiante.setSchool(sch);
+        }
 
         repo.add(sch);
 //        System.out.println(sch);
@@ -123,7 +124,7 @@ class SchoolsRepositoryInfTest {
 
     @AfterAll
     void tearDown() {
-        em = emf.createEntityManager();
+       /* em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         tx.begin();
 
@@ -132,7 +133,7 @@ class SchoolsRepositoryInfTest {
             em.remove(as);
         }
 
-        tx.commit();
+        tx.commit();*/
     }
 
 
