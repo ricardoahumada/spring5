@@ -1,4 +1,4 @@
-package com.banana.persistence;
+package com.banana.persistence.project;
 
 import com.banana.models.Project;
 

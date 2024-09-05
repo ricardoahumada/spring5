@@ -1,16 +1,11 @@
-package com.banana.persistence;
+package com.banana.persistence.project;
 
-import com.banana.config.SpringConfig;
 import com.banana.models.Project;
 import com.banana.models.Student;
-import org.junit.jupiter.api.MethodOrderer;
+import com.banana.persistence.project.ProjectsRepositoryInf;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import javax.transaction.Transactional;

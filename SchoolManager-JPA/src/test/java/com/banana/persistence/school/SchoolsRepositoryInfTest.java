@@ -1,20 +1,18 @@
-package com.banana.persistence;
+package com.banana.persistence.school;
 
 import com.banana.config.SpringConfig;
 import com.banana.models.School;
 import com.banana.models.Student;
+import com.banana.persistence.school.SchoolsRepositoryInf;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import java.sql.SQLException;

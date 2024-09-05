@@ -1,4 +1,4 @@
-package com.banana.persistence;
+package com.banana.persistence.student;
 
 import com.banana.models.Student;
 

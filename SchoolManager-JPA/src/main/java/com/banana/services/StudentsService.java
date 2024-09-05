@@ -1,10 +1,9 @@
 package com.banana.services;
 
 import com.banana.models.Student;
-import com.banana.persistence.StudentsRepositoryInf;
+import com.banana.persistence.student.StudentsRepositoryInf;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
