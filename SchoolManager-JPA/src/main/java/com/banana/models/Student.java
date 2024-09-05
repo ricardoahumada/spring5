@@ -49,12 +49,13 @@ public class Student {
     @JoinColumn(name = "escuela")
     private School school;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
           name = "estudiantes_proyectos",
           joinColumns = {@JoinColumn(name = "estudiante")},
           inverseJoinColumns = {@JoinColumn(name = "proyecto")}
     )
+    @ToString.Exclude
     private List<Project> projects;
 
     public boolean isValid() {

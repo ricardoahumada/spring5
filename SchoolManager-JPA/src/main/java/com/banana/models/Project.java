@@ -29,7 +29,8 @@ public class Project {
     @ManyToMany(mappedBy = "projects")
     private List<Student> estudiantes = new ArrayList<>();
 
-//    @ElementCollection
-    @Column(name = "notas")
+//    @Column(name = "notas")
+    @ElementCollection
+    @OrderColumn
     private String[] notas;
 }
