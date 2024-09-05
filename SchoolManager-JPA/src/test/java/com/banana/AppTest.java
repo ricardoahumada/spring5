@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = {SpringConfig.class})
-//@EnableAutoConfiguration
+@EnableAutoConfiguration
 public class AppTest {
 
     @PersistenceContext

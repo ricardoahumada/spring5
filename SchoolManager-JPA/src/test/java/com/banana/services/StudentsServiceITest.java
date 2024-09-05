@@ -25,6 +25,9 @@ class StudentsServiceITest {
 
     @Test
     void storeStudent() {
+        Student newStd = new Student(null, "Matias", "Mattel", 2);
+        boolean isOk = service.storeStudent(newStd);
+        assertTrue(isOk);
     }
 
     @Test
