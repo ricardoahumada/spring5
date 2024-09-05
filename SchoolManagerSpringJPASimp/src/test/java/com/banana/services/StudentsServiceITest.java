@@ -35,4 +35,24 @@ class StudentsServiceITest {
         System.out.println(std);
         assertNotNull(std);
     }
+
+     @Test
+    void storeStudentList() {
+        List<Student> estudiantes = List.of(
+                new Student(null, "Juan", "Juanez", 2),
+                new Student(null, "Luisa", "Rosalez", 3),
+                new Student(null, "Pedro", "Perez", 1),
+                new Student(null, "Maria", "Marianez", 2),
+                new Student(null, "Rosa", "Lopez", 1)
+        );
+
+        boolean isOk = false;
+        try {
+            isOk = service.storeStudentList(estudiantes);
+        } catch (Exception e) {
+            System.out.println("Error al almacenar alumnos");
+        }
+
+        assertTrue(isOk);
+    }
 }

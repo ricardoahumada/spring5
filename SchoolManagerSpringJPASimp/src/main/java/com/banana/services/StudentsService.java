@@ -33,4 +33,16 @@ public class StudentsService implements IStudentService {
         if (id > 0) return repository.getById(id);
         else return null;
     }
+
+    @Override
+    public boolean storeStudentList(List<Student> students) throws Exception {
+        for (Student aStd : students) {
+            if (aStd.isValid()) {
+                repository.add(aStd);
+            } else {
+                throw new Exception("Estudiante no válido:" + aStd);
+            }
+        }
+        return true;
+    }
 }
