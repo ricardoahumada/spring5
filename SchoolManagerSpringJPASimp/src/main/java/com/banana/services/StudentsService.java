@@ -35,13 +35,18 @@ public class StudentsService implements IStudentService {
     }
 
     @Override
+    @Transactional
     public boolean storeStudentList(List<Student> students) throws Exception {
+        int i = 1;
         for (Student aStd : students) {
             if (aStd.isValid()) {
+                System.out.println("**** Procesando estudiante: " + i);
                 repository.add(aStd);
             } else {
-                throw new Exception("Estudiante no válido:" + aStd);
+                System.out.println("**** !!!Estudiante no válido:" + aStd);
+//                throw new Exception("Estudiante no válido:" + aStd);
             }
+            i++;
         }
         return true;
     }

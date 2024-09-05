@@ -20,9 +20,10 @@ public class StudentsRepositoryJPA implements StudentsRepositoryInf {
     private EntityManager em;
 
     @Override
-    @Transactional
-    public void add(Student estudiante) {
-        em.persist(estudiante);
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public void add(Student estudiante) throws SQLException {
+        if (estudiante.isValid()) em.persist(estudiante);
+        else throw new SQLException("Estudiante no válido:" + estudiante);
     }
 
     @Override
