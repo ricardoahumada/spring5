@@ -16,23 +16,6 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
---
--- Dumping data for table `almacen`
---
-
-# LOCK TABLES `almacen` WRITE;
-/*!40000 ALTER TABLE `almacen` DISABLE KEYS */;
-INSERT INTO `almacen` VALUES (1,1,4),
-(2,2,7),
-(3,3,10),
-(4,4,6),
-(5,5,7),
-(6,6,9),
-(7,7,9),
-(8,8,7),
-(10,10,8);
-/*!40000 ALTER TABLE `almacen` ENABLE KEYS */;
-# UNLOCK TABLES;
 
 --
 -- Dumping data for table `compra`
@@ -40,7 +23,11 @@ INSERT INTO `almacen` VALUES (1,1,4),
 
 # LOCK TABLES `compra` WRITE;
 /*!40000 ALTER TABLE `compra` DISABLE KEYS */;
-INSERT INTO `compra` VALUES (1,5,3,4,'2017-06-11 22:00:00'),
+
+TRUNCATE compra;
+
+INSERT INTO `compra` ( cid, usuario, producto, cantidad, fecha) VALUES
+(1,5,3,4,'2017-06-11 22:00:00'),
 (2,8,5,1,'2017-06-11 22:00:00'),
 (3,9,5,2,'2017-06-11 22:00:00'),
 (4,8,6,2,'2017-06-11 22:00:00'),
@@ -81,7 +68,10 @@ INSERT INTO `compra` VALUES (1,5,3,4,'2017-06-11 22:00:00'),
 
 # LOCK TABLES `producto` WRITE;
 /*!40000 ALTER TABLE `producto` DISABLE KEYS */;
-INSERT INTO `producto` VALUES (1,6639,'Oriflame','India skin care','piel',5.45,30),
+TRUNCATE producto;
+
+INSERT INTO `producto` (pid,codigo,marca,nombre,tipo,precio,existencias) VALUES
+(1,6639,'Oriflame','India skin care','piel',5.45,30),
 (2,4765,'Elizabeth Arden','Visible difference','cara',14.65,23),
 (3,5836,'Elizabeth Arden','Green tea','cara',19.99,16),
 (4,12834,'Estee Lauder','Double wear','perfume',29,56),
@@ -99,7 +89,10 @@ INSERT INTO `producto` VALUES (1,6639,'Oriflame','India skin care','piel',5.45,3
 
 # LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'Juana','Juanason','juana@e.com',2,20,'juanason_1','2001-03-05 00:00:00',1),
+TRUNCATE usuario;
+
+INSERT INTO `usuario` (uid, nombre, apellido, email, interes, saldo, password, nacimiento, activo) VALUES
+(1,'Juana','Juanason','juana@e.com',2,20,'juanason_1','2001-03-05 00:00:00',1),
 (2,'Luisa','Luisason','luisa@e.com',4,74,'luisason_2','1996-04-06 00:00:00',1),
 (3,'Diana','Dianason','diana@e.com',8,13,'dianason_3','2010-03-06 00:00:00',1),
 (4,'Pedro','Pedroson','pedro@e.com',5,25,'pedroson_4','2000-12-31 00:00:00',1),
