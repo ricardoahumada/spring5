@@ -48,7 +48,7 @@ public class StudentsService implements IStudentService {
                 System.out.println("**** Procesando estudiante: " + i);
                 repository.add(aStd);
             } else {
-                System.out.println("**** Estudiante no válido:" + aStd);
+                System.out.println("**** !!!Estudiante no válido:" + aStd);
 //                throw new Exception("Estudiante no válido:" + aStd);
             }
             i++;
