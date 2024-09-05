@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -42,11 +43,12 @@ class StudentsServiceITest {
     }
 
     @Test
+//    @Transactional
     void storeStudentList() {
         List<Student> estudiantes = List.of(
                 new Student(null, "Juan", "Juanez", 2),
                 new Student(null, "Luisa", "Rosalez", 3),
-                new Student(null, "Pedro", "Perez", 1),
+                new Student(null, null, "Perez", 0),
                 new Student(null, "Maria", "Marianez", 2),
                 new Student(null, "Rosa", "Lopez", 1)
         );

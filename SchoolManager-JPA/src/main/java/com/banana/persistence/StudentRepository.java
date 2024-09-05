@@ -5,9 +5,10 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.*;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.sql.SQLException;
-import java.util.List;
 
 @Repository
 public class StudentRepository implements StudentsRepositoryInf {
@@ -18,7 +19,8 @@ public class StudentRepository implements StudentsRepositoryInf {
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void add(Student estudiante) throws SQLException {
-        em.persist(estudiante);
+        if (estudiante.isValid()) em.persist(estudiante);
+        else throw new SQLException("Estudiante no válido:" + estudiante);
     }
 
     @Override
