@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
-import static  org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @ExtendWith(SpringExtension.class)
@@ -29,15 +29,16 @@ class StudentsRepositoryDataTest {
 //        Student aStudent = repoStudents.getById(1L);
         Optional<Student> op = repoStudents.findById(1L);
         Student aStudent = op.get();
-        System.out.println("aStudent:"+aStudent);
+        System.out.println("aStudent:" + aStudent);
 
         assertEquals(aStudent.getId(), 1L);
         assertNotNull(aStudent);
     }
+
     @Test
     void getAll() throws SQLException {
         List<Student> students = repoStudents.findAll();
-        System.out.println("students:"+students);
+        System.out.println("students:" + students);
         assertNotNull(students);
     }
 
@@ -53,21 +54,20 @@ class StudentsRepositoryDataTest {
     @Test
     void getAllByName() throws SQLException {
         List<Student> students = repoStudents.findByNombreIgnoreCase("Juan");
-        System.out.println("students:"+students);
+        System.out.println("students:" + students);
         assertNotNull(students);
     }
-/*
 
     @Test
-    @Transactional
     void getAllByNameAndSurn() throws SQLException {
-        List<Student> students = repoStudents.findByNombreAndApellidoIgnoreCase("juan","perez");
-        System.out.println("students:"+students);
+        List<Student> students = repoStudents.findByNombreAndApellidoIgnoreCase("juan", "perez");
+        System.out.println("students:" + students);
         assertNotNull(students);
     }
 
+/*
     @Test
-    @Transactional
+
     void findByNombrEndsWith() throws SQLException {
         List<Student> students = repoStudents.findByNombreWith("n");
         System.out.println("students:"+students);
@@ -75,7 +75,7 @@ class StudentsRepositoryDataTest {
     }
 
     @Test
-    @Transactional
+
     void findByNombreWithNative() throws SQLException {
         List<Student> students = repoStudents.findByNombreWithNative("n");
         System.out.println("students:"+students);

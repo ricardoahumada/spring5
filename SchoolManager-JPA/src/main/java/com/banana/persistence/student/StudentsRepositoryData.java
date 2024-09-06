@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface StudentsRepositoryData extends JpaRepository<Student, Long> {
     public List<Student> findByNombreIgnoreCase(String nombre);
+    public List<Student> findByNombreAndApellidoIgnoreCase(String nombre, String apellido);
+
 }
