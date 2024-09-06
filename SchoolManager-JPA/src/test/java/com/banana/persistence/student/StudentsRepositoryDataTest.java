@@ -34,9 +34,7 @@ class StudentsRepositoryDataTest {
         assertEquals(aStudent.getId(), 1L);
         assertNotNull(aStudent);
     }
-/*
     @Test
-    @Transactional
     void getAll() throws SQLException {
         List<Student> students = repoStudents.findAll();
         System.out.println("students:"+students);
@@ -53,12 +51,12 @@ class StudentsRepositoryDataTest {
     }
 
     @Test
-    @Transactional
     void getAllByName() throws SQLException {
         List<Student> students = repoStudents.findByNombreIgnoreCase("Juan");
         System.out.println("students:"+students);
         assertNotNull(students);
     }
+/*
 
     @Test
     @Transactional
