@@ -65,17 +65,16 @@ class StudentsRepositoryDataTest {
         assertNotNull(students);
     }
 
-/*
     @Test
-
     void findByNombrEndsWith() throws SQLException {
         List<Student> students = repoStudents.findByNombreWith("n");
         System.out.println("students:"+students);
         assertNotNull(students);
     }
 
-    @Test
+/*
 
+    @Test
     void findByNombreWithNative() throws SQLException {
         List<Student> students = repoStudents.findByNombreWithNative("n");
         System.out.println("students:"+students);
