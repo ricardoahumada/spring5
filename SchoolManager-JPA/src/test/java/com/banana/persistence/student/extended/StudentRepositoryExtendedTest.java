@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @EnableAutoConfiguration
 class StudentRepositoryExtendedTest {
 
-   /* @Autowired
+    @Autowired
     StudentRepositoryExtended repo;
 
     @Test
@@ -29,7 +29,7 @@ class StudentRepositoryExtendedTest {
 //         Student aStudent = repo.findById(100L).get();
 
 //        Student aStudent = repo.findById(100L).orElse(new Student());
-        Student aStudent = repo.findById(100L).orElseThrow(() -> new RuntimeException());
+        Student aStudent = repo.findById(1L).orElseThrow(() -> new RuntimeException());
 
         System.out.println("aStudent:" + aStudent);
         assertEquals(aStudent.getId(), 1L);
@@ -42,6 +42,6 @@ class StudentRepositoryExtendedTest {
         System.out.println(aStudent);
         assertEquals(aStudent.getId(), 3L);
         assertNotNull(aStudent);
-    }*/
+    }
 
 }

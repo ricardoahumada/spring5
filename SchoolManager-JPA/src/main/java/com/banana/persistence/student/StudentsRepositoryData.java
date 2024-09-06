@@ -17,4 +17,9 @@ public interface StudentsRepositoryData extends JpaRepository<Student, Long> {
     @Query("SELECT s FROM Student s WHERE s.nombre LIKE %:name%")
     public List<Student> findByNombreWith(@Param("name") String trozodenombre);
 
+    public default List<Student> findByNombreWithComprobation(@Param("name") String trozodenombre) throws Exception{
+        if (trozodenombre != null) return findByNombreWith(trozodenombre);
+        else throw new Exception("Trozo inválido");
+    }
+
 }
