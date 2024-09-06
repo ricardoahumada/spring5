@@ -43,13 +43,17 @@ public class StudentsService implements IStudentService {
     public boolean storeStudentList(List<Student> students) throws Exception {
         int i = 1;
         for (Student aStd : students) {
-            if (aStd.isValid()) {
-                System.out.println("**** Procesando estudiante: " + i);
+//            if (aStd.isValid()) {
+            System.out.println("**** Procesando estudiante: " + i);
+            try {
                 repository.add(aStd);
-            } else {
-                System.out.println("**** !!!Estudiante no válido:" + aStd);
-//                throw new Exception("Estudiante no válido:" + aStd);
+            } catch (Exception e) {
+                System.out.println("**** !!!Estudiante no válido Exception:" + e.getMessage());
             }
+//            } else {
+//                System.out.println("**** !!!Estudiante no válido:" + aStd);
+//                throw new Exception("Estudiante no válido:" + aStd);
+//            }
             i++;
         }
         return true;
