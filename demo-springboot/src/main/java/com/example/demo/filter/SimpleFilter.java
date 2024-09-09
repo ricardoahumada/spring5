@@ -6,6 +6,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 @Component
@@ -21,7 +22,8 @@ public class SimpleFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        logger.info("Filtrando 1..."+ servletRequest.getLocalAddr()+"::"+servletRequest.getRemoteHost());
+        HttpServletRequest request = (HttpServletRequest) servletRequest;
+        logger.info("Filtrando 1..." + request.getRequestURI() + "::" + servletRequest.getRemoteHost());
         filterChain.doFilter(servletRequest, servletResponse);
     }
 
