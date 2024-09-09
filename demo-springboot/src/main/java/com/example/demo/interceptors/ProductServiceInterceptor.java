@@ -15,7 +15,7 @@ public class ProductServiceInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        logger.info("REQUEST:" + request.getRequestURI() + "::" + request.getMethod()+"::"+request.getRemoteAddr());
+        logger.info("REQUEST:" + request.getRequestURI() + "::" + request.getMethod()+"::"+request.getRemoteAddr()+"::"+request.getHeader("Accept"));
         return true;
     }
 
