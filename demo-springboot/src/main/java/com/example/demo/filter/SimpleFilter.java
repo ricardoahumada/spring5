@@ -6,11 +6,13 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
-@Component
-@Order(1)
+//@Component
+//@Order(1)
+@WebFilter(urlPatterns = {"/productos"})
 public class SimpleFilter implements Filter {
     private static final Logger logger = LoggerFactory.getLogger(SimpleFilter.class);
 
