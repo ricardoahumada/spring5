@@ -7,9 +7,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+@RequestMapping("/productos")
 public class ProductController {
 
-    @RequestMapping("/productos")
+    @RequestMapping("")
     public List<Product> getAll() {
         return List.of(
                 new Product(1L, "Escoba"),
@@ -20,7 +21,7 @@ public class ProductController {
 
     }
 
-    @RequestMapping("/productos/1")
+    @RequestMapping("/1")
     public Product getOne() {
         return new Product(1L, "Escoba");
     }

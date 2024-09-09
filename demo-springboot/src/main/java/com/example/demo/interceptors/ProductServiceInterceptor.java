@@ -15,7 +15,7 @@ public class ProductServiceInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        logger.info("REQUEST:" + request.getRequestURI() + "::" + request.getMethod()+"::"+request.getRemoteAddr()+"::"+request.getHeader("Accept"));
+        logger.info("REQUEST:" + request.getRequestURI() + "::" + request.getMethod() + "::" + getRemoteAddr(request) + "::" + request.getHeader("Accept"));
         return true;
     }
 
@@ -27,5 +27,14 @@ public class ProductServiceInterceptor implements HandlerInterceptor {
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
         logger.info("afterCompletion.....");
+    }
+
+    private String getRemoteAddr(HttpServletRequest request) {
+        String ipFromHeader = request.getHeader("X-FORWARDED-FOR");
+        if (ipFromHeader != null && ipFromHeader.length() > 0) {
+            logger.debug("ip from proxy - X-FORWARDED-FOR : " + ipFromHeader);
+            return ipFromHeader;
+        }
+        return request.getRemoteAddr();
     }
 }
