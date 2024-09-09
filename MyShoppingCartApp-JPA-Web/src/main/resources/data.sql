@@ -1,0 +1,58 @@
+INSERT INTO `producto` (pid,codigo,marca,nombre,tipo,precio,existencias) VALUES
+(1,6639,'Oriflame','India skin care','piel',5.45,30),
+(2,4765,'Elizabeth Arden','Visible difference','cara',14.65,23),
+(3,5836,'Elizabeth Arden','Green tea','cara',19.99,16),
+(4,12834,'Estee Lauder','Double wear','perfume',29,56),
+(5,9087,'MAC Cosmetics','Extra dimension','ojos',31.95,2),
+(6,4207,'LOreal','Men Expert','cara',9.95,19),
+(7,8000,'MAC Cosmetics','Lipstick Matte','labios',19.95,25),
+(8,5267,'Oriflame','Day Cream','piel',3.45,1),
+(10,11784,'LOreal','Absolut repair','pelo',16.95,90);
+
+
+INSERT INTO `usuario` (uid, nombre, apellido, email, interes, saldo, password, nacimiento, activo) VALUES
+(1,'Juana','Juanason','juana@e.com',2,20,'juanason_1','2001-03-05',1),
+(2,'Luisa','Luisason','luisa@e.com',4,74,'luisason_2','1996-04-06',1),
+(3,'Diana','Dianason','diana@e.com',8,13,'dianason_3','2010-03-06',1),
+(4,'Pedro','Pedroson','pedro@e.com',5,25,'pedroson_4','2000-12-31',1),
+(5,'Marco','Marcoson','marco@e.com',6,4,'marcoson_5','1980-02-13',1),
+(6,'Ricardo','Ricardoson','ricardo@e.com',7,8,'ricardoson_6','1999-07-25',1),
+(7,'Nora','Norason','nora@e.com',1,16,'norason_7','1995-03-06',1),
+(8,'Edwin','Edwinson','edwin@e.com',9,20,'edwinson_8','1992-11-04',1),
+(9,'Marta','Martason','marta@e.com',6,36,'martason_9','1960-04-05',1),
+(10,'Eduardo','Eduardoson','eduardo@e.com',4,23,'eduardoson_10','1999-10-08',1);
+
+
+INSERT INTO `compra` ( cid, usuario, producto, cantidad, fecha) VALUES
+(1,5,3,4,'2017-06-11'),
+(2,8,5,1,'2017-06-11'),
+(3,9,5,2,'2017-06-11'),
+(4,8,6,2,'2017-06-11'),
+(5,5,6,1,'2017-06-11'),
+(6,3,7,1,'2017-06-11'),
+(7,3,4,2,'2017-06-11'),
+(8,3,4,4,'2017-06-11'),
+(9,3,2,4,'2017-06-11'),
+(10,1,8,3,'2017-06-11'),
+(11,9,3,3,'2017-06-11'),
+(12,8,1,1,'2017-06-11'),
+(13,6,3,5,'2017-06-11'),
+(14,7,6,1,'2017-06-11'),
+(15,10,4,2,'2017-06-11'),
+(16,10,5,1,'2017-06-11'),
+(17,5,1,1,'2017-06-11'),
+(18,10,6,2,'2017-06-11'),
+(19,2,8,4,'2017-06-11'),
+(20,7,7,5,'2017-06-11'),
+(21,8,2,3,'2017-06-11'),
+(22,8,5,4,'2017-06-11'),
+(23,8,1,3,'2017-06-11'),
+(24,1,4,4,'2017-06-11'),
+(25,7,4,1,'2017-06-11'),
+(26,9,4,3,'2017-06-11'),
+(27,10,2,5,'2017-06-11'),
+(28,10,6,3,'2017-06-11'),
+(29,3,7,5,'2017-06-11'),
+(30,1,2,1,'2017-06-14'),
+(31,1,2,1,'2017-06-14'),
+(32,1,1,4,'2017-06-14');
