@@ -13,6 +13,6 @@ public class InterceptorsConfig implements WebMvcConfigurer {
     ProductServiceInterceptor productServiceInterceptor;
 
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(productServiceInterceptor).addPathPatterns("/producto/**");
+        registry.addInterceptor(productServiceInterceptor).addPathPatterns("/productos/**");
     }
 }
