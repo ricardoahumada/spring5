@@ -1,3 +1,9 @@
+INSERT INTO customers (name, email) VALUES
+('Juan','j@j.com'),
+('Luisa','l@l.com'),
+('Rosa SL','r@r.com'),
+('Maria SL','m@m.com');
+
 INSERT INTO accounts (type, opening_date,balance,owner_id) VALUES
 ('Personal','2023-10-01', 1000, 1),
 ('Personal','2023-09-01', 100, 1),
