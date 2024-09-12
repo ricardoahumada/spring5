@@ -1,11 +1,14 @@
 package com.microcompany.productsservice.controller;
 
 import com.microcompany.productsservice.model.Product;
+import com.microcompany.productsservice.model.StatusMessage;
 import com.microcompany.productsservice.persistence.ProductsRepository;
 import com.microcompany.productsservice.service.ProductsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,12 +29,18 @@ public class ProductServiceController {
         return productsService.getProductsByText(text != null ? text : "");
     }
 
-    @RequestMapping(value = "/{pid}", method = RequestMethod.GET)
+    /*@RequestMapping(value = "/{pid}", method = RequestMethod.GET)
     public Product getOne(@PathVariable("pid") Long id) {
         Optional<Product> opt = repository.findById(id);
-        return opt.get();
-//        if (opt.isPresent()) return opt.get();
-//        else return null;
+//        return opt.get();
+        if (opt.isPresent()) return opt.get();
+        else return null;
+    }*/
+    @RequestMapping(value = "/{pid}", method = RequestMethod.GET)
+    public ResponseEntity getOne(@PathVariable("pid") Long id) {
+        Optional<Product> opt = repository.findById(id);
+        if (opt.isPresent()) return new ResponseEntity(opt.get(), HttpStatus.OK);
+        else return new ResponseEntity(new StatusMessage(HttpStatus.NOT_FOUND.value(), "No existe"), HttpStatus.NOT_FOUND);
     }
 
     @RequestMapping(value = "", method = RequestMethod.POST)
