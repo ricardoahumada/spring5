@@ -22,8 +22,8 @@ public class ProductServiceController {
     ProductsRepository repository;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public List<Product> getAll() {
-        return productsService.getProductsByText("");
+    public List<Product> getAll(@RequestParam(required = false) String text) {
+        return productsService.getProductsByText(text != null ? text : "");
     }
 
     @RequestMapping(value = "/{pid}", method = RequestMethod.GET)
@@ -35,7 +35,7 @@ public class ProductServiceController {
     }
 
     @RequestMapping(value = "", method = RequestMethod.POST)
-    public Product create(@RequestBody Product product){
+    public Product create(@RequestBody Product product) {
         return repository.save(product);
     }
 
