@@ -1,6 +1,7 @@
 package com.microcompany.productsservice.model;
 
 import javax.persistence.*;
+
 import lombok.*;
 
 @Entity
@@ -16,4 +17,8 @@ public class Product {
     private String name;
 
     private String serial;
+
+    public void isValid() throws Exception {
+        if (name == null || serial == null) throw new Exception("Producto no válido");
+    }
 }
