@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.MimeType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,7 +26,8 @@ public class ProductServiceController {
     @Autowired
     ProductsRepository repository;
 
-    @RequestMapping(value = "", method = RequestMethod.GET)
+    //    @RequestMapping(value = "", method = RequestMethod.GET)
+    @GetMapping("")
     public List<Product> getAll(@RequestParam(required = false) String text) {
         return productsService.getProductsByText(text != null ? text : "");
     }
@@ -37,14 +39,15 @@ public class ProductServiceController {
         if (opt.isPresent()) return opt.get();
         else return null;
     }*/
-    @RequestMapping(value = "/{pid}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{pid}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity getOne(@PathVariable("pid") Long id) {
         Optional<Product> opt = repository.findById(id);
         if (opt.isPresent()) return new ResponseEntity(opt.get(), HttpStatus.OK);
-        else return new ResponseEntity(new StatusMessage(HttpStatus.NOT_FOUND.value(), "No existe"), HttpStatus.NOT_FOUND);
+        else
+            return new ResponseEntity(new StatusMessage(HttpStatus.NOT_FOUND.value(), "No existe"), HttpStatus.NOT_FOUND);
     }
 
-    @RequestMapping(value = "", method = RequestMethod.POST)
+    @RequestMapping(value = "", method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE}, consumes = {MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
     public Product create(@RequestBody Product product) {
         return repository.save(product);
     }
