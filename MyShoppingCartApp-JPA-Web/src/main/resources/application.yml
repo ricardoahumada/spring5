@@ -3,7 +3,7 @@ db_url: "jdbc:mysql://localhost/productos_db?user=productos_user&password=prod12
 spring:
   application:
     name: demoservice
-  profiles.active: prod
+  profiles.active: dev
 
 server:
   port: 8080
@@ -29,7 +29,7 @@ spring:
     console.enabled: true
     console.path: /h2-ui
 
-debug: true
+#debug: true
 
 ---
 spring:

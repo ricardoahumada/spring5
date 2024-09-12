@@ -1,5 +1,6 @@
 package com.microcompany.productsservice.controller;
 
+import com.microcompany.productsservice.exception.ProductNotfoundException;
 import com.microcompany.productsservice.model.Product;
 import com.microcompany.productsservice.model.StatusMessage;
 import com.microcompany.productsservice.persistence.ProductsRepository;
@@ -40,11 +41,13 @@ public class ProductServiceController {
         else return null;
     }*/
     @RequestMapping(value = "/{pid}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity getOne(@PathVariable("pid") Long id) {
-        Optional<Product> opt = repository.findById(id);
+    public ResponseEntity<Product> getOne(@PathVariable("pid") Long id) {
+        /*Optional<Product> opt = repository.findById(id);
         if (opt.isPresent()) return new ResponseEntity(opt.get(), HttpStatus.OK);
         else
-            return new ResponseEntity(new StatusMessage(HttpStatus.NOT_FOUND.value(), "No existe"), HttpStatus.NOT_FOUND);
+            return new ResponseEntity(new StatusMessage(HttpStatus.NOT_FOUND.value(), "No existe"), HttpStatus.NOT_FOUND);*/
+        Product prod = repository.findById(id).orElseThrow(() -> new ProductNotfoundException("No existe " + id));
+        return ResponseEntity.status(HttpStatus.OK).body(prod);
     }
 
     @RequestMapping(value = "", method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE}, consumes = {MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})

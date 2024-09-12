@@ -40,7 +40,7 @@ public class UsuarioJPARepository implements IUsuarioRepository {
 
     public List<Usuario> getUsuarios(String iniciales) throws Exception {
 
-        TypedQuery query = em.createQuery("SELECT u FROM Usuario u WHERE u.nombre LIKE :inicial", Usuario.class);
+        TypedQuery query = em.createQuery("SELECT u FROM Usuario u WHERE u.nombre LIKE concat(:inicial,'%')", Usuario.class);
         query.setParameter("inicial", iniciales);
 
         List<Usuario> users = (List<Usuario>) query.getResultList();

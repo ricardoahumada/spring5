@@ -1,5 +1,6 @@
 package com.myshoppingcart.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -27,6 +28,7 @@ public class Usuario {
 
     @ToString.Exclude
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    @JsonIgnore
     private Set<Compra> compras;
 
     public Usuario(Integer uid) {
