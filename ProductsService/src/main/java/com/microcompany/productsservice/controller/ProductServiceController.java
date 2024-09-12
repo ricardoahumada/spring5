@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,6 +47,21 @@ public class ProductServiceController {
     @RequestMapping(value = "", method = RequestMethod.POST)
     public Product create(@RequestBody Product product) {
         return repository.save(product);
+    }
+
+    @RequestMapping(value = "/{pid}", method = RequestMethod.PUT)
+    public ResponseEntity updateProduct(@PathVariable("pid") Long id, @RequestBody Product aProduct) {
+        aProduct.setId(id);
+        repository.save(aProduct);
+        if (aProduct != null) return new ResponseEntity(aProduct, HttpStatus.ACCEPTED);
+        else
+            return new ResponseEntity<>(new StatusMessage(HttpStatus.NOT_MODIFIED.value(), "No modificado"), HttpStatus.NOT_MODIFIED);
+    }
+
+    @RequestMapping(value = "/{pid}", method = RequestMethod.DELETE)
+    public ResponseEntity deleteProduct(@PathVariable("pid") Long id) {
+        repository.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 
 
