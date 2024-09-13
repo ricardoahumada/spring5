@@ -29,6 +29,12 @@ spring:
 
 server:
   port: 9090
+  error:
+     include-message: always
+     include-binding-errors: always
+     include-stacktrace: on-param
+     include-exception: false
+
 
 #debug: true
 logging:
