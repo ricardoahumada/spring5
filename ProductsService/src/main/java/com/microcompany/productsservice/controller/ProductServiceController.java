@@ -13,14 +13,17 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MimeType;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/products")
+@Validated
 public class ProductServiceController {
     private static final Logger logger = LoggerFactory.getLogger(ProductServiceController.class);
 
@@ -43,7 +46,7 @@ public class ProductServiceController {
         else return null;
     }*/
     @RequestMapping(value = "/{pid}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<Product> getOne(@PathVariable("pid") Long id) {
+    public ResponseEntity<Product> getOne(@Min(1) @PathVariable("pid") Long id) {
         /*Optional<Product> opt = repository.findById(id);
         if (opt.isPresent()) return new ResponseEntity(opt.get(), HttpStatus.OK);
         else
