@@ -3,6 +3,7 @@ package com.microcompany.productsservice.model;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
+import com.microcompany.productsservice.constraints.SerialNumber;
 import lombok.*;
 
 @Entity
@@ -23,7 +24,8 @@ public class Product {
 
     @NonNull
     @NotBlank
-    @Pattern(regexp = "[1-9]{3}-[1-9]{3}-[1-9]{4}", message = "Debe tener la forma de 111-222-3333")
+//    @Pattern(regexp = "[1-9]{3}-[1-9]{3}-[1-9]{4}", message = "Debe tener la forma de 111-222-3333")
+    @SerialNumber
     private String serial;
 
     public void isValid() throws Exception {
