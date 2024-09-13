@@ -11,6 +11,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import javax.validation.ConstraintViolationException;
 import java.util.HashMap;
@@ -45,6 +46,12 @@ public class GlobalExceptioController {
             errors.put(fieldName, errorMessage);
         });
         return errors;
+    }
+
+    @ResponseStatus(HttpStatus.PRECONDITION_FAILED)
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public StatusMessage handleMethodArgumentTypeMismatchException(MethodArgumentTypeMismatchException ex) {
+        return new StatusMessage(HttpStatus.PRECONDITION_FAILED.value(), "El argumento no es valido");
     }
 
     @ExceptionHandler(ConstraintViolationException.class)

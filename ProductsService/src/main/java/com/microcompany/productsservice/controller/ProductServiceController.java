@@ -23,8 +23,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/products")
-@Validated
-public class ProductServiceController {
+public class ProductServiceController implements IProductServiceController {
     private static final Logger logger = LoggerFactory.getLogger(ProductServiceController.class);
 
     @Autowired
@@ -33,35 +32,21 @@ public class ProductServiceController {
     ProductsRepository repository;
 
     //    @RequestMapping(value = "", method = RequestMethod.GET)
-    @GetMapping("")
-    public List<Product> getAll(@RequestParam(required = false) String text) {
+    public List<Product> getAll(String text) {
         return productsService.getProductsByText(text != null ? text : "");
     }
 
-    /*@RequestMapping(value = "/{pid}", method = RequestMethod.GET)
-    public Product getOne(@PathVariable("pid") Long id) {
-        Optional<Product> opt = repository.findById(id);
-//        return opt.get();
-        if (opt.isPresent()) return opt.get();
-        else return null;
-    }*/
-    @RequestMapping(value = "/{pid}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<Product> getOne(@Min(1) @PathVariable("pid") Long id) {
-        /*Optional<Product> opt = repository.findById(id);
-        if (opt.isPresent()) return new ResponseEntity(opt.get(), HttpStatus.OK);
-        else
-            return new ResponseEntity(new StatusMessage(HttpStatus.NOT_FOUND.value(), "No existe"), HttpStatus.NOT_FOUND);*/
+
+    public ResponseEntity<Product> getOne(Long id) {
         Product prod = repository.findById(id).orElseThrow(() -> new ProductNotfoundException("No existe " + id));
         return ResponseEntity.status(HttpStatus.OK).body(prod);
     }
 
-    @RequestMapping(value = "", method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE}, consumes = {MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<Product> create(@Valid @RequestBody Product product) {
+    public ResponseEntity<Product> create(Product product) {
         return ResponseEntity.status(HttpStatus.CREATED).body(productsService.create(product));
     }
 
-    @RequestMapping(value = "/{pid}", method = RequestMethod.PUT)
-    public ResponseEntity updateProduct(@PathVariable("pid") Long id, @RequestBody Product aProduct) {
+    public ResponseEntity updateProduct(Long id, Product aProduct) {
         aProduct.setId(id);
         repository.save(aProduct);
         if (aProduct != null) return new ResponseEntity(aProduct, HttpStatus.ACCEPTED);
@@ -69,8 +54,7 @@ public class ProductServiceController {
             return new ResponseEntity<>(new StatusMessage(HttpStatus.NOT_MODIFIED.value(), "No modificado"), HttpStatus.NOT_MODIFIED);
     }
 
-    @RequestMapping(value = "/{pid}", method = RequestMethod.DELETE)
-    public ResponseEntity deleteProduct(@PathVariable("pid") Long id) {
+    public ResponseEntity deleteProduct(Long id) {
         repository.deleteById(id);
         return ResponseEntity.noContent().build();
     }
