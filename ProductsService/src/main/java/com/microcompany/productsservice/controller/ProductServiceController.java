@@ -36,7 +36,6 @@ public class ProductServiceController implements IProductServiceController {
         return productsService.getProductsByText(text != null ? text : "");
     }
 
-
     public ResponseEntity<Product> getOne(Long id) {
         Product prod = repository.findById(id).orElseThrow(() -> new ProductNotfoundException("No existe " + id));
         return ResponseEntity.status(HttpStatus.OK).body(prod);
