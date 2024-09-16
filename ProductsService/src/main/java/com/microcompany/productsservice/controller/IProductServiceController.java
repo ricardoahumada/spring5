@@ -41,10 +41,10 @@ public interface IProductServiceController {
             @ApiResponse(responseCode = "202", description = "Todo bien"),
             @ApiResponse(responseCode = "412", description = "El producto enviado no es correcto")
     })
-    @RequestMapping(value = "", method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE}, consumes = {MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
+    @RequestMapping(value = "", method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE}, consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_ATOM_XML_VALUE})
     public ResponseEntity<Product> create(
-            @Valid @RequestBody
             @io.swagger.v3.oas.annotations.parameters.RequestBody(required = true, description = "El producto a crear sin Id.")
+            @Valid @RequestBody
             Product product
     );
 
