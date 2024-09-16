@@ -1,15 +1,8 @@
 spring:
   application:
     name: ProductsService
-  profiles.active: dev
-
-server:
-  port: 8080
-
----
-spring:
+  profiles.active: prod
   sql.init.mode: always
-  config.activate.on-profile: dev
   devtools.restart.enabled: true
   datasource:
     url: "jdbc:h2:mem:productsdb"
@@ -26,6 +19,14 @@ spring:
   h2:
     console.enabled: true
     console.path: /h2-ui
+
+server:
+  port: 8080
+
+
+---
+spring:
+  config.activate.on-profile: dev
 
 server:
   port: 9090
@@ -51,3 +52,8 @@ spring:
 server:
   servlet.contextPath: /api/v1
   port: 8443
+  ssl:
+    key-store: "c:/Course/workspace/spring5/vault_1.p12"
+    key-store-password: password
+    keyStoreType: PKCS12
+    keyAlias: products_service

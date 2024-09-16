@@ -12,6 +12,7 @@ import java.util.List;
 
 @RequestMapping("/default")
 @Validated
+//@CrossOrigin(origins = {"http://localhost:8080/"})
 public interface IProductServiceController {
 
     @GetMapping("")
