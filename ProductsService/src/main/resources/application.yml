@@ -1,7 +1,7 @@
 spring:
   application:
     name: ProductsService
-  profiles.active: prod
+  profiles.active: dev
   sql.init.mode: always
   devtools.restart.enabled: true
   datasource:
