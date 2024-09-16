@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -17,6 +18,7 @@ import java.util.List;
 @RequestMapping("/default")
 @Validated
 //@CrossOrigin(origins = {"http://localhost:8080/"})
+@Tag(name = "API de productos", description = "Esta es una api para crear y consumir productos")
 public interface IProductServiceController {
 
     @GetMapping("")
