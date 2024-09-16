@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
@@ -15,21 +16,24 @@ public class Internationalization implements WebMvcConfigurer {
 
     @Bean
     public LocaleResolver localeResolver() {
-        SessionLocaleResolver sessionLocaleResolver = new SessionLocaleResolver();
-        sessionLocaleResolver.setDefaultLocale(Locale.US);
+        /*SessionLocaleResolver sessionLocaleResolver = new SessionLocaleResolver();
+        sessionLocaleResolver.setDefaultLocale(Locale.US);*/
+        AcceptHeaderLocaleResolver sessionLocaleResolver = new AcceptHeaderLocaleResolver();
         return sessionLocaleResolver;
     }
 
     /* interceptor for locale based on query param */
-   /* @Bean
+    @Bean
     public LocaleChangeInterceptor localeChangeInterceptor() {
-        return null;
-    }*/
+        LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
+        localeChangeInterceptor.setParamName("language");
+        return localeChangeInterceptor;
+    }
 
-    /*@Override
+    @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(localeChangeInterceptor());
-    }*/
+    }
 
 
 }
