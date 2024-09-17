@@ -31,7 +31,6 @@ public class ProductsServiceTest {
 
     @BeforeEach
     public void setUp() {
-
         List<Product> products = List.of(new Product(1L, "Fake producot", "111-222-333"));
 
         Mockito.when(productsRepository.findByNameContaining("")).thenReturn(products);
@@ -52,4 +51,10 @@ public class ProductsServiceTest {
         assertThat(products).isNotNull().isNotEmpty();
 
     }
+
+    @Test
+    void givenValidProduct_WhenCreate_ThenThenIsNotNull() {
+    }
+
+
 }
