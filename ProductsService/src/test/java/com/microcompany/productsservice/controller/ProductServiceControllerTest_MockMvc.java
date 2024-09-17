@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.microcompany.productsservice.ProductsServiceApplication;
 import com.microcompany.productsservice.model.Product;
 import com.microcompany.productsservice.persistence.ProductsRepository;
+import com.microcompany.productsservice.util.JsonUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -51,7 +52,17 @@ class ProductServiceControllerTest_MockMvc {
 
     @Test
     void givenProducts_whenValidCreateProduct_thenIsCreatedAndHaveId() throws Exception {
-        
+        Product newProduct = new Product(null, "Nuevo producto", "123-123-1234");
+
+        mockMvc.perform(post("/products")
+                        .content(JsonUtil.asJsonString(newProduct))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON)
+                )
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.id").exists())
+                .andExpect(jsonPath("$.id", is(greaterThanOrEqualTo(1))));
 
     }
 
