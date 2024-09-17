@@ -12,12 +12,13 @@ import org.springframework.test.context.jdbc.Sql;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 // TODO: uncomment and implement methods
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-//@Sql("classpath:data_testing.sql")
+@Sql("classpath:data_testing.sql")
 public class ProductServiceTestRestTemplate {
     // @Value(value = "${local.server.port}")
     @LocalServerPort
@@ -27,14 +28,20 @@ public class ProductServiceTestRestTemplate {
 
     @Test
     public void givenUrl_whenGetProducts_thenAStringExists() throws Exception {
+        ResponseEntity<Product[]> response = restTemplate.getForEntity("http://localhost:" + port + "/products", Product[].class);
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getBody().length).isGreaterThan(0);
+//        assertThat(response.getBody()).contains("Travel");
     }
 
     @Test
     public void givenUrl_whenGetProducts_thenAProductExists() throws Exception {
+
     }
 
     @Test
     public void givenAProduct_whenPostWithHeader_thenSuccess() throws URISyntaxException {
+        
     }
 
 }

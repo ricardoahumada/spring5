@@ -41,7 +41,7 @@ public class ProductServiceControllerTest_WebMvcTest {
 
         Mockito.when(productsService.getProductsByText("")).thenReturn(products);
 
-        Mockito.when(productsRepository.save(Mockito.any(Product.class)))
+        Mockito.when(productsService.create(Mockito.any(Product.class)))
                 .thenAnswer(elem -> {
                     Product ap = (Product) elem.getArguments()[0];
                     ap.setId(100L);
