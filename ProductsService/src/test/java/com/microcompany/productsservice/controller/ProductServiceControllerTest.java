@@ -36,7 +36,12 @@ class ProductServiceControllerTest {
 
     @Test
     void givenProducts_whenVaildCreateProduct_thenIsCreatedAndHaveId() {
+        Product newProduct = new Product(null, "Nuevo producto", "111-222-3333");
+        ResponseEntity<Product> response = controller.create(newProduct);
 
+        assertThat(response.getStatusCode().value()).isEqualTo(HttpStatus.CREATED.value());
+        assertThat(response.getBody().getId()).isGreaterThan(0);
+        assertThat(response.getBody()).extracting(Product::getName).isEqualTo(newProduct.getName());
 
     }
 }
