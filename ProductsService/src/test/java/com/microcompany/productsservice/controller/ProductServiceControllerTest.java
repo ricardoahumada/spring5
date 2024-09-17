@@ -35,6 +35,17 @@ class ProductServiceControllerTest {
     }
 
     @Test
+    void givenProducts_whenGetAllWithNonExitingText_ThenIsEmpty() {
+        ResponseEntity<List<Product>> response = controller.getAll("XXXX");
+        assertThat(response.getStatusCode().value())
+                .isEqualTo(404);
+
+        assertThat(response.getBody())
+                .isNotNull()
+                .isEmpty();
+    }
+
+    @Test
     void givenProducts_whenVaildCreateProduct_thenIsCreatedAndHaveId() {
         Product newProduct = new Product(null, "Nuevo producto", "111-222-3333");
         ResponseEntity<Product> response = controller.create(newProduct);
