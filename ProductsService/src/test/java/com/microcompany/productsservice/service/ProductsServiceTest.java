@@ -28,14 +28,19 @@ public class ProductsServiceTest {
 
     }
 
-
     @BeforeEach
     public void setUp() {
         List<Product> products = List.of(new Product(1L, "Fake producot", "111-222-333"));
 
         Mockito.when(productsRepository.findByNameContaining("")).thenReturn(products);
-    }
 
+        Mockito.when(productsRepository.save(Mockito.any(Product.class)))
+                .thenAnswer(elem -> {
+                    Product ap = (Product) elem.getArguments()[0];
+                    ap.setId(100L);
+                    return ap;
+                });
+    }
 
     @MockBean
     ProductsRepository productsRepository;
@@ -54,6 +59,13 @@ public class ProductsServiceTest {
 
     @Test
     void givenValidProduct_WhenCreate_ThenThenIsNotNull() {
+        Product newProduct = new Product(null, "Nuevo Producto", "111-222-3333");
+
+        productsService.create(newProduct);
+        assertThat(newProduct)
+                .isNotNull()
+                .extracting(Product::getId).isEqualTo(100L)
+                .extracting(Product::getName).isEqualTo("Nuevo Producto");
     }
 
 
