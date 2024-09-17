@@ -41,7 +41,17 @@ public class ProductServiceTestRestTemplate {
 
     @Test
     public void givenAProduct_whenPostWithHeader_thenSuccess() throws URISyntaxException {
-        
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("CONTENT-TYPE", "application/json");
+        headers.set("ACCEPT", "application/json");
+        Product product = new Product(null, "Nuevo producto", "111-222-3333");
+
+        HttpEntity<Product> request = new HttpEntity<>(product, headers);
+        ResponseEntity<Product> response = restTemplate.postForEntity("http://localhost:" + port + "/products", request, Product.class);
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
+        assertThat(response.getBody()).extracting(Product::getId).isNotEqualTo(0);
+
     }
 
 }
