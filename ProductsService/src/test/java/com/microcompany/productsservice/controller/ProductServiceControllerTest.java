@@ -55,4 +55,13 @@ class ProductServiceControllerTest {
         assertThat(response.getBody()).extracting(Product::getName).isEqualTo(newProduct.getName());
 
     }
+
+    @Test
+    void givenProducts_whenCreateWithInvalidProduct_thenIsCreatedAndHaveId() {
+        Product newProduct = new Product(null, "Nu", "111-222-3333");
+        ResponseEntity<Product> response = controller.create(newProduct);
+
+        assertThat(response.getStatusCode().value()).isEqualTo(HttpStatus.PRECONDITION_FAILED.value());
+
+    }
 }
