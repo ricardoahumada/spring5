@@ -32,8 +32,8 @@ public class ProductServiceController implements IProductServiceController {
     ProductsRepository repository;
 
     //    @RequestMapping(value = "", method = RequestMethod.GET)
-    public List<Product> getAll(String text) {
-        return productsService.getProductsByText(text != null ? text : "");
+    public ResponseEntity<List<Product>> getAll(String text) {
+        return ResponseEntity.status(HttpStatus.OK).body(productsService.getProductsByText(text != null ? text : ""));
     }
 
     public ResponseEntity<Product> getOne(Long id) {

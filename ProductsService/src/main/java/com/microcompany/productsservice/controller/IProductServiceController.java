@@ -22,7 +22,7 @@ import java.util.List;
 public interface IProductServiceController {
 
     @GetMapping("")
-    public List<Product> getAll(@RequestParam(required = false) String text);
+    public ResponseEntity<List<Product>> getAll(@RequestParam(required = false) String text);
 
 
     @Operation(summary = "Obtener un producto", description = "Endpoint para obtener un producto concreto")
