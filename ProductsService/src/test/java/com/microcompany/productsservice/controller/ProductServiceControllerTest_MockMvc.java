@@ -66,4 +66,17 @@ class ProductServiceControllerTest_MockMvc {
 
     }
 
+    @Test
+    void givenProducts_whenCreateWithInvalidProduct_thenIsCreatedAndHaveId() throws Exception {
+        Product newProduct = new Product(null, "Nu", "123-123-1234");
+
+        mockMvc.perform(post("/products")
+                        .content(JsonUtil.asJsonString(newProduct))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON)
+                )
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(status().isPreconditionFailed());
+    }
+
 }
