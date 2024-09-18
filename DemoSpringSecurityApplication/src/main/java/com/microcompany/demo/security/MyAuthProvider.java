@@ -13,7 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 // TODO: uncomment
-//@Component
+@Component
 public class MyAuthProvider implements AuthenticationProvider {
 
     Logger logger = LoggerFactory.getLogger(MyAuthProvider.class);
@@ -28,7 +28,7 @@ public class MyAuthProvider implements AuthenticationProvider {
 
         // TODO: uncomment
 
-		/*// Get the User from UserDetailsService
+		// Get the User from UserDetailsService
 		String providedUsername = authentication.getPrincipal().toString();
 		UserDetails user = userDetailsService.loadUserByUsername(providedUsername);
 		logger.info("User Details from UserService based on username-" + providedUsername + " : " + user);
@@ -48,8 +48,8 @@ public class MyAuthProvider implements AuthenticationProvider {
 		// return Authentication Object
 		Authentication authenticationResult = 
 				new UsernamePasswordAuthenticationToken(user, authentication.getCredentials(), user.getAuthorities());
-		return authenticationResult;*/
-        return null; // TODO: remove when uncomment
+		return authenticationResult;
+//        return null; // TODO: remove when uncomment
     }
 
     @Override

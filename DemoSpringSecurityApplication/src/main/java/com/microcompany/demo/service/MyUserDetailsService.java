@@ -17,10 +17,10 @@ public class MyUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 //        TODO: uncomment
-//        if (!username.equals("juan"))
-//            throw new UsernameNotFoundException("User with username - " + username + " not found");
-//        return new User("juan", "juanpass", new ArrayList<>());
-        return null; // TODO: remove when uncomment
+        if (!username.equals("juan"))
+            throw new UsernameNotFoundException("User with username - " + username + " not found");
+        return new User("juan", "juanpass", new ArrayList<>());
+//        return null; // TODO: remove when uncomment
     }
 
 }

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .result{border: 2px dashed blue; color: blue; width: 50%;height: 50px; padding: 1em;}
+    .result.nok{border: 2px solid red; color: red;}
+    .result.ok{border: 2px solid green; color: green;}
+    body{
+      font-family: 'Courier New', Courier, monospace;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>
+    CORS Tester:
+  </h2>
+  <div class="result" id="result_div"> Loading... </div>
+</body>
+<script>
+  const test_cors_url = (url) => {
+    const res_div= document.getElementById('result_div');
+
+    fetch(url).then(response => response.json())
+      .then(json => {
+        console.log('Allowed', json);
+        res_div.innerHTML='Allowed!! :D';
+        res_div.classList.add('ok');
+      })
+      .catch(error => {
+        res_div.innerHTML="NOT Allowed due to CORS :(";
+        res_div.classList.add('nok');
+        console.error('Not allowed - Error fetching:', error);
+      });
+
+  }
+
+  setTimeout(() => {
+    test_cors_url('http://localhost:9090/products');
+  }, 500);
+
+
+</script>
+
+</html>
