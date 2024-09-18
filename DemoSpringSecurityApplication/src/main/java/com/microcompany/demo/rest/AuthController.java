@@ -21,32 +21,32 @@ public class AuthController {
     Logger logger = LoggerFactory.getLogger(AuthController.class);
 
 //    TODO: uncomment
-//    @Autowired
-//    private AuthenticationManager authManager;
+    @Autowired
+    private AuthenticationManager authManager;
 
     @PostMapping("/login")
     public AuthResBody authenticate(@RequestBody AuthReqBody authReqBody) {
         logger.info("\nAuth Details: " + authReqBody);
-        return null; // TODO: remove when uncomment
+//        return null; // TODO: remove when uncomment
 
 // TODO: uncomment
 
-//        UsernamePasswordAuthenticationToken token = new
-//                UsernamePasswordAuthenticationToken(
-//                authReqBody.getUsername(),
-//                authReqBody.getPassword());
-//
-//        logger.info("\nAuthentication Token Before Authentication: " + token);
-//
-//        Authentication authResult = authManager.authenticate(token);
-//
-//        logger.info("\nAuthentication Token After Authentication: " + authResult);
-//        logger.info("\nAuthentication Token in Security Context: " + SecurityContextHolder.getContext().getAuthentication());
-//
-//        if (authResult.isAuthenticated()) {
-//            logger.info("\nUser is Authenticated");
-//            return new AuthResBody(true);
-//        } else return new AuthResBody(false);
+        UsernamePasswordAuthenticationToken token = new
+                UsernamePasswordAuthenticationToken(
+                authReqBody.getUsername(),
+                authReqBody.getPassword());
+
+        logger.info("\nAuthentication Token Before Authentication: " + token);
+
+        Authentication authResult = authManager.authenticate(token);
+
+        logger.info("\nAuthentication Token After Authentication: " + authResult);
+        logger.info("\nAuthentication Token in Security Context: " + SecurityContextHolder.getContext().getAuthentication());
+
+        if (authResult.isAuthenticated()) {
+            logger.info("\nUser is Authenticated");
+            return new AuthResBody(true);
+        } else return new AuthResBody(false);
 
 
     }
