@@ -30,6 +30,7 @@ class ResourceControllerTest_RestTemplate {
     public void getResource() throws Exception {
 
         ResponseEntity<String> response = restTemplate
+                .withBasicAuth("juan","juanpass")
                 .getForEntity("http://localhost:" + port + "/resource", String.class);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(response.getBody()).isEqualTo("This is the resource");

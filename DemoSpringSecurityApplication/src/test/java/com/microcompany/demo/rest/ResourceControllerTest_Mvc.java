@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
@@ -21,6 +22,7 @@ class ResourceControllerTest_Mvc {
     private MockMvc mockMvc;
 
     @Test
+    @WithMockUser("juan")
     public void getResource() throws Exception {
         MvcResult result = mockMvc.perform(get("/resource").accept(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(MockMvcResultHandlers.print())

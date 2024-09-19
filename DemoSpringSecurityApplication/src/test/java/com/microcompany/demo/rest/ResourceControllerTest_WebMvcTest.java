@@ -5,6 +5,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -23,6 +24,7 @@ class ResourceControllerTest_WebMvcTest {
 
 
     @Test
+    @WithMockUser("juan")
     public void getResource() throws Exception {
         MvcResult result = mockMvc.perform(get("/resource").accept(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(MockMvcResultHandlers.print())
