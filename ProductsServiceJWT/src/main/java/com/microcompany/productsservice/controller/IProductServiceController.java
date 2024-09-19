@@ -8,6 +8,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +24,8 @@ import java.util.List;
 public interface IProductServiceController {
 
     @GetMapping("")
+//    @PreAuthorize("hasAuthority('USER')")
+    @Secured("USER")
     public ResponseEntity<List<Product>> getAll(@RequestParam(required = false) String text);
 
 
