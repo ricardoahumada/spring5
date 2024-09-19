@@ -24,4 +24,4 @@ spring:
             client-name: products-client-authorization-code
         provider:
           spring:
-            issuer-uri: http://auth-server:9000
+            issuer-uri: "http://auth-server:9000"

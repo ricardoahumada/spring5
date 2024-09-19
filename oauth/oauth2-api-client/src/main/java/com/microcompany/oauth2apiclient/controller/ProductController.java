@@ -21,7 +21,7 @@ public class ProductController {
 
     @GetMapping(value = "/products-view")
     public List<Product> getProducts(
-            @RegisteredOAuth2AuthorizedClient("products-client-authorization-code") OAuth2AuthorizedClient authorizedClient
+            @RegisteredOAuth2AuthorizedClient("products-client-oidc") OAuth2AuthorizedClient authorizedClient
     ) {
         return this.webClient
                 .get()
